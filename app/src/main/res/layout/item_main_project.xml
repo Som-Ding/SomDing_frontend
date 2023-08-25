@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingEnd="30dp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/project_img"
+        android:layout_width="86dp"
+        android:layout_height="86dp"
+        android:background="@drawable/bg_solid_gray_radius_10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/content_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="카테고리"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/project_img" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/content_project_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="프로젝트 제목"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/content_category" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/content_achievement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="999% 달성"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/content_project_title" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
