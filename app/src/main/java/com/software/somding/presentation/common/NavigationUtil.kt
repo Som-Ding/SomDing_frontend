@@ -3,11 +3,13 @@ package com.software.somding.presentation.common
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.ActivityNavigator
 import androidx.navigation.NavDirections
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 
 object NavigationUtil {
+
     fun View.navigate(action: Int) {
         Navigation.findNavController(this).navigate(action)
     }
