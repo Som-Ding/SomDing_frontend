@@ -56,4 +56,7 @@ dependencies {
     // Jetpack Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    //tabLayout
+    implementation 'com.google.android.material:material:1.0.0'
 }
