@@ -1,21 +1,22 @@
-package com.software.somding.presentation.main.adapter
+package com.software.somding.presentation.category.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.software.somding.data.main.ProjectData
-import com.software.somding.databinding.ItemMainProjectBinding
+import com.software.somding.data.main.CategoryProjectData
+import com.software.somding.databinding.ItemCategoryProjectBinding
 
-class MainProjectListAdapter : RecyclerView.Adapter<MainProjectListAdapter.MyViewHolder>() {
+class CategoryProjectListAdapter : RecyclerView.Adapter<CategoryProjectListAdapter.MyViewHolder>() {
 
-    var dataList = mutableListOf<ProjectData>()
+    var dataList = mutableListOf<CategoryProjectData>()
 
-    inner class MyViewHolder(private val binding: ItemMainProjectBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(projectData: ProjectData){
+    inner class MyViewHolder(private val binding: ItemCategoryProjectBinding): RecyclerView.ViewHolder(binding.root) {
+        fun bind(projectData: CategoryProjectData){
 //            binding.projectImg = projectData.contentImg
             binding.contentCategory.text = projectData.category
             binding.contentProjectTitle.text = projectData.projectTitle
             binding.contentAchievement.text = projectData.projectPercent.toString()
+            binding.contentPrice.text = projectData.projectPrice.toString()
         }
     }
 
@@ -23,7 +24,7 @@ class MainProjectListAdapter : RecyclerView.Adapter<MainProjectListAdapter.MyVie
         parent: ViewGroup,
         viewType: Int
     ): MyViewHolder {
-        val binding = ItemMainProjectBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding = ItemCategoryProjectBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return MyViewHolder(binding)
     }
 
