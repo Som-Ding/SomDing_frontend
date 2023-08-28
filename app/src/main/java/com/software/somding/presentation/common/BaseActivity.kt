@@ -1,4 +1,4 @@
-package com.example.refit.presentation.common
+package com.software.somding.presentation.common
 
 import android.os.Bundle
 import androidx.annotation.LayoutRes

@@ -25,27 +25,30 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/category_cloth"
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_to_category_cloth"
                 android:layout_width="86dp"
                 android:layout_height="86dp"
+                android:text="의류"
                 android:background="@drawable/bg_solid_gray_radius_10"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/title_category" />
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/category_doll"
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_to_category_doll"
                 android:layout_width="86dp"
                 android:layout_height="86dp"
+                android:text="인형"
                 android:background="@drawable/bg_solid_gray_radius_10"
-                app:layout_constraintEnd_toStartOf="@+id/category_etc"
-                app:layout_constraintStart_toEndOf="@+id/category_cloth"
+                app:layout_constraintEnd_toStartOf="@+id/btn_to_category_etc"
+                app:layout_constraintStart_toEndOf="@+id/btn_to_category_cloth"
                 app:layout_constraintTop_toBottomOf="@+id/title_category" />
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/category_etc"
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_to_category_etc"
                 android:layout_width="86dp"
                 android:layout_height="86dp"
+                android:text="잡화"
                 android:background="@drawable/bg_solid_gray_radius_10"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/title_category" />
@@ -57,7 +60,7 @@
                 android:text="최근에 본 프로젝트"
                 android:textAppearance="@style/RegularFontKr.18"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/category_cloth" />
+                app:layout_constraintTop_toBottomOf="@+id/btn_to_category_cloth" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_recent_project"
@@ -66,16 +69,34 @@
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title_recent_project" />
+                app:layout_constraintTop_toBottomOf="@+id/title_recent_project"/>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_to_category"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title_popular_project"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="category로 가기!!"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="인기 프로젝트"
+                android:textAppearance="@style/RegularFontKr.18"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rv_recent_project" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2023.08.11 12:00 기준"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title_popular_project" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_popular_project"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title_date"
+                tools:listitem="@layout/item_main_popular_project"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
