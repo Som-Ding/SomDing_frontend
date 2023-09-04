@@ -15,7 +15,47 @@
             android:id="@+id/action_mainFragment_to_categoryFragment"
             app:destination="@id/categoryFragment" />
 
+        <action
+            android:id="@+id/action_mainFragment_to_categoryAllFragment"
+            app:destination="@id/categoryAllFragment" />
+
+        <action
+            android:id="@+id/action_mainFragment_to_categoryClothFragment"
+            app:destination="@id/categoryClothFragment" />
+
+        <action
+            android:id="@+id/action_mainFragment_to_categoryDollFragment"
+            app:destination="@id/categoryDollFragment" />
+
+        <action
+            android:id="@+id/action_mainFragment_to_categoryEtcFragment"
+            app:destination="@id/categoryEtcFragment" />
+
     </fragment>
+
+    <fragment
+        android:id="@+id/categoryAllFragment"
+        android:name="com.software.somding.presentation.category.CategoryAllFragment"
+        android:label="fragment_category_all"
+        tools:layout="@layout/fragment_category_all" />
+
+    <fragment
+        android:id="@+id/categoryClothFragment"
+        android:name="com.software.somding.presentation.category.CategoryClothFragment"
+        android:label="fragment_category_cloth"
+        tools:layout="@layout/fragment_category_cloth" />
+
+    <fragment
+        android:id="@+id/categoryDollFragment"
+        android:name="com.software.somding.presentation.category.CategoryDollFragment"
+        android:label="fragment_category_doll"
+        tools:layout="@layout/fragment_category_doll" />
+
+    <fragment
+        android:id="@+id/categoryEtcFragment"
+        android:name="com.software.somding.presentation.category.CategoryEtcFragment"
+        android:label="fragment_category_etc"
+        tools:layout="@layout/fragment_category_etc" />
 
     <fragment
         android:id="@+id/categoryFragment"

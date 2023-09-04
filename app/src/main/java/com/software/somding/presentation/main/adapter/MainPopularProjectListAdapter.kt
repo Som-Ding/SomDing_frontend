@@ -3,8 +3,8 @@ package com.software.somding.presentation.main.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.software.somding.data.main.PopularProjectData
-import com.software.somding.data.main.ProjectData
+import com.software.somding.data.model.main.PopularProjectData
+import com.software.somding.data.model.main.ProjectData
 import com.software.somding.databinding.ItemMainPopularProjectBinding
 import com.software.somding.databinding.ItemMainProjectBinding
 

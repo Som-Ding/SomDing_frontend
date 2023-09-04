@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.Recycler
 import com.google.android.material.tabs.TabLayout
-import com.software.somding.data.main.ProjectData
-import com.software.somding.data.project.ReviewData
+import com.software.somding.data.model.main.ProjectData
+import com.software.somding.data.model.project.ReviewData
 import com.software.somding.databinding.ItemMainProjectBinding
 import com.software.somding.databinding.ItemProjectReviewBinding
 

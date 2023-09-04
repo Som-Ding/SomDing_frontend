@@ -3,7 +3,7 @@ package com.software.somding.presentation.category.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.software.somding.data.main.CategoryProjectData
+import com.software.somding.data.model.main.CategoryProjectData
 import com.software.somding.databinding.ItemCategoryProjectBinding
 
 class CategoryProjectListAdapter : RecyclerView.Adapter<CategoryProjectListAdapter.MyViewHolder>() {

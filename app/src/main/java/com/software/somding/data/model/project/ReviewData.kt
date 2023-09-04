@@ -1,4 +1,4 @@
-package com.software.somding.data.project
+package com.software.somding.data.model.project
 
 data class ReviewData(
     val date: String,

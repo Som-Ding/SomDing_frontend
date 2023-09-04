@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.software.somding.R
-import com.software.somding.data.main.CategoryProjectData
+import com.software.somding.data.model.main.CategoryProjectData
 import com.software.somding.databinding.FragmentCategoryAllBinding
 import com.software.somding.presentation.common.BaseFragment
 import com.software.somding.presentation.category.adapter.CategoryProjectListAdapter

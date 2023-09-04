@@ -8,7 +8,7 @@
 
         <variable
             name="data"
-            type="com.software.somding.data.main.PopularProjectData" />
+            type="com.software.somding.data.model.main.PopularProjectData" />
 
     </data>
 

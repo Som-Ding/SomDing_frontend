@@ -1,8 +1,11 @@
 package com.software.somding
 
+import android.content.Intent
 import android.os.Bundle
+import com.google.android.material.tabs.TabLayout
 import com.software.somding.presentation.common.BaseActivity
 import com.software.somding.databinding.ActivityMainBinding
+import com.software.somding.presentation.mypage.MyPageFragment
 
 class MainActivity: BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
@@ -11,7 +14,10 @@ class MainActivity: BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         setContentView(binding.root)
 
         binding.btnUserMyPage.setOnClickListener {
-
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.constraintLayout2, MyPageFragment())
+                .commit()
         }
     }
 }
