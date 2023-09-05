@@ -8,6 +8,13 @@
 
 
     </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -209,6 +216,62 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tablayout"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+        <FrameLayout
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/qna_btn"
+                android:background="#D9D9D9"
+                android:backgroundTint="#D9D9D9"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/like_btn"
+            app:layout_constraintBottom_toBottomOf="@id/proj_btn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/bg_share_white_10"
+            android:text="999+"
+            android:textColor="#101010"
+            android:textSize="12sp"
+            android:layout_marginTop="10dp"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="@id/proj_btn"
+            app:layout_constraintEnd_toStartOf="@+id/proj_btn"
+            app:layout_constraintStart_toEndOf="@id/like_btn"
+            android:background="@drawable/bg_share_white_10"
+            android:text="999+"
+            android:textColor="#101010"
+            android:layout_marginLeft="60dp"
+            android:textSize="12sp"
+            android:layout_marginTop="10dp"
+            />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/proj_btn"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="120dp"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:textColor="@color/white"
+            android:text="프로젝트 후원하기"
+            android:background="@drawable/bg_solid_magenta_radius_10"
+            android:layout_marginTop="10dp"
+            />
+        </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
