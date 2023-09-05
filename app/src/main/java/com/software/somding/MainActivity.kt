@@ -17,6 +17,7 @@ class MainActivity: BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
         setSupportActionBar(binding.toolbar) // 커스텀한 toolbar를 액션바로 사용
         supportActionBar?.setDisplayShowTitleEnabled(false)
+        binding.toolbar.title = "솜딩"
     }
 
     //액션버튼 메뉴 액션바에 집어 넣기
@@ -32,13 +33,12 @@ class MainActivity: BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         return when(item.itemId){
             R.id.action_share -> {
                 //공유 버튼 눌렀을 때
-/*                Log.d("myPage", "공유 버튼 눌림")
+                Log.d("myPage", "공유 버튼 눌림")
 
-                transaction.replace(R.id.whole_constraint, MyPageFragment())
+                transaction.replace(R.id.fcv_main, MyPageFragment())
                 transaction.addToBackStack(null)
-                transaction.commit()*/
+                transaction.commit()
 
-                Toast.makeText(applicationContext, "공유 이벤트 실행", Toast.LENGTH_LONG).show()
                 super.onOptionsItemSelected(item)
             }
 
