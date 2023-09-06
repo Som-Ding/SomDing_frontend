@@ -17,6 +17,10 @@
         <item name="fontFamily">@font/noto_sans_kr_bold</item>
     </style>
 
+    <style name="BoldFont" parent="FontCommon">
+        <item name="fontFamily">@font/noto_sans_bold</item>
+    </style>
+
     <!-- Bold Style -->
     <style name="BoldFontKr.22" parent="BoldFontKr">
         <item name="android:textSize">22sp</item>
@@ -28,6 +32,10 @@
 
     <style name="BoldFontKr.18" parent="BoldFontKr">
         <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="BoldFontKr.24" parent="BoldFont">
+        <item name="android:textSize">24sp</item>
     </style>
 
     <style name="BoldFontKr.16" parent="BoldFontKr">

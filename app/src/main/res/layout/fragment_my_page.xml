@@ -10,11 +10,139 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/con_myPageFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearLayoutCompat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.utils.widget.ImageFilterView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_my_page_profile" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="11dp"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/my_page_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="7dp"
+                    android:text="홍길동"
+                    android:textSize="16sp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/my_page_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="kyumin@gmail.com"
+                    android:textSize="16sp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_my_registered_project"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="내 등록 프로젝트"
+                android:gravity="start|center"
+                android:background="@color/white"
+                android:drawableEnd="@drawable/ic_my_page_arrow_right"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_my_donated_project"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="내 후원 프로젝트"
+                android:gravity="start|center"
+                android:background="@color/white"
+                android:drawableEnd="@drawable/ic_my_page_arrow_right"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_my_interested_project"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="내 관심 프로젝트"
+                android:gravity="start|center"
+                android:background="@color/white"
+                android:drawableEnd="@drawable/ic_my_page_arrow_right"/>
 
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_address_management"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="배송지 관리"
+                android:gravity="start|center"
+                android:background="@color/white"
+                android:drawableEnd="@drawable/ic_my_page_arrow_right"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_pay_management"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="결제정보 관리"
+                android:gravity="start|center"
+                android:background="@color/white"
+                android:drawableEnd="@drawable/ic_my_page_arrow_right"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_change_pw"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="비밀번호 변경"
+                android:gravity="start|center"
+                android:background="@color/white"
+                android:drawableEnd="@drawable/ic_my_page_arrow_right"/>
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="로그아웃"
+                android:gravity="start|center"
+                android:background="@color/white"
+                android:drawableEnd="@drawable/ic_my_page_arrow_right"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_info_delete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="회원 탈퇴"
+                android:gravity="start|center"
+                android:background="@color/white"
+                android:drawableEnd="@drawable/ic_my_page_arrow_right"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
