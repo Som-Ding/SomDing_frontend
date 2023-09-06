@@ -21,10 +21,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:menu="@menu/toolbar_menu"
-            app:title="솜딩"
-            app:titleTextAppearance="@style/BoldFontKr.24"
-            app:titleTextColor="@color/magenta">
+            app:menu="@menu/toolbar_menu">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="솜딩"
+                android:textAppearance="@style/BoldFontKr.24"
+                android:textColor="@color/magenta"/>
+
         </androidx.appcompat.widget.Toolbar>
 
         <androidx.fragment.app.FragmentContainerView

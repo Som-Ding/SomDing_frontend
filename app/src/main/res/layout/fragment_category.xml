@@ -23,11 +23,11 @@
             app:layout_constraintTop_toTopOf="parent"
             app:tabGravity="fill"
             app:tabIndicatorAnimationMode="elastic"
-            app:tabIndicatorColor="@color/gray"
+            app:tabIndicatorColor="@color/magenta"
             app:tabIndicatorFullWidth="true"
             app:tabMode="fixed"
             app:tabRippleColor="@android:color/transparent"
-            app:tabSelectedTextColor="@color/black"
+            app:tabSelectedTextColor="@color/magenta"
             app:tabTextColor="@color/black" />
 
         <androidx.viewpager2.widget.ViewPager2
