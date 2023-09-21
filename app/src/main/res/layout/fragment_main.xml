@@ -29,21 +29,46 @@
                 android:id="@+id/btn_to_category_cloth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:alpha="0.5"
                 android:background="@drawable/bg_solid_gray_radius_10"
                 android:src="@drawable/ic_main_clothes"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/title_category" />
 
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="의류"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_to_category_cloth"
+                app:layout_constraintEnd_toEndOf="@+id/btn_to_category_cloth"
+                app:layout_constraintStart_toStartOf="@+id/btn_to_category_cloth"
+                app:layout_constraintTop_toTopOf="@+id/btn_to_category_cloth" />
+
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/btn_to_category_doll"
                 android:layout_width="87dp"
                 android:layout_height="87dp"
-                android:text="인형"
+                android:alpha="0.5"
                 android:src="@drawable/ic_teddy_bear"
                 android:background="@drawable/bg_solid_gray_radius_10"
                 app:layout_constraintEnd_toStartOf="@+id/btn_to_category_etc"
                 app:layout_constraintStart_toEndOf="@+id/btn_to_category_cloth"
                 app:layout_constraintTop_toBottomOf="@+id/title_category" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="인형"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_to_category_doll"
+                app:layout_constraintEnd_toEndOf="@+id/btn_to_category_doll"
+                app:layout_constraintStart_toStartOf="@+id/btn_to_category_doll"
+                app:layout_constraintTop_toTopOf="@+id/btn_to_category_doll" />
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/btn_to_category_etc"
@@ -51,10 +76,22 @@
                 android:layout_height="87dp"
                 android:background="@drawable/bg_solid_gray_radius_10"
                 android:src="@drawable/ic_main_etc"
-                android:text="잡화"
+                android:alpha="0.5"
                 app:layout_constraintBottom_toBottomOf="@+id/btn_to_category_doll"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/title_category" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="잡화"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_to_category_etc"
+                app:layout_constraintEnd_toEndOf="@+id/btn_to_category_etc"
+                app:layout_constraintStart_toStartOf="@+id/btn_to_category_etc"
+                app:layout_constraintTop_toTopOf="@+id/btn_to_category_etc" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/title_recent_project"

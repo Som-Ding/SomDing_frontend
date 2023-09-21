@@ -30,6 +30,10 @@ class CategoryProjectListAdapter : RecyclerView.Adapter<CategoryProjectListAdapt
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.bind(dataList[position])
+
+        holder.itemView.setOnClickListener {
+
+        }
     }
 
     override fun getItemCount(): Int {

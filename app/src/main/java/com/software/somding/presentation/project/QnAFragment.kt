@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.software.somding.R
 import com.software.somding.data.project.QnaData
-import com.software.somding.data.project.ReviewData
 import com.software.somding.databinding.FragmentProjectQnaBinding
 import com.software.somding.presentation.common.BaseFragment
 import com.software.somding.presentation.project.adapter.ProjectQnaAdapter

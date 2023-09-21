@@ -3,10 +3,7 @@ package com.software.somding.presentation.project.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.software.somding.data.main.PopularProjectData
-import com.software.somding.data.main.ProjectData
-import com.software.somding.data.project.ReviewData
-import com.software.somding.databinding.ItemMainProjectBinding
+import com.software.somding.data.model.project.ReviewData
 import com.software.somding.databinding.ItemProjectReviewBinding
 
 class ProjectReviewAdapter(val dataList: MutableList<ReviewData>): RecyclerView.Adapter<ProjectReviewAdapter.MyViewHolder>() {

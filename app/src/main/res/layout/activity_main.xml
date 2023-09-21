@@ -11,12 +11,13 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
+            android:paddingTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:minHeight="?attr/actionBarSize"
-            android:paddingStart="20dp"
-            android:paddingEnd="32dp"
+            android:minHeight="0dp"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
             android:scrollbarStyle="insideInset"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +29,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="솜딩"
-                android:textAppearance="@style/BoldFontKr.24"
+                android:textSize="24sp"
+                android:textStyle="bold"
                 android:textColor="@color/magenta"/>
 
         </androidx.appcompat.widget.Toolbar>

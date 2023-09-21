@@ -56,4 +56,5 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
             add(PopularProjectData(3, "의류", "동덕 은실 학잠", 30))
         }
     }
+
 }

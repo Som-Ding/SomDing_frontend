@@ -4,9 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.software.somding.data.project.QnaData
-import com.software.somding.data.project.ReviewData
 import com.software.somding.databinding.ItemProjectQnaBinding
-import com.software.somding.databinding.ItemProjectReviewBinding
 
 class ProjectQnaAdapter(val  dataList: MutableList<QnaData>): RecyclerView.Adapter<ProjectQnaAdapter.MyViewHolder> (){
 

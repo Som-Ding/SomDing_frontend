@@ -1,22 +1,22 @@
-package com.software.somding.presentation.main.adapter
+package com.software.somding.presentation.mypage.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.software.somding.data.model.main.PopularProjectData
-import com.software.somding.databinding.ItemMainPopularProjectBinding
+import com.software.somding.data.model.mypage.RegisteredProjectData
+import com.software.somding.databinding.ItemCategoryProjectBinding
 
-class MainPopularProjectListAdapter : RecyclerView.Adapter<MainPopularProjectListAdapter.MyViewHolder>() {
+class MyPageRegisteredProjectAdapter : RecyclerView.Adapter<MyPageRegisteredProjectAdapter.MyViewHolder>() {
 
-    var dataList = mutableListOf<PopularProjectData>()
+    var dataList = mutableListOf<RegisteredProjectData>()
 
-    inner class MyViewHolder(private val binding: ItemMainPopularProjectBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(projectData: PopularProjectData){
+    inner class MyViewHolder(private val binding: ItemCategoryProjectBinding): RecyclerView.ViewHolder(binding.root) {
+        fun bind(projectData: RegisteredProjectData){
 //            binding.projectImg = projectData.contentImg
-            binding.contentNumber.text = projectData.projectNumber.toString()
             binding.contentCategory.text = projectData.category
             binding.contentProjectTitle.text = projectData.projectTitle
             binding.contentAchievement.text = projectData.projectPercent.toString()
+            binding.contentPrice.text = projectData.projectPrice.toString()
         }
     }
 
@@ -24,7 +24,7 @@ class MainPopularProjectListAdapter : RecyclerView.Adapter<MainPopularProjectLis
         parent: ViewGroup,
         viewType: Int
     ): MyViewHolder {
-        val binding = ItemMainPopularProjectBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding = ItemCategoryProjectBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return MyViewHolder(binding)
     }
 

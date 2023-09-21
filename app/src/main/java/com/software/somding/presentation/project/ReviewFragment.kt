@@ -5,7 +5,7 @@ import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.software.somding.R
-import com.software.somding.data.project.ReviewData
+import com.software.somding.data.model.project.ReviewData
 import com.software.somding.databinding.FragmentProjectReviewBinding
 import com.software.somding.presentation.common.BaseFragment
 import com.software.somding.presentation.project.adapter.ProjectReviewAdapter
