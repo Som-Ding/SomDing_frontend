@@ -8,4 +8,5 @@
     <string name="main_content_price">%s%s</string>
     <string name="percent">%</string>
     <string name="main_content_date">%d일 남음</string>
+    <string name="title_activity_login">LoginActivity</string>
 </resources>

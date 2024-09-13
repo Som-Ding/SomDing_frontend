@@ -13,6 +13,11 @@
         android:theme="@style/Theme.Somding"
         tools:targetApi="31">
         <activity
+            android:name=".LoginActivity"
+            android:exported="false"
+            android:label="@string/title_activity_login"
+            android:theme="@style/Theme.Somding" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -21,7 +26,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.common.BaseActivity"/>
+        <activity android:name=".presentation.common.BaseActivity" />
     </application>
 
 </manifest>

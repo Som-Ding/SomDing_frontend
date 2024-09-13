@@ -11,6 +11,5 @@ class MyPageUpdateCurrentPwFragment : BaseFragment<FragmentMyPageUpdateCurrentPw
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
     }
 }
