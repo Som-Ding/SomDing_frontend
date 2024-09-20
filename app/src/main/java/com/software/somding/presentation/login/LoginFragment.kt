@@ -9,7 +9,7 @@ import com.software.somding.R
 import com.software.somding.databinding.FragmentMainBinding
 import com.software.somding.presentation.common.BaseFragment
 
-class LoginOrJoinFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_login_or_join) {
+class LoginFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_login) {
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)

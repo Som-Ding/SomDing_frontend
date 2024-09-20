@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_login"
+    app:startDestination="@id/loginOrJoinFragment">
+
+    <!-- 로그인/회원가입 프래그먼트 -->
+    <fragment
+        android:id="@+id/loginOrJoinFragment"
+        android:name="com.software.somding.presentation.login.LoginOrJoinFragment"
+        android:label="fragment_login_or_join"
+        tools:layout="@layout/fragment_login_or_join" >
+
+        <action
+            android:id="@+id/action_loginOrJoinFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.software.somding.presentation.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+
+        <action
+            android:id="@+id/action_loginFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/joinEmailFragment"
+        android:name="com.software.somding.presentation.login.JoinEmailFragment"
+        android:label="fragment_join_email"
+        tools:layout="@layout/fragment_join_email" >
+
+        <action
+            android:id="@+id/action_joinEmailFragment_to_joinPwFragment"
+            app:destination="@id/joinPwFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/joinPwFragment"
+        android:name="com.software.somding.presentation.login.JoinPwFragment"
+        android:label="fragment_join_pw"
+        tools:layout="@layout/fragment_join_pw" >
+
+        <action
+            android:id="@+id/action_joinEmailFragment_to_joinPwAgainFragment"
+            app:destination="@id/joinPwAgainFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/joinPwAgainFragment"
+        android:name="com.software.somding.presentation.login.JoinPwAgainFragment"
+        android:label="fragment_join_pw_again"
+        tools:layout="@layout/fragment_join_pw_again" >
+
+        <action
+            android:id="@+id/action_joinEmailFragment_to_joinPwFragment"
+            app:destination="@id/joinNicknameFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/joinNicknameFragment"
+        android:name="com.software.somding.presentation.login.JoinPwAgainFragment"
+        android:label="fragment_join_nickname"
+        tools:layout="@layout/fragment_join_nickname" >
+
+        <action
+            android:id="@+id/action_joinNicknameFragment_to_joinFragment"
+            app:destination="@id/joinFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/joinFragment"
+        android:name="com.software.somding.presentation.login.JoinFragment"
+        android:label="fragment_join"
+        tools:layout="@layout/fragment_join" >
+
+        <action
+            android:id="@+id/action_joinFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+
+</navigation>

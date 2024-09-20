@@ -1,33 +1,22 @@
 package com.software.somding
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import com.software.somding.databinding.ActivityMainBinding
+import com.software.somding.databinding.ActivityLoginBinding
 import com.software.somding.presentation.common.BaseActivity
-import com.software.somding.presentation.main.MainFragment
 
-class LoginActivity: BaseActivity<ActivityMainBinding>(R.layout.activity_login){
-
+class LoginActivity: BaseActivity<ActivityLoginBinding>(R.layout.activity_login){
 	private val transaction = supportFragmentManager.beginTransaction()
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 
-		setSupportActionBar(binding.toolbar) // 커스텀한 toolbar를 액션바로 사용
-		supportActionBar?.setDisplayShowTitleEnabled(false)
-
-		binding.toolbarTitle.setOnClickListener {
-			supportFragmentManager.beginTransaction()
-				.replace(R.id.fcv_main, MainFragment())
-				.addToBackStack(null)
-				.commit()
-		}
-	}
-
-	//액션버튼 메뉴 액션바에 집어 넣기
-	override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-		menuInflater.inflate(R.menu.toolbar_menu, menu)
-		return true
+//		binding.loginButton.setOnClickListener {
+//			// 로그인 성공 후 MainActivity로 전환
+//			val intent = Intent(this, MainActivity::class.java)
+//			startActivity(intent)
+//			finish() // LoginActivity 종료
+//		}
 	}
 
 }

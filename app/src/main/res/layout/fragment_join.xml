@@ -9,49 +9,45 @@
     tools:context=".presentation.login.LoginOrJoinFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ig_somding_icon_login"
+            android:id="@+id/appCompatImageView2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_somding_logo"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_join_logo"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_join_title"
             style="@style/BoldFontKr.24"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="로그인"
+            android:text="회원가입 완료"
             android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="@+id/ig_somding_icon_login"
-            app:layout_constraintStart_toStartOf="@+id/ig_somding_icon_login"
-            app:layout_constraintTop_toBottomOf="@+id/ig_somding_icon_login" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ig_somding_icon_join"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_somding_logo"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/ig_somding_icon_login"
-            app:layout_constraintTop_toTopOf="@+id/ig_somding_icon_login" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView2" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            style="@style/BoldFontKr.24"
+            android:id="@+id/tv_join_content"
+            style="@style/RegularFontKr.20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="회원가입"
+            android:text="솜솜 굿즈 펀딩에 함께해요!"
             android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="@+id/ig_somding_icon_join"
-            app:layout_constraintStart_toStartOf="@+id/ig_somding_icon_join"
-            app:layout_constraintTop_toBottomOf="@+id/ig_somding_icon_join" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_join_title" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
