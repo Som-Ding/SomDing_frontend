@@ -2,6 +2,8 @@ package com.software.somding.presentation.mypage
 
 import android.os.Bundle
 import android.view.View
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.software.somding.R
 import com.software.somding.data.model.main.CategoryProjectData

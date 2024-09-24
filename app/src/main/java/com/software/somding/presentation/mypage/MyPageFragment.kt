@@ -26,7 +26,7 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>(R.layout.fragment_my_
 //        viewModel.loadData()
 
         binding.btnProfileModify.setOnClickListener {
-            navigate(R.id.action_myPageFragment_to_myPageProfileFragment)
+	        navigate(R.id.action_myPageFragment_to_myPageProfileFragment)
         }
 
         binding.btnMyRegisteredProject.setOnClickListener {
@@ -34,7 +34,7 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>(R.layout.fragment_my_
         }
 
         binding.btnMyDonatedProject.setOnClickListener {
-
+	        navigate(R.id.action_myPageFragment_to_donatedProjectFragment)
         }
 
         binding.btnMyInterestedProject.setOnClickListener {
