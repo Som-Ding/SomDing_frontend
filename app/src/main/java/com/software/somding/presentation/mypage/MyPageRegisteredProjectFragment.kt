@@ -24,6 +24,7 @@ class MyPageRegisteredProjectFragment : BaseFragment<FragmentMyPageRegisteredPro
         initializeList()
     }
 
+	
     private fun initProjectRecyclerView() {
         val adapter = MyPageRegisteredProjectAdapter()
 

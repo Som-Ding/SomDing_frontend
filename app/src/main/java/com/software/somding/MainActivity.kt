@@ -59,38 +59,38 @@ class MainActivity: BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         }
     }
 
-    fun changeFragment(index: Int){
-        when(index){
-            1 -> {
-                transaction
-                    .replace(R.id.main_view, MyPageRegisteredProjectFragment()) // 내 등록 프로젝트
-                    .commit()
-            }
-
-            2 -> {
-                transaction
-                    .replace(R.id.my_page_constraint, MyPageDonatedProjectFragment()) // 내 후원 프로젝트
-                    .commit()
-            }
-
-            3 -> {
-                transaction
-                    .replace(R.id.my_page_constraint, MyPageInterestedProjectFragment()) // 내 관심 프로젝트
-                    .commit()
-            }
-
-            4 -> {
-                transaction
-                    .replace(R.id.my_page_constraint, MyPageUpdateCurrentPwFragment()) // 비밀번호 변경
-                    .commit()
-            }
-
-            5 -> {
-                transaction
-                    .replace(R.id.my_page_constraint, MyPageProfileFragment()) // 프로필 수정
-                    .commit()
-            }
-
-        }
-    }
+//    fun changeFragment(index: Int){
+//        when(index){
+//            1 -> {
+//                transaction
+//                    .replace(R.id.main_view, MyPageRegisteredProjectFragment()) // 내 등록 프로젝트
+//                    .commit()
+//            }
+//
+//            2 -> {
+//                transaction
+//                    .replace(R.id.my_page_constraint, MyPageDonatedProjectFragment()) // 내 후원 프로젝트
+//                    .commit()
+//            }
+//
+//            3 -> {
+//                transaction
+//                    .replace(R.id.my_page_constraint, MyPageInterestedProjectFragment()) // 내 관심 프로젝트
+//                    .commit()
+//            }
+//
+//            4 -> {
+//                transaction
+//                    .replace(R.id.my_page_constraint, MyPageUpdateCurrentPwFragment()) // 비밀번호 변경
+//                    .commit()
+//            }
+//
+//            5 -> {
+//                transaction
+//                    .replace(R.id.my_page_constraint, MyPageProfileFragment()) // 프로필 수정
+//                    .commit()
+//            }
+//
+//        }
+//    }
 }
