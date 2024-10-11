@@ -1,15 +1,12 @@
 package com.software.somding.presentation.login
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.software.somding.R
-import com.software.somding.databinding.FragmentMainBinding
+import com.software.somding.databinding.FragmentLoginBinding
 import com.software.somding.presentation.common.BaseFragment
 
-class LoginFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_login) {
+class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login) {
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)

@@ -6,10 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.software.somding.R
+import com.software.somding.databinding.FragmentJoinEmailBinding
 import com.software.somding.databinding.FragmentMainBinding
 import com.software.somding.presentation.common.BaseFragment
 
-class JoinEmailFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_join_email) {
+class JoinEmailFragment : BaseFragment<FragmentJoinEmailBinding>(R.layout.fragment_join_email) {
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
