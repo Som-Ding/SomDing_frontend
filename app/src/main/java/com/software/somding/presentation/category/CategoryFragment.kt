@@ -20,7 +20,8 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnToCategory.setOnClickListener {
-            navigate(R.id.action_categoryFragment_to_projectFragment)
+//            navigate(R.id.action_categoryFragment_to_projectFragment)
+			navigate(R.id.action_categoryFragment_to_registerFragment)
         }
 
         val tabTitle = arrayOf("전체", "의류", "인형", "잡화")

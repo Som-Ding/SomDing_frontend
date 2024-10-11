@@ -52,7 +52,16 @@
             android:id="@+id/action_categoryFragment_to_projectFragment"
             app:destination="@id/projectFragment" />
 
+        <action
+            android:id="@+id/action_categoryFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.software.somding.presentation.project.RegisterFragment"
+        android:label="fragment_category"
+        tools:layout="@layout/fragment_register" />
 
     <!-- 옷 카테고리 -->
     <fragment
