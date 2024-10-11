@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Somding"
         tools:targetApi="31">
         <activity
-            android:name=".LoginActivity"
+            android:name=".presentation.LoginActivity"
             android:exported="true"
             android:label="@string/title_activity_login"
             android:theme="@style/Theme.Somding" >
@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".presentation.MainActivity"
             android:exported="true">
         </activity>
         <activity android:name=".presentation.common.BaseActivity" />

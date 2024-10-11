@@ -1,18 +1,14 @@
-package com.software.somding
+package com.software.somding.presentation
 
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import com.software.somding.R
 import com.software.somding.presentation.common.BaseActivity
 import com.software.somding.databinding.ActivityMainBinding
 import com.software.somding.presentation.main.MainFragment
-import com.software.somding.presentation.mypage.MyPageDonatedProjectFragment
 import com.software.somding.presentation.mypage.MyPageFragment
-import com.software.somding.presentation.mypage.MyPageInterestedProjectFragment
-import com.software.somding.presentation.mypage.MyPageProfileFragment
-import com.software.somding.presentation.mypage.MyPageRegisteredProjectFragment
-import com.software.somding.presentation.mypage.MyPageUpdateCurrentPwFragment
 
 class MainActivity: BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 

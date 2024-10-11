@@ -2,20 +2,13 @@ package com.software.somding.presentation.project
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import androidx.fragment.app.replace
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.tabs.TabLayout
-import com.google.android.material.textfield.TextInputLayout
-import com.software.somding.MainActivity
 import com.software.somding.R
 import com.software.somding.databinding.FragmentProjectBinding
-import com.software.somding.databinding.FragmentProjectDetailBinding
 import com.software.somding.presentation.common.BaseFragment
 
 class ProjectFragment : BaseFragment<FragmentProjectBinding>(R.layout.fragment_project) {
