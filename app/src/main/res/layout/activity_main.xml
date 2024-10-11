@@ -16,8 +16,6 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:minHeight="0dp"
-            android:paddingStart="30dp"
-            android:paddingEnd="30dp"
             android:scrollbarStyle="insideInset"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -25,12 +23,12 @@
             app:menu="@menu/toolbar_menu">
 
             <androidx.appcompat.widget.AppCompatTextView
+                style="@style/juaFontKr"
                 android:id="@+id/toolbar_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="솜딩"
                 android:textSize="24sp"
-                android:textStyle="bold"
                 android:textColor="@color/magenta"/>
 
         </androidx.appcompat.widget.Toolbar>
@@ -40,8 +38,6 @@
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginRight="32dp"
             app:defaultNavHost="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

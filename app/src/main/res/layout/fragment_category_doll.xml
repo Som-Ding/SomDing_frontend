@@ -9,42 +9,45 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/viewPager_constraint"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/appCompatTextView"
+            android:id="@+id/tv_doll_title"
+            style="@style/RegularFontKr.16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
             android:layout_marginTop="11dp"
             android:text="인형 Doll"
             android:textColor="@color/black"
-            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/appCompatTextView2"
+            android:id="@+id/tv_doll_sub"
+            style="@style/RegularFontKr.14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="14dp"
             android:text="1,000개의 프로젝트가 있습니다"
             android:textColor="@color/black"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView" />
+            app:layout_constraintStart_toStartOf="@+id/tv_doll_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_doll_title" />
 
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_category_project"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="11dp"
             android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView2"
+            android:layout_marginEnd="28dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_doll_sub"
+            app:layout_constraintTop_toBottomOf="@+id/tv_doll_sub"
             tools:listitem="@layout/item_category_project" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

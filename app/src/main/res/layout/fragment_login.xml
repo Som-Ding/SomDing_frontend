@@ -6,37 +6,38 @@
     <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.login.LoginOrJoinFragment">
+    tools:context=".presentation.login.LoginFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
-        style="@style/BoldFontKr.24"
+        style="@style/juaFontKr"
         android:id="@+id/toolbar_title"
+        android:textColor="@color/magenta"
+        android:textSize="36sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="37dp"
         android:text="솜딩"
-        android:textColor="@color/magenta"
-        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        style="@style/BoldFontKr.22"
-        android:id="@+id/currentPw"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="9dp"
-        android:text="로그인"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="@+id/toolbar_title"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_title" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/currentPw"
+            style="@style/BoldFontKr.22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="로그인"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@+id/toolbar_title"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_title" />
 
     <androidx.appcompat.widget.AppCompatEditText
         style="@style/RegularFontKr.16"
         android:id="@+id/etUserEmail"
         android:layout_width="match_parent"
+        android:textColorHighlight="@color/black"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="95dp"
@@ -54,6 +55,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
+        android:textColorHighlight="@color/black"
         android:layout_marginTop="37dp"
         android:layout_marginEnd="28dp"
         android:hint="비밀번호"
@@ -65,6 +67,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         style="@style/RegularFontKr.16"
+        android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="65dp"

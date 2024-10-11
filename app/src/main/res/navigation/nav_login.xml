@@ -15,6 +15,10 @@
         <action
             android:id="@+id/action_loginOrJoinFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+
+        <action
+            android:id="@+id/action_loginOrJoinFragment_to_joinEmailFragment"
+            app:destination="@id/joinEmailFragment" />
     </fragment>
 
     <fragment
@@ -46,7 +50,7 @@
         tools:layout="@layout/fragment_join_pw" >
 
         <action
-            android:id="@+id/action_joinEmailFragment_to_joinPwAgainFragment"
+            android:id="@+id/action_joinPwFragment_to_joinPwAgainFragment"
             app:destination="@id/joinPwAgainFragment" />
     </fragment>
 
@@ -57,13 +61,13 @@
         tools:layout="@layout/fragment_join_pw_again" >
 
         <action
-            android:id="@+id/action_joinEmailFragment_to_joinPwFragment"
+            android:id="@+id/action_joinPwAgainFragment_to_joinNicknameFragment"
             app:destination="@id/joinNicknameFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/joinNicknameFragment"
-        android:name="com.software.somding.presentation.login.JoinPwAgainFragment"
+        android:name="com.software.somding.presentation.login.JoinNicknameFragment"
         android:label="fragment_join_nickname"
         tools:layout="@layout/fragment_join_nickname" >
 
@@ -79,8 +83,7 @@
         tools:layout="@layout/fragment_join" >
 
         <action
-            android:id="@+id/action_joinFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            android:id="@+id/action_joinFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
-
 </navigation>
