@@ -3,14 +3,25 @@ package com.software.somding.ui.mypage.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.software.somding.data.model.auth.LoginRequest
+import com.software.somding.data.model.auth.LoginResponse
+import com.software.somding.data.model.mypage.MyPageResponse
+import com.software.somding.data.repository.LoginRepository
+import com.software.somding.data.repository.MyPageRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class MyPageViewModel : ViewModel() {
+@HiltViewModel
+class MyPageViewModel @Inject constructor(
+	private val repository: MyPageRepository
+) : ViewModel() {
 
-    private val _data = MutableLiveData<String>()
-    val data: LiveData<String> = _data
+	private val _myPageResponse = MutableLiveData<MyPageResponse?>()
+	val myPageResponse: MutableLiveData<MyPageResponse?> = _myPageResponse
 
-    fun loadData() {
-        // 여기에서는 간단히 로딩된 데이터를 LiveData에 업데이트합니다.
-        _data.value = "로딩된 데이터"
-    }
+	fun getMyPage() {
+		repository.getMyPage().observeForever {
+			_myPageResponse.postValue(it)
+		}
+	}
 }

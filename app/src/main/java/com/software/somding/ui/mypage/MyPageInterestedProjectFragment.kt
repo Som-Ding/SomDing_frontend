@@ -8,7 +8,9 @@ import com.software.somding.data.model.mypage.RegisteredProjectData
 import com.software.somding.databinding.FragmentMyPageInterestedProjectBinding
 import com.software.somding.ui.common.BaseFragment
 import com.software.somding.ui.mypage.adapter.MyPageRegisteredProjectAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MyPageInterestedProjectFragment : BaseFragment<FragmentMyPageInterestedProjectBinding>(R.layout.fragment_my_page_interested_project) {
 
     private val registeredProjectData = mutableListOf<RegisteredProjectData>()

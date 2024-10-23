@@ -1,6 +1,7 @@
 package com.software.somding.ui.mypage
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.software.somding.R
@@ -8,7 +9,9 @@ import com.software.somding.databinding.FragmentMyPageBinding
 import com.software.somding.ui.common.BaseFragment
 import com.software.somding.ui.common.NavigationUtil.navigate
 import com.software.somding.ui.mypage.viewmodel.MyPageViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MyPageFragment : BaseFragment<FragmentMyPageBinding>(R.layout.fragment_my_page) {
 
     private val viewModel: MyPageViewModel by viewModels()
@@ -16,8 +19,17 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>(R.layout.fragment_my_
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // ViewModel을 사용하여 데이터 로딩
-//        viewModel.loadData()
+        viewModel.getMyPage()
+	    viewModel.myPageResponse.observe(viewLifecycleOwner) { response ->
+		    if (response != null) {
+			    binding.myPageName.text = response.nickname
+			    Log.d("My page", "${response.nickname}")
+//			    binding.myPageEmail.text = response.email
+			} else {
+			    Log.d("My page", "$response")
+			    binding.myPageName.text = "error"
+		    }
+	    }
 
         binding.btnProfileModify.setOnClickListener {
 	        navigate(R.id.action_myPageFragment_to_myPageProfileFragment)

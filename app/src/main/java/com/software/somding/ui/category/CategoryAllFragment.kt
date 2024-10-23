@@ -27,7 +27,7 @@ class CategoryAllFragment : BaseFragment<FragmentCategoryAllBinding>(R.layout.fr
         initializeList()
         initProjectRecyclerView()
 	    viewModel.categoryProjects.observe(requireActivity(), Observer {
-		    // UI 업데이트 로직
+
 	    })
 
 	    viewModel.getProjectsByCategory(Category.ALL.toString(), Sort.LATEST.toString())

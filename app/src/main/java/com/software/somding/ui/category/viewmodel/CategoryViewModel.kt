@@ -16,7 +16,6 @@ class CategoryViewModel @Inject constructor(
 	val categoryProjects: MutableLiveData<CategoryProjectResponse?> = _categoryProjects
 
 	fun getProjectsByCategory(category: String, sort: String) {
-		// Repository를 통해 API 호출
 		repository.getProjectsByCategory(category, sort).observeForever { response ->
 			_categoryProjects.value = response
 		}

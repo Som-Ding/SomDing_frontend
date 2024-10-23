@@ -6,6 +6,7 @@ import android.preference.PreferenceManager
 import com.software.somding.BuildConfig
 import com.software.somding.network.api.CategoryApi
 import com.software.somding.network.api.LoginApi
+import com.software.somding.network.api.MyPageApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -54,5 +55,11 @@ object NetworkModule {
 	@Singleton
 	fun provideLoginApi(retrofit: Retrofit): LoginApi {
 		return retrofit.create(LoginApi::class.java)
+	}
+
+	@Provides
+	@Singleton
+	fun provideMyPageApi(retrofit: Retrofit): MyPageApi {
+		return retrofit.create(MyPageApi::class.java)
 	}
 }

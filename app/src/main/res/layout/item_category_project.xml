@@ -10,6 +10,9 @@
             name="data"
             type="com.software.somding.data.model.home.CategoryProjectData" />
 
+        <variable
+            name="vm"
+            type="com.software.somding.ui.category.viewmodel.CategoryViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -33,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="카테고리"
+            android:text="@{}"
             android:textAppearance="@style/RegularFontKr.12"
             android:textSize="10sp"
             app:layout_constraintStart_toEndOf="@+id/project_img"
