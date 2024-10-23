@@ -8,7 +8,7 @@
     <!-- 로그인/회원가입 프래그먼트 -->
     <fragment
         android:id="@+id/loginOrJoinFragment"
-        android:name="com.software.somding.presentation.login.LoginOrJoinFragment"
+        android:name="com.software.somding.ui.login.LoginOrJoinFragment"
         android:label="fragment_login_or_join"
         tools:layout="@layout/fragment_login_or_join" >
 
@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.software.somding.presentation.login.LoginFragment"
+        android:name="com.software.somding.ui.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
 
@@ -34,7 +34,7 @@
 
     <fragment
         android:id="@+id/joinEmailFragment"
-        android:name="com.software.somding.presentation.login.JoinEmailFragment"
+        android:name="com.software.somding.ui.login.JoinEmailFragment"
         android:label="fragment_join_email"
         tools:layout="@layout/fragment_join_email" >
 
@@ -45,7 +45,7 @@
 
     <fragment
         android:id="@+id/joinPwFragment"
-        android:name="com.software.somding.presentation.login.JoinPwFragment"
+        android:name="com.software.somding.ui.login.JoinPwFragment"
         android:label="fragment_join_pw"
         tools:layout="@layout/fragment_join_pw" >
 
@@ -56,7 +56,7 @@
 
     <fragment
         android:id="@+id/joinPwAgainFragment"
-        android:name="com.software.somding.presentation.login.JoinPwAgainFragment"
+        android:name="com.software.somding.ui.login.JoinPwAgainFragment"
         android:label="fragment_join_pw_again"
         tools:layout="@layout/fragment_join_pw_again" >
 
@@ -67,7 +67,7 @@
 
     <fragment
         android:id="@+id/joinNicknameFragment"
-        android:name="com.software.somding.presentation.login.JoinNicknameFragment"
+        android:name="com.software.somding.ui.login.JoinNicknameFragment"
         android:label="fragment_join_nickname"
         tools:layout="@layout/fragment_join_nickname" >
 
@@ -78,7 +78,7 @@
 
     <fragment
         android:id="@+id/joinFragment"
-        android:name="com.software.somding.presentation.login.JoinFragment"
+        android:name="com.software.somding.ui.login.JoinFragment"
         android:label="fragment_join"
         tools:layout="@layout/fragment_join" >
 

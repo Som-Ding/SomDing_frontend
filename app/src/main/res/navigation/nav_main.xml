@@ -8,7 +8,7 @@
     <!-- 메인 프래그먼트 -->
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.software.somding.presentation.main.MainFragment"
+        android:name="com.software.somding.ui.home.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
 
@@ -37,14 +37,14 @@
     <!-- 전체 카테고리 -->
     <fragment
         android:id="@+id/categoryAllFragment"
-        android:name="com.software.somding.presentation.category.CategoryAllFragment"
+        android:name="com.software.somding.ui.category.CategoryAllFragment"
         android:label="fragment_category_all"
         tools:layout="@layout/fragment_category_all" />
 
     <!-- 카테고리 프래그먼트 -->
     <fragment
         android:id="@+id/categoryFragment"
-        android:name="com.software.somding.presentation.category.CategoryFragment"
+        android:name="com.software.somding.ui.category.CategoryFragment"
         android:label="fragment_category"
         tools:layout="@layout/fragment_category" >
 
@@ -59,35 +59,35 @@
 
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.software.somding.presentation.project.RegisterFragment"
+        android:name="com.software.somding.ui.project.RegisterFragment"
         android:label="fragment_category"
         tools:layout="@layout/fragment_register" />
 
     <!-- 옷 카테고리 -->
     <fragment
         android:id="@+id/categoryClothFragment"
-        android:name="com.software.somding.presentation.category.CategoryClothFragment"
+        android:name="com.software.somding.ui.category.CategoryClothFragment"
         android:label="fragment_category_cloth"
         tools:layout="@layout/fragment_category_cloth" />
 
     <!-- 인형 카테고리 -->
     <fragment
         android:id="@+id/categoryDollFragment"
-        android:name="com.software.somding.presentation.category.CategoryDollFragment"
+        android:name="com.software.somding.ui.category.CategoryDollFragment"
         android:label="fragment_category_doll"
         tools:layout="@layout/fragment_category_doll" />
 
     <!-- 잡화 카테고리 -->
     <fragment
         android:id="@+id/categoryEtcFragment"
-        android:name="com.software.somding.presentation.category.CategoryEtcFragment"
+        android:name="com.software.somding.ui.category.CategoryEtcFragment"
         android:label="fragment_category_etc"
         tools:layout="@layout/fragment_category_etc" />
 
     <!-- 프로젝트 프래그먼트 -->
     <fragment
         android:id="@+id/projectFragment"
-        android:name="com.software.somding.presentation.project.ProjectFragment"
+        android:name="com.software.somding.ui.project.ProjectFragment"
         android:label="fragment_project"
         tools:layout="@layout/fragment_project" >
     </fragment>
@@ -95,7 +95,7 @@
     <!-- 마이 페이지 프래그먼트 -->
     <fragment
         android:id="@+id/myPageFragment"
-        android:name="com.software.somding.presentation.mypage.MyPageFragment"
+        android:name="com.software.somding.ui.mypage.MyPageFragment"
         android:label="fragment_my_page"
         tools:layout="@layout/fragment_my_page" >
 
@@ -123,37 +123,37 @@
 
     <fragment
         android:id="@+id/myPageRegisteredProjectFragment"
-        android:name="com.software.somding.presentation.mypage.MyPageRegisteredProjectFragment"
+        android:name="com.software.somding.ui.mypage.MyPageRegisteredProjectFragment"
         android:label="fragment_my_page_registered_project"
         tools:layout="@layout/fragment_my_page_registered_project" />
 
     <fragment
         android:id="@+id/myPageDonatedProjectFragment"
-        android:name="com.software.somding.presentation.mypage.MyPageDonatedProjectFragment"
+        android:name="com.software.somding.ui.mypage.MyPageDonatedProjectFragment"
         android:label="fragment_my_page_donated_project"
         tools:layout="@layout/fragment_my_page_donated_project" />
 
     <fragment
         android:id="@+id/myPageInterestedProjectFragment"
-        android:name="com.software.somding.presentation.mypage.MyPageInterestedProjectFragment"
+        android:name="com.software.somding.ui.mypage.MyPageInterestedProjectFragment"
         android:label="fragment_my_page_interested_project"
         tools:layout="@layout/fragment_my_page_interested_project" />
 
     <fragment
         android:id="@+id/myPageUpdateCurrentPwFragment"
-        android:name="com.software.somding.presentation.mypage.MyPageUpdateCurrentPwFragment"
+        android:name="com.software.somding.ui.mypage.MyPageUpdateCurrentPwFragment"
         android:label="fragment_my_page_update_password"
         tools:layout="@layout/fragment_my_page_update_current_pw"/>
 
     <fragment
         android:id="@+id/myPageUpdateNewPwFragment"
-        android:name="com.software.somding.presentation.mypage.MyPageUpdateNewPwFragment"
+        android:name="com.software.somding.ui.mypage.MyPageUpdateNewPwFragment"
         android:label="fragment_my_page_update_password"
         tools:layout="@layout/fragment_my_page_update_new_pw"/>
 
     <fragment
         android:id="@+id/myPageUpdateNewPwAgainFragment"
-        android:name="com.software.somding.presentation.mypage.MyPageUpdateNewPwAgainFragment"
+        android:name="com.software.somding.ui.mypage.MyPageUpdateNewPwAgainFragment"
         android:label="fragment_my_page_update_password"
         tools:layout="@layout/fragment_my_page_update_new_pw_again"/>
 
@@ -161,7 +161,7 @@
 
     <fragment
         android:id="@+id/myPageProfileFragment"
-        android:name="com.software.somding.presentation.mypage.MyPageProfileFragment"
+        android:name="com.software.somding.ui.mypage.MyPageProfileFragment"
         android:label="fragment_my_page_profile"
         tools:layout="@layout/fragment_my_page_profile"/>
 
