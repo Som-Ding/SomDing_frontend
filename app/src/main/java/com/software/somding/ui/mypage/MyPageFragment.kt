@@ -23,10 +23,9 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>(R.layout.fragment_my_
 	    viewModel.myPageResponse.observe(viewLifecycleOwner) { response ->
 		    if (response != null) {
 			    binding.myPageName.text = response.nickname
-			    Log.d("My page", "${response.nickname}")
-//			    binding.myPageEmail.text = response.email
+			    binding.myPageEmail.text = response.email
+			    Log.d("MyPage", response.nickname)
 			} else {
-			    Log.d("My page", "$response")
 			    binding.myPageName.text = "error"
 		    }
 	    }

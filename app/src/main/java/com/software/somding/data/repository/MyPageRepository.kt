@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.software.somding.data.model.auth.LoginRequest
 import com.software.somding.data.model.auth.LoginResponse
+import com.software.somding.data.model.common.CommonResponse
 import com.software.somding.data.model.mypage.MyPageResponse
 import com.software.somding.network.api.LoginApi
 import com.software.somding.network.api.MyPageApi
@@ -25,18 +26,19 @@ class MyPageRepository @Inject constructor(
 	fun getMyPage(): MutableLiveData<MyPageResponse?> {
 		val myPageResponse = MutableLiveData<MyPageResponse?>()
 
-		myPageApi.getMyPage().enqueue(object : Callback<MyPageResponse> {
-			override fun onResponse(call: Call<MyPageResponse>, response: Response<MyPageResponse>) {
+		myPageApi.getMyPage().enqueue(object : Callback<CommonResponse<MyPageResponse>> {
+			override fun onResponse(call: Call<CommonResponse<MyPageResponse>>, response: Response<CommonResponse<MyPageResponse>>) {
 				if (response.isSuccessful) {
-					myPageResponse.value = response.body()
-					Log.d("My Page", "${response.body()}")
+					myPageResponse.postValue(response.body()?.result)
+					Log.d("MyPage", "${response.body()}")
 				} else {
 					myPageResponse.value = null
-					Log.d("My Page", "음")
+					Log.e("MyPage", "Error code: ${response.code()}, Error message: ${response.message()}")
+					Log.d("MyPage", "음")
 				}
 			}
 
-			override fun onFailure(call: Call<MyPageResponse>, t: Throwable) {
+			override fun onFailure(call: Call<CommonResponse<MyPageResponse>>, t: Throwable) {
 				_error.postValue("네트워크 오류: ${t.message}")
 				Log.d("My Page", "${t.message}")
 			}

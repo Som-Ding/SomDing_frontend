@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.software.somding.data.model.auth.LoginRequest
 import com.software.somding.data.model.auth.LoginResponse
+import com.software.somding.data.model.common.CommonResponse
 import com.software.somding.network.api.LoginApi
 import retrofit2.Call
 import retrofit2.Callback
@@ -20,22 +21,22 @@ class LoginRepository @Inject constructor(
 	val error: LiveData<String>
 		get() = _error
 
-	fun login(loginRequest: LoginRequest): MutableLiveData<LoginResponse?> {
-		val loginResponseLiveData = MutableLiveData<LoginResponse?>()
+	fun login(loginRequest: LoginRequest): MutableLiveData<CommonResponse<LoginResponse>?> {
+		val loginResponseLiveData = MutableLiveData<CommonResponse<LoginResponse>?>()
 
 		// 로그인 API 호출
-		loginApi.login(loginRequest).enqueue(object : Callback<LoginResponse> {
-			override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+		loginApi.login(loginRequest).enqueue(object : Callback<CommonResponse<LoginResponse>> {
+			override fun onResponse(call: Call<CommonResponse<LoginResponse>>, response: Response<CommonResponse<LoginResponse>>) {
 				if (response.isSuccessful) {
 					loginResponseLiveData.value = response.body()
 					Log.d("login", "${response.body()}")
 				} else {
 					loginResponseLiveData.value = null
-					Log.d("login", "음ㄴ")
+					Log.d("login", "음")
 				}
 			}
 
-			override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+			override fun onFailure(call: Call<CommonResponse<LoginResponse>>, t: Throwable) {
 				_error.postValue("네트워크 오류: ${t.message}")
 				Log.d("login", "${t.message}")
 			}

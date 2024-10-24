@@ -57,6 +57,8 @@
             android:layout_marginTop="30dp"
             android:layout_marginEnd="30dp"
             android:hint="비밀번호를 입력해주세요"
+            android:singleLine="true"
+            android:lines="1"
             android:textColorHint="@color/gray"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"

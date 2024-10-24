@@ -49,15 +49,17 @@
             app:layout_constraintTop_toBottomOf="@+id/registered_project_title" />
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/etCurrentPw"
+            android:id="@+id/etAgainPw"
+            style="@style/RegularFontKr.16"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="30dp"
             android:hint="비밀번호"
+            android:singleLine="true"
+            android:lines="1"
             android:textColorHint="@color/gray"
-            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/currentPw" />

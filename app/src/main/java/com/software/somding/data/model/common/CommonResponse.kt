@@ -5,3 +5,5 @@ data class CommonResponse<T>(
     val message: String,
     val result: T
 )
+
+
