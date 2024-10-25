@@ -38,6 +38,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
 
 				val intent = Intent(requireContext(), MainActivity::class.java)
 				startActivity(intent)
+
 			} else {
 				Log.d("로그인", "실패 ㅜㅜ")
 			}

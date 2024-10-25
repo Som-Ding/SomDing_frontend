@@ -3,15 +3,15 @@ package com.software.somding.ui.category.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.software.somding.data.model.home.CategoryProjectData
+import com.software.somding.data.model.home.CategoryProjectResponse
 import com.software.somding.databinding.ItemCategoryProjectBinding
 
 class CategoryProjectListAdapter : RecyclerView.Adapter<CategoryProjectListAdapter.MyViewHolder>() {
 
-    var dataList = mutableListOf<CategoryProjectData>()
+    var dataList = mutableListOf<CategoryProjectResponse>()
 
     inner class MyViewHolder(private val binding: ItemCategoryProjectBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(projectData: CategoryProjectData){
+        fun bind(projectData: CategoryProjectResponse){
 //            binding.projectImg = projectData.img
             binding.contentCategory.text = projectData.category
             binding.contentProjectTitle.text = projectData.title

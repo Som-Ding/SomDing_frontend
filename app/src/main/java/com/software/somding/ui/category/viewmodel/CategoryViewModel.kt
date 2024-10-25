@@ -17,7 +17,7 @@ class CategoryViewModel @Inject constructor(
 
 	fun getProjectsByCategory(category: String, sort: String) {
 		repository.getProjectsByCategory(category, sort).observeForever { response ->
-			_categoryProjects.value = response
+			_categoryProjects.postValue(response)
 		}
 	}
 }

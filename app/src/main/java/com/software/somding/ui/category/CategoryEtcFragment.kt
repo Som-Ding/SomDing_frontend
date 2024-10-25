@@ -2,40 +2,49 @@ package com.software.somding.ui.category
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.software.somding.R
-import com.software.somding.data.model.home.CategoryProjectData
+import com.software.somding.data.model.enum.Category
+import com.software.somding.data.model.enum.Sort
+import com.software.somding.data.model.home.CategoryProjectResponse
 import com.software.somding.databinding.FragmentCategoryEtcBinding
 import com.software.somding.ui.category.adapter.CategoryProjectListAdapter
+import com.software.somding.ui.category.viewmodel.CategoryViewModel
 import com.software.somding.ui.common.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CategoryEtcFragment : BaseFragment<FragmentCategoryEtcBinding>(R.layout.fragment_category_etc) {
+	private val viewModel: CategoryViewModel by viewModels()
+	private val categoryProjectData = mutableListOf<CategoryProjectResponse>()
 
-    private val categoryProjectDate = mutableListOf<CategoryProjectData>()
+	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+		super.onViewCreated(view, savedInstanceState)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+		initProjectRecyclerView()
 
-        initializeList()
-        initProjectRecyclerView()
-    }
+		viewModel.getProjectsByCategory(Category.DEFAULT.toString(), Sort.LATEST.toString())
+		viewModel.categoryProjects.observe(viewLifecycleOwner, Observer { projects ->
+			projects?.let {
+				updateRecyclerView(it)
+			}
+		})
+	}
 
-    private fun initProjectRecyclerView() {
-        val adapter = CategoryProjectListAdapter()
-        adapter.dataList = categoryProjectDate
-        binding.rvCategoryProject.adapter = adapter
-        binding.rvCategoryProject.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false) //레이아웃 매니저 연결
-    }
+	private fun initProjectRecyclerView() {
+		val adapter = CategoryProjectListAdapter()
+		adapter.dataList = categoryProjectData
+		binding.rvCategoryProject.adapter = adapter
+		binding.rvCategoryProject.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false) //레이아웃 매니저 연결
+	}
 
-    private fun initializeList() { // 더미 데이터
 
-        with(categoryProjectDate) {
-//            add(CategoryProjectData("잡화", "컴과 과잠", 70, 9999, 1))
-//            add(CategoryProjectData("잡화", "동덕 사과 학잠!!", 20, 99999, 3))
-//            add(CategoryProjectData("잡화", "동덕 은실 학잠", 30, 200500, 10))
-//            add(CategoryProjectData("잡화", "판다 솜솜이", 90, 7000, 30))
-//            add(CategoryProjectData("잡화", "솜솜이 물통", 20, 530000, 5))
-//            add(CategoryProjectData("잡화", "토끼 솜솜이", 99, 1000000, 60))
-        }
-    }
+	// RecyclerView 업데이트 함수
+	private fun updateRecyclerView(newData: CategoryProjectResponse) {
+		categoryProjectData.clear()
+		categoryProjectData.addAll(listOf(newData))
+		binding.rvCategoryProject.adapter?.notifyDataSetChanged()
+	}
 }

@@ -24,14 +24,13 @@ class CategoryRepository @Inject constructor(
 	fun getProjectsByCategory(category: String, sort: String): MutableLiveData<CategoryProjectResponse?> {
 		val responseLiveData = MutableLiveData<CategoryProjectResponse?>()
 
-		// API 호출
 		categoryApi.getProjectsByCategory(category, sort).enqueue(object : Callback<CategoryProjectResponse> {
 			override fun onResponse(
 				call: Call<CategoryProjectResponse>,
 				response: Response<CategoryProjectResponse>
 			) {
 				if (response.isSuccessful) {
-					responseLiveData.value = response.body()
+					responseLiveData.postValue(response.body())
 				} else {
 					responseLiveData.value = null
 				}

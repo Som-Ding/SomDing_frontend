@@ -8,7 +8,7 @@
 
         <variable
             name="data"
-            type="com.software.somding.data.model.home.CategoryProjectData" />
+            type="com.software.somding.data.model.home.CategoryProjectResponse" />
 
         <variable
             name="vm"
