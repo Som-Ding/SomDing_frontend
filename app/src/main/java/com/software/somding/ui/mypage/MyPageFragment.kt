@@ -19,12 +19,12 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>(R.layout.fragment_my_
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getMyPage()
+	    viewModel.getMyPage()
 	    viewModel.myPageResponse.observe(viewLifecycleOwner) { response ->
 		    if (response != null) {
-			    binding.myPageName.text = response.nickname
-			    binding.myPageEmail.text = response.email
-			    Log.d("MyPage", response.nickname)
+			    binding.myPageName.text = response.result.nickname
+			    binding.myPageEmail.text = response.result.email
+			    Log.d("MyPage", response.result.nickname)
 			} else {
 			    binding.myPageName.text = "error"
 		    }

@@ -17,8 +17,8 @@ class MyPageViewModel @Inject constructor(
 	private val repository: MyPageRepository
 ) : ViewModel() {
 
-	private val _myPageResponse = MutableLiveData<MyPageResponse?>()
-	val myPageResponse: MutableLiveData<MyPageResponse?> = _myPageResponse
+	private val _myPageResponse = MutableLiveData<CommonResponse<MyPageResponse>?>()
+	val myPageResponse: MutableLiveData<CommonResponse<MyPageResponse>?> = _myPageResponse
 
 	fun getMyPage() {
 		repository.getMyPage().observeForever {

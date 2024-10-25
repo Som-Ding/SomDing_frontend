@@ -23,24 +23,21 @@ class MyPageRepository @Inject constructor(
 	val error: LiveData<String>
 		get() = _error
 
-	fun getMyPage(): MutableLiveData<MyPageResponse?> {
-		val myPageResponse = MutableLiveData<MyPageResponse?>()
+	fun getMyPage(): MutableLiveData<CommonResponse<MyPageResponse>?> {
+		val myPageResponse = MutableLiveData<CommonResponse<MyPageResponse>?>()
 
 		myPageApi.getMyPage().enqueue(object : Callback<CommonResponse<MyPageResponse>> {
 			override fun onResponse(call: Call<CommonResponse<MyPageResponse>>, response: Response<CommonResponse<MyPageResponse>>) {
 				if (response.isSuccessful) {
-					myPageResponse.postValue(response.body()?.result)
-					Log.d("MyPage", "${response.body()}")
+					myPageResponse.postValue(response.body())
+					Log.d("MyPageApi", "Response: $myPageResponse")
 				} else {
-					myPageResponse.value = null
-					Log.e("MyPage", "Error code: ${response.code()}, Error message: ${response.message()}")
-					Log.d("MyPage", "음")
+					Log.e("MyPageApi", "Error: ${response.code()} - ${response.message()}")
 				}
 			}
 
 			override fun onFailure(call: Call<CommonResponse<MyPageResponse>>, t: Throwable) {
-				_error.postValue("네트워크 오류: ${t.message}")
-				Log.d("My Page", "${t.message}")
+				Log.e("MyPageApi", "Failure: ${t.message}")
 			}
 		})
 

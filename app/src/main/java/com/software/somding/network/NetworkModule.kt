@@ -22,16 +22,21 @@ import javax.inject.Singleton
 object NetworkModule {
 
 	@Provides
-	@Singleton
 	fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences {
-		return PreferenceManager.getDefaultSharedPreferences(context)
+		return context.getSharedPreferences("auth", Context.MODE_PRIVATE)
+	}
+
+	@Provides
+	fun provideAuthInterceptor(sharedPreferences: SharedPreferences): AuthInterceptor {
+		return AuthInterceptor(sharedPreferences)
 	}
 
 	@Provides
 	@Singleton
-	fun provideOkHttpClient(headerInterceptor: HeaderInterceptor): OkHttpClient {
+	fun provideOkHttpClient(headerInterceptor: HeaderInterceptor, authInterceptor: AuthInterceptor): OkHttpClient {
 		return OkHttpClient.Builder()
 			.addInterceptor(headerInterceptor)
+			.addInterceptor(authInterceptor)
 			.build()
 	}
 
