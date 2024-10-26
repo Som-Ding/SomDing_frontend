@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import com.software.somding.R
 import com.software.somding.databinding.FragmentMyPageBinding
 import com.software.somding.ui.common.BaseFragment
@@ -13,7 +14,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MyPageFragment : BaseFragment<FragmentMyPageBinding>(R.layout.fragment_my_page) {
-
     private val viewModel: MyPageViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -35,7 +35,8 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>(R.layout.fragment_my_
         }
 
         binding.btnMyRegisteredProject.setOnClickListener {
-            navigate(R.id.action_myPageFragment_to_myPageRegisteredProjectFragment)
+//            navigate(R.id.action_myPageFragment_to_myPageRegisteredProjectFragment)
+	        Navigation.findNavController(view).navigate(R.id.action_myPageFragment_to_myPageRegisteredProjectFragment)
         }
 
         binding.btnMyDonatedProject.setOnClickListener {
@@ -45,6 +46,10 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>(R.layout.fragment_my_
         binding.btnMyInterestedProject.setOnClickListener {
 
         }
+
+	    binding.btnMyQna.setOnClickListener {
+//			navigate(R.id.action)
+	    }
 
         binding.btnMyReview.setOnClickListener {
 

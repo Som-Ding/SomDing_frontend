@@ -11,7 +11,9 @@ import com.software.somding.ui.common.BaseFragment
 import com.software.somding.ui.common.NavigationUtil.navigate
 import com.software.somding.ui.home.adapter.MainPopularProjectListAdapter
 import com.software.somding.ui.home.adapter.MainProjectListAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
 
     private val recentProjectData = mutableListOf<ProjectData>()

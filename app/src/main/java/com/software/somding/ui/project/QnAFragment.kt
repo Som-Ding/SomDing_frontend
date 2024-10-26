@@ -8,7 +8,9 @@ import com.software.somding.data.project.QnaData
 import com.software.somding.databinding.FragmentProjectQnaBinding
 import com.software.somding.ui.common.BaseFragment
 import com.software.somding.ui.project.adapter.ProjectQnaAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class QnAFragment: BaseFragment<FragmentProjectQnaBinding>(R.layout.fragment_project_qna) {
     private val qnaData = mutableListOf<QnaData>()
 

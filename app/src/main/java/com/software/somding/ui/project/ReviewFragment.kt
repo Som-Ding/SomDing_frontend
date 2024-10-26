@@ -9,7 +9,9 @@ import com.software.somding.data.model.project.ReviewData
 import com.software.somding.databinding.FragmentProjectReviewBinding
 import com.software.somding.ui.common.BaseFragment
 import com.software.somding.ui.project.adapter.ProjectReviewAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ReviewFragment: BaseFragment<FragmentProjectReviewBinding>(R.layout.fragment_project_review) {
     private val reviewData = mutableListOf<ReviewData>()
 

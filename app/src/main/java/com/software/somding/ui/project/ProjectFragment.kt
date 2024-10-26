@@ -10,7 +10,9 @@ import com.google.android.material.tabs.TabLayout
 import com.software.somding.R
 import com.software.somding.databinding.FragmentProjectBinding
 import com.software.somding.ui.common.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ProjectFragment : BaseFragment<FragmentProjectBinding>(R.layout.fragment_project) {
     private var isBottomSheetExpanded = false
 

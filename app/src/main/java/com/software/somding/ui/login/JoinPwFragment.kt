@@ -9,7 +9,9 @@ import com.software.somding.databinding.FragmentJoinPwBinding
 import com.software.somding.ui.common.BaseFragment
 import com.software.somding.ui.common.NavigationUtil.navigate
 import com.software.somding.ui.login.viewmodel.JoinViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class JoinPwFragment : BaseFragment<FragmentJoinPwBinding>(R.layout.fragment_join_pw) {
 	private val joinViewModel: JoinViewModel by viewModels()
 

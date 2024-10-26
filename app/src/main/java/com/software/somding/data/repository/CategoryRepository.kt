@@ -21,26 +21,33 @@ class CategoryRepository @Inject constructor(
 	val error: LiveData<String>
 		get() = _error
 
-	fun getProjectsByCategory(category: String, sort: String): MutableLiveData<CategoryProjectResponse?> {
-		val responseLiveData = MutableLiveData<CategoryProjectResponse?>()
+	fun getProjectsByCategory(
+		category: String,
+		sort: String
+	): MutableLiveData<CommonResponse<CategoryProjectResponse>?> {
+		val responseLiveData = MutableLiveData<CommonResponse<CategoryProjectResponse>?>()
 
-		categoryApi.getProjectsByCategory(category, sort).enqueue(object : Callback<CategoryProjectResponse> {
-			override fun onResponse(
-				call: Call<CategoryProjectResponse>,
-				response: Response<CategoryProjectResponse>
-			) {
-				if (response.isSuccessful) {
-					responseLiveData.postValue(response.body())
-				} else {
-					responseLiveData.value = null
+		categoryApi.getProjectsByCategory(category, sort)
+			.enqueue(object : Callback<CommonResponse<CategoryProjectResponse>> {
+				override fun onResponse(
+					call: Call<CommonResponse<CategoryProjectResponse>>,
+					response: Response<CommonResponse<CategoryProjectResponse>>
+				) {
+					if (response.isSuccessful) {
+						responseLiveData.postValue(response.body())
+					} else {
+						responseLiveData.value = null
+					}
 				}
-			}
 
-			override fun onFailure(call: Call<CategoryProjectResponse>, t: Throwable) {
-				_error.postValue("네트워크 오류: ${t.message}")
-				Log.d("home", "${t.message}")
-			}
-		})
+				override fun onFailure(
+					call: Call<CommonResponse<CategoryProjectResponse>>,
+					t: Throwable
+				) {
+					_error.postValue("네트워크 오류: ${t.message}")
+					Log.d("home", "${t.message}")
+				}
+			})
 
 		return responseLiveData
 	}

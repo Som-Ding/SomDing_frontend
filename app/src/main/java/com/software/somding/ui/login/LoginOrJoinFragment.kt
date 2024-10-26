@@ -6,7 +6,9 @@ import com.software.somding.R
 import com.software.somding.databinding.FragmentLoginOrJoinBinding
 import com.software.somding.ui.common.BaseFragment
 import com.software.somding.ui.common.NavigationUtil.navigate
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginOrJoinFragment : BaseFragment<FragmentLoginOrJoinBinding>(R.layout.fragment_login_or_join) {
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

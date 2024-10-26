@@ -1,6 +1,7 @@
 package com.software.somding.ui.category
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -27,9 +28,10 @@ class CategoryAllFragment : BaseFragment<FragmentCategoryAllBinding>(R.layout.fr
         initProjectRecyclerView()
 
 	    viewModel.getProjectsByCategory(Category.ALL.toString(), Sort.LATEST.toString())
+
 	    viewModel.categoryProjects.observe(viewLifecycleOwner, Observer { projects ->
 		    projects?.let {
-			    updateRecyclerView(it)
+			    updateRecyclerView(projects)
 		    }
 	    })
     }
@@ -39,7 +41,8 @@ class CategoryAllFragment : BaseFragment<FragmentCategoryAllBinding>(R.layout.fr
         adapter.dataList = categoryProjectData
         binding.rvCategoryProject.adapter = adapter
         binding.rvCategoryProject.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false) //레이아웃 매니저 연결
-    }
+	    Log.d("category", "$categoryProjectData")
+	}
 
 
 	// RecyclerView 업데이트 함수

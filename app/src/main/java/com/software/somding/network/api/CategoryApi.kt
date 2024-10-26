@@ -1,5 +1,6 @@
 package com.software.somding.network.api
 
+import com.software.somding.data.model.common.CommonResponse
 import com.software.somding.data.model.home.CategoryProjectResponse
 import retrofit2.Call
 import retrofit2.http.GET
@@ -12,5 +13,5 @@ interface CategoryApi {
 	fun getProjectsByCategory(
 		@Query("category") category: String,
 		@Query("sort") sort: String
-	): Call<CategoryProjectResponse>
+	): Call<CommonResponse<CategoryProjectResponse>>
 }

@@ -2,6 +2,7 @@ package com.software.somding.ui.category.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.software.somding.data.model.common.CommonResponse
 import com.software.somding.data.model.home.CategoryProjectResponse
 import com.software.somding.data.repository.CategoryRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,7 +18,7 @@ class CategoryViewModel @Inject constructor(
 
 	fun getProjectsByCategory(category: String, sort: String) {
 		repository.getProjectsByCategory(category, sort).observeForever { response ->
-			_categoryProjects.postValue(response)
+			_categoryProjects.postValue(response?.result)
 		}
 	}
 }

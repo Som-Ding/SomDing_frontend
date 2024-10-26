@@ -8,185 +8,235 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/my_page_constraint"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="25dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/linearLayoutCompat"
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/my_page_constraint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.utils.widget.ImageFilterView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_my_page_profile" />
+        <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:id="@+id/imageFilterView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_my_page_profile"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="11dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageFilterView"
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="11dp"
-                android:orientation="vertical">
-
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/my_page_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="7dp"
-                        android:text="홍길동"
-                        android:textSize="16sp" />
-
-                    <androidx.appcompat.widget.AppCompatImageButton
-                        android:id="@+id/btn_profile_modify"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="5dp"
-                        android:paddingLeft="5dp"
-                        android:src="@drawable/ic_my_page_edit"
-                        android:background="@color/white"/>
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
+                android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/my_page_email"
+                    style="@style/SemiBoldFontKr.16"
+                    android:textColor="@color/black"
+                    android:id="@+id/my_page_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="kyumin@gmail.com"
+                    android:layout_marginBottom="7dp"
+                    android:text="홍길동"
                     android:textSize="16sp" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/btn_profile_modify"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:src="@drawable/ic_my_page_edit" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/RegularFontKr.16"
+                android:id="@+id/my_page_email"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="kyumin@gmail.com"
+                android:textSize="16sp" />
+
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_page_constraint">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_my_registered_project"
+            android:layout_width="0dp"
+            style="@style/RegularFontKr.16"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="10dp"
+            android:background="@color/white"
+            android:drawableEnd="@drawable/ic_my_page_arrow_right"
+            android:gravity="start|center"
+            android:outlineProvider="none"
+            android:text="내 등록 프로젝트"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat">
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_my_registered_project"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:drawableEnd="@drawable/ic_my_page_arrow_right"
-                android:gravity="start|center"
-                android:outlineProvider="none"
-                android:text="내 등록 프로젝트" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_my_donated_project"
+            style="@style/RegularFontKr.16"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableEnd="@drawable/ic_my_page_arrow_right"
+            android:gravity="start|center"
+            android:outlineProvider="none"
+            android:text="내 후원 프로젝트"
+            app:layout_constraintEnd_toEndOf="@+id/btn_my_registered_project"
+            app:layout_constraintStart_toStartOf="@+id/btn_my_registered_project"
+            app:layout_constraintTop_toBottomOf="@+id/btn_my_registered_project" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_my_donated_project"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:drawableEnd="@drawable/ic_my_page_arrow_right"
-                android:gravity="start|center"
-                android:outlineProvider="none"
-                android:text="내 후원 프로젝트" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_my_interested_project"
+            style="@style/RegularFontKr.16"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableEnd="@drawable/ic_my_page_arrow_right"
+            android:gravity="start|center"
+            android:outlineProvider="none"
+            android:text="내 관심 프로젝트"
+            app:layout_constraintEnd_toEndOf="@+id/btn_my_donated_project"
+            app:layout_constraintStart_toStartOf="@+id/btn_my_registered_project"
+            app:layout_constraintTop_toBottomOf="@+id/btn_my_donated_project" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_my_interested_project"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:drawableEnd="@drawable/ic_my_page_arrow_right"
-                android:gravity="start|center"
-                android:outlineProvider="none"
-                android:text="내 관심 프로젝트" />
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/RegularFontKr.16"
+            android:id="@+id/btn_my_review"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableEnd="@drawable/ic_my_page_arrow_right"
+            android:gravity="start|center"
+            android:outlineProvider="none"
+            android:text="내가 쓴 리뷰"
+            app:layout_constraintEnd_toEndOf="@+id/btn_my_interested_project"
+            app:layout_constraintStart_toStartOf="@+id/btn_my_interested_project"
+            app:layout_constraintTop_toBottomOf="@+id/btn_my_interested_project" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_my_review"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:drawableEnd="@drawable/ic_my_page_arrow_right"
-                android:gravity="start|center"
-                android:outlineProvider="none"
-                android:text="내가 쓴 리뷰" />
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/RegularFontKr.16"
+            android:id="@+id/btn_my_qna"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableEnd="@drawable/ic_my_page_arrow_right"
+            android:gravity="start|center"
+            android:outlineProvider="none"
+            android:text="내가 쓴 Q&amp;A"
+            app:layout_constraintEnd_toEndOf="@+id/btn_my_review"
+            app:layout_constraintStart_toStartOf="@+id/btn_my_review"
+            app:layout_constraintTop_toBottomOf="@+id/btn_my_review" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_my_qna"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:drawableEnd="@drawable/ic_my_page_arrow_right"
-                android:gravity="start|center"
-                android:outlineProvider="none"
-                android:text="내가 쓴 Q&amp;A" />
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/RegularFontKr.16"
+            android:id="@+id/btn_address_management"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableEnd="@drawable/ic_my_page_arrow_right"
+            android:gravity="start|center"
+            android:outlineProvider="none"
+            android:text="배송지 관리"
+            app:layout_constraintEnd_toEndOf="@+id/btn_my_qna"
+            app:layout_constraintStart_toStartOf="@+id/btn_my_qna"
+            app:layout_constraintTop_toBottomOf="@+id/btn_my_qna" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_address_management"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:drawableEnd="@drawable/ic_my_page_arrow_right"
-                android:gravity="start|center"
-                android:outlineProvider="none"
-                android:text="배송지 관리" />
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/RegularFontKr.16"
+            android:id="@+id/btn_pay_management"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableEnd="@drawable/ic_my_page_arrow_right"
+            android:gravity="start|center"
+            android:outlineProvider="none"
+            android:text="결제정보 관리"
+            app:layout_constraintEnd_toEndOf="@+id/btn_address_management"
+            app:layout_constraintStart_toStartOf="@+id/btn_address_management"
+            app:layout_constraintTop_toBottomOf="@+id/btn_address_management" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_pay_management"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:drawableEnd="@drawable/ic_my_page_arrow_right"
-                android:gravity="start|center"
-                android:outlineProvider="none"
-                android:text="결제정보 관리" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_change_pw"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:drawableEnd="@drawable/ic_my_page_arrow_right"
-                android:gravity="start|center"
-                android:outlineProvider="none"
-                android:text="비밀번호 변경" />
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/RegularFontKr.16"
+            android:id="@+id/btn_change_pw"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableEnd="@drawable/ic_my_page_arrow_right"
+            android:gravity="start|center"
+            android:outlineProvider="none"
+            android:text="비밀번호 변경"
+            app:layout_constraintEnd_toEndOf="@+id/btn_pay_management"
+            app:layout_constraintStart_toStartOf="@+id/btn_pay_management"
+            app:layout_constraintTop_toBottomOf="@+id/btn_pay_management" />
 
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_logout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:background="@color/white"
-                android:drawableEnd="@drawable/ic_my_page_arrow_right"
-                android:gravity="start|center"
-                android:outlineProvider="none"
-                android:text="로그아웃" />
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/RegularFontKr.16"
+            android:id="@+id/btn_logout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableEnd="@drawable/ic_my_page_arrow_right"
+            android:gravity="start|center"
+            android:outlineProvider="none"
+            android:text="로그아웃"
+            app:layout_constraintEnd_toEndOf="@+id/btn_change_pw"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/btn_change_pw"
+            app:layout_constraintTop_toBottomOf="@+id/btn_change_pw" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_info_delete"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:drawableEnd="@drawable/ic_my_page_arrow_right"
-                android:gravity="start|center"
-                android:outlineProvider="none"
-                android:text="회원 탈퇴" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/RegularFontKr.16"
+            android:id="@+id/btn_info_delete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableEnd="@drawable/ic_my_page_arrow_right"
+            android:gravity="start|center"
+            android:outlineProvider="none"
+            android:text="회원 탈퇴"
+            app:layout_constraintEnd_toEndOf="@+id/btn_logout"
+            app:layout_constraintStart_toStartOf="@+id/btn_logout"
+            app:layout_constraintTop_toBottomOf="@+id/btn_logout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
+</androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

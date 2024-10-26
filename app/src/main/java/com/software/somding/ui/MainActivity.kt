@@ -1,5 +1,6 @@
 package com.software.somding.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -38,19 +39,17 @@ class MainActivity: BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     //액션버튼 클릭 했을 때
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
         return when(item.itemId){
             R.id.action_share -> {
-                //공유 버튼 눌렀을 때
-                Log.d("myPage", "공유 버튼 눌림")
-
-                transaction
-                    .replace(R.id.fcv_main, MyPageFragment()) // 내 등록 프로젝트
-                    .commit()
-//                val intent = Intent(this, MyPageActivity::class.java)
-//                startActivity(intent)
-
-                super.onOptionsItemSelected(item)
+	            val intent = Intent(this, MyPageActivity::class.java)
+	            startActivity(intent)
+	            true
+//	            transaction
+//                    .replace(R.id.fcv_main, MyPageFragment()) // 내 등록 프로젝트
+//                    .commit()
+//	                val intent = Intent(this, MyPageActivity::class.java)
+//	                startActivity(intent)
+//                super.onOptionsItemSelected(item)
             }
 
             else -> super.onOptionsItemSelected(item)

@@ -9,7 +9,9 @@ import com.software.somding.databinding.FragmentJoinEmailBinding
 import com.software.somding.ui.common.BaseFragment
 import com.software.somding.ui.common.NavigationUtil.navigate
 import com.software.somding.ui.login.viewmodel.JoinViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class JoinEmailFragment : BaseFragment<FragmentJoinEmailBinding>(R.layout.fragment_join_email) {
 	private val joinViewModel: JoinViewModel by viewModels()
 

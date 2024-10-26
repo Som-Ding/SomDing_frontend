@@ -26,7 +26,10 @@ class LoginRepository @Inject constructor(
 
 		// 로그인 API 호출
 		loginApi.login(loginRequest).enqueue(object : Callback<CommonResponse<LoginResponse>> {
-			override fun onResponse(call: Call<CommonResponse<LoginResponse>>, response: Response<CommonResponse<LoginResponse>>) {
+			override fun onResponse(
+				call: Call<CommonResponse<LoginResponse>>,
+				response: Response<CommonResponse<LoginResponse>>
+			) {
 				if (response.isSuccessful) {
 					loginResponseLiveData.value = response.body()
 					Log.d("login", "${response.body()}")
