@@ -14,6 +14,7 @@ import com.software.somding.databinding.FragmentCategoryDollBinding
 import com.software.somding.ui.category.adapter.CategoryProjectListAdapter
 import com.software.somding.ui.category.viewmodel.CategoryViewModel
 import com.software.somding.ui.common.BaseFragment
+import com.software.somding.ui.common.NavigationUtil.navigate
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -35,7 +36,9 @@ class CategoryDollFragment : BaseFragment<FragmentCategoryDollBinding>(R.layout.
 	}
 
 	private fun initProjectRecyclerView() {
-		val adapter = CategoryProjectListAdapter()
+		val adapter = CategoryProjectListAdapter {
+			navigate(R.id.action_categoryFragment_to_projectFragment)
+		}
 		adapter.dataList = categoryProjectData
 		binding.rvCategoryProject.adapter = adapter
 		binding.rvCategoryProject.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false) //레이아웃 매니저 연결

@@ -1,100 +1,100 @@
 package com.software.somding.ui.project
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.fragment.app.viewModels
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.tabs.TabLayout
 import com.software.somding.R
 import com.software.somding.databinding.FragmentProjectBinding
 import com.software.somding.ui.common.BaseFragment
+import com.software.somding.ui.project.viewmodel.ProjectViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ProjectFragment : BaseFragment<FragmentProjectBinding>(R.layout.fragment_project) {
-    private var isBottomSheetExpanded = false
+	private var isBottomSheetExpanded = false
+	private val viewModel: ProjectViewModel by viewModels()
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        val tabLayout = binding.tablayout
-//        val textInputLayout = binding.inputLayout
-//        val autoCompleteTextView = binding.textItem
-//        val textShowItem = binding.textShowItem
+	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+		super.onViewCreated(view, savedInstanceState)
+		setupTabLayout()
+		setupBottomSheet()
+		setupSpinner()
 
-        val detailFragment: Fragment = DetailFragment()
-        val reviewFragment: Fragment = ReviewFragment()
-        val qnaFragment: Fragment = QnAFragment()
+		val projectId = arguments?.getInt("projectId") ?: return
+		Log.d("projectId!", projectId.toString())
 
-        requireActivity().supportFragmentManager.beginTransaction().replace(R.id.main_view, detailFragment).commit()
-        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                when (tab?.position) {
-                    0 -> {
-                        requireActivity().supportFragmentManager.beginTransaction().replace(R.id.main_view, detailFragment).commit()
-                    }
-                    1->{
-                        requireActivity().supportFragmentManager.beginTransaction().replace(R.id.main_view, reviewFragment).commit()
-                    }
-                    2->{
-                        requireActivity().supportFragmentManager.beginTransaction().replace(R.id.main_view, qnaFragment).commit()
-                    }
-                }
-            }
+		viewModel.getProjectsDetail(projectId)
 
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-            }
+		viewModel.projectDetail.observe(viewLifecycleOwner) { projectDetail ->
+			if (projectDetail != null) {
+				binding.title.text = projectDetail.title
+				binding.category.text = projectDetail.category
+				binding.totalPrice.text = projectDetail.targetDate
+			} else {
+				Log.e("ProjectFragment", "ProjectDetail is null")
+			}
+		}
+	}
 
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-            }
-        })
+	private fun setupTabLayout() {
+		val tabLayout = binding.tablayout
+		val detailFragment = DetailFragment()
+		val reviewFragment = ReviewFragment()
+		val qnaFragment = QnAFragment()
 
-        binding.projBtn.setOnClickListener {
-            if (!isBottomSheetExpanded) {
-                // Bottom Sheet가 축소된 상태에서 버튼 클릭 시, Bottom Sheet를 확장
-                BottomSheetBehavior.from(binding.sheet).state = BottomSheetBehavior.STATE_EXPANDED
-                isBottomSheetExpanded = true
-            } else {
-                // Bottom Sheet가 확장된 상태에서 버튼 클릭 시, Bottom Sheet를 축소
-                BottomSheetBehavior.from(binding.sheet).state = BottomSheetBehavior.STATE_COLLAPSED
-                isBottomSheetExpanded = false
-            }
-        }
-//        BottomSheetBehavior.from(binding.sheet).apply {
-//            isBottomSheetExpanded = !isBottomSheetExpanded
-//        }
+		// 기본 프래그먼트 설정
+		requireActivity().supportFragmentManager.beginTransaction()
+			.replace(R.id.main_view, detailFragment).commit()
 
-//        val items = arrayOf("item1", "item2", "item3", "item4", "item5", "item1", "item2", "item3", "item4", "item5")
-//        val itemAdapter = ArrayAdapter(requireContext(), R.layout.item_option_list, items)
-//        autoCompleteTextView.setAdapter(itemAdapter)
-//
-//        autoCompleteTextView.setOnItemClickListener { adapterView, view, position, id ->
-//            textShowItem.text = adapterView.getItemAtPosition(position) as String
-//        }
-//
-//        val spinnerItem = binding.spinnerItem
-//        val items = arrayOf("item1", "item2", "item3", "item4", "item5", "item1", "item2", "item3", "item4", "item5")
-//
-        val spinner = binding.spinnerItem
-        val items = arrayOf("item1", "item2", "item3", "item4", "item5", "item1", "item2", "item3", "item4", "item5")
-        val adapter = ArrayAdapter(requireContext(), R.layout.item_option_list, items)
-        spinner.adapter = adapter
-//
-//// Set a selection listener if needed
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parentView: AdapterView<*>?, selectedItemView: View?, position: Int, id: Long) {
-                // Handle item selection here
-                val selectedOption = items[position]
-            }
+		// 탭 리스너 설정
+		tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+			override fun onTabSelected(tab: TabLayout.Tab?) {
+				val selectedFragment = when (tab?.position) {
+					0 -> detailFragment
+					1 -> reviewFragment
+					2 -> qnaFragment
+					else -> detailFragment
+				}
+				requireActivity().supportFragmentManager.beginTransaction()
+					.replace(R.id.main_view, selectedFragment).commit()
+			}
 
-            override fun onNothingSelected(parentView: AdapterView<*>?) {
-                // Handle no selection if needed
-            }
-        }
+			override fun onTabUnselected(tab: TabLayout.Tab?) {}
+			override fun onTabReselected(tab: TabLayout.Tab?) {}
+		})
+	}
 
+	private fun setupBottomSheet() {
+		binding.projBtn.setOnClickListener {
+			val bottomSheetBehavior = BottomSheetBehavior.from(binding.sheet)
+			if (!isBottomSheetExpanded) {
+				bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+				isBottomSheetExpanded = true
+			} else {
+				bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+				isBottomSheetExpanded = false
+			}
+		}
+	}
 
+	private fun setupSpinner() {
+		val spinner = binding.spinnerItem
+		val items = arrayOf("item1", "item2", "item3", "item4", "item5")
+		val adapter = ArrayAdapter(requireContext(), R.layout.item_option_list, items)
+		spinner.adapter = adapter
 
-    }
+		spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+			override fun onItemSelected(parentView: AdapterView<*>?, selectedItemView: View?, position: Int, id: Long) {
+				val selectedOption = items[position]
+				// 선택된 옵션에 대한 동작을 여기에 추가
+			}
 
+			override fun onNothingSelected(parentView: AdapterView<*>?) {}
+		}
+	}
 }

@@ -7,6 +7,7 @@ import com.software.somding.R
 import com.software.somding.data.model.home.PopularProjectData
 import com.software.somding.data.model.home.ProjectData
 import com.software.somding.databinding.FragmentMainBinding
+import com.software.somding.ui.category.CategoryFragment
 import com.software.somding.ui.common.BaseFragment
 import com.software.somding.ui.common.NavigationUtil.navigate
 import com.software.somding.ui.home.adapter.MainPopularProjectListAdapter
@@ -22,12 +23,20 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnToCategoryCloth.setOnClickListener {
+	    initializeList()
+	    initProjectRecyclerView()
+
+	    binding.btnToCategoryCloth.setOnClickListener {
             navigate(R.id.action_mainFragment_to_categoryFragment)
         }
 
-        initializeList()
-        initProjectRecyclerView()
+	    binding.btnToCategoryDoll.setOnClickListener {
+		    navigate(R.id.action_mainFragment_to_categoryFragment)
+	    }
+
+	    binding.btnToCategoryEtc.setOnClickListener {
+		    navigate(R.id.action_mainFragment_to_categoryFragment)
+	    }
     }
 
     private fun initProjectRecyclerView() {

@@ -39,7 +39,12 @@
         android:id="@+id/categoryAllFragment"
         android:name="com.software.somding.ui.category.CategoryAllFragment"
         android:label="fragment_category_all"
-        tools:layout="@layout/fragment_category_all" />
+        tools:layout="@layout/fragment_category_all" >
+
+        <action
+            android:id="@+id/action_categoryAllFragment_to_projectFragment"
+            app:destination="@id/projectFragment" />
+    </fragment>
 
     <!-- 카테고리 프래그먼트 -->
     <fragment
@@ -68,21 +73,33 @@
         android:id="@+id/categoryClothFragment"
         android:name="com.software.somding.ui.category.CategoryClothFragment"
         android:label="fragment_category_cloth"
-        tools:layout="@layout/fragment_category_cloth" />
+        tools:layout="@layout/fragment_category_cloth" >
+        <action
+            android:id="@+id/action_categoryClothFragment_to_projectFragment"
+            app:destination="@id/projectFragment" />
+    </fragment>
 
     <!-- 인형 카테고리 -->
     <fragment
         android:id="@+id/categoryDollFragment"
         android:name="com.software.somding.ui.category.CategoryDollFragment"
         android:label="fragment_category_doll"
-        tools:layout="@layout/fragment_category_doll" />
+        tools:layout="@layout/fragment_category_doll" >
+        <action
+            android:id="@+id/action_categoryDollFragment_to_projectFragment"
+            app:destination="@id/projectFragment" />
+    </fragment>
 
     <!-- 잡화 카테고리 -->
     <fragment
         android:id="@+id/categoryEtcFragment"
         android:name="com.software.somding.ui.category.CategoryEtcFragment"
         android:label="fragment_category_etc"
-        tools:layout="@layout/fragment_category_etc" />
+        tools:layout="@layout/fragment_category_etc" >
+        <action
+            android:id="@+id/action_categoryEtcFragment_to_projectFragment"
+            app:destination="@id/projectFragment" />
+    </fragment>
 
     <!-- 프로젝트 프래그먼트 -->
     <fragment

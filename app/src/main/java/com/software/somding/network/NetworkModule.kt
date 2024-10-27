@@ -7,6 +7,7 @@ import com.software.somding.BuildConfig
 import com.software.somding.network.api.CategoryApi
 import com.software.somding.network.api.LoginApi
 import com.software.somding.network.api.MyPageApi
+import com.software.somding.network.api.ProjectApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -66,5 +67,11 @@ object NetworkModule {
 	@Singleton
 	fun provideMyPageApi(retrofit: Retrofit): MyPageApi {
 		return retrofit.create(MyPageApi::class.java)
+	}
+
+	@Provides
+	@Singleton
+	fun provideProjectApi(retrofit: Retrofit): ProjectApi {
+		return retrofit.create(ProjectApi::class.java)
 	}
 }

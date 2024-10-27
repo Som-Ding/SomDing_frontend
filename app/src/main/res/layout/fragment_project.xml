@@ -5,8 +5,9 @@
     tools:context=".ui.project.ProjectFragment">
 
     <data>
-
-
+        <variable
+            name="data"
+            type="com.software.somding.data.model.project.ProjectDetail" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,7 +36,7 @@
             android:textFontWeight="400"
             android:textSize="12dp"
             android:textColor="#101010"
-            android:text="카테고리"/>
+            android:text="@{data.category}" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -51,7 +52,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/title"
-            android:text="프로젝트 제목입니다."
             app:layout_constraintStart_toStartOf="@+id/category"
             app:layout_constraintTop_toBottomOf="@+id/category"
             android:layout_marginTop="10dp"
@@ -98,7 +98,6 @@
             android:id="@+id/tot_price"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="99,999,999"
             app:layout_constraintStart_toStartOf="@+id/title"
             app:layout_constraintTop_toBottomOf="@id/total_price"
             android:layout_marginTop="10dp"
@@ -141,7 +140,6 @@
             android:id="@+id/remain_date"
             android:layout_width="32dp"
             android:layout_height="wrap_content"
-            android:text="999"
             app:layout_constraintStart_toStartOf="@id/remain"
             app:layout_constraintTop_toBottomOf="@+id/remain"
             android:textSize="16dp"
@@ -166,7 +164,6 @@
             android:textColor="#101010"
             app:layout_constraintStart_toStartOf="@id/sponsor"
             app:layout_constraintTop_toTopOf="@id/remain_date"
-            android:text="9,999"
             />
         <TextView
             android:layout_width="wrap_content"
@@ -320,7 +317,6 @@
             android:layout_height="50dp"
             app:layout_constraintStart_toStartOf="parent"
             android:background="@drawable/bg_share_white_10"
-            android:text="999+"
             android:textColor="#101010"
             android:textSize="12sp"
             android:layout_marginTop="10dp"
