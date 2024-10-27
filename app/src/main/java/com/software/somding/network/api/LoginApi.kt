@@ -1,5 +1,6 @@
 package com.software.somding.network.api
 
+import com.software.somding.data.model.auth.JoinRequest
 import com.software.somding.data.model.auth.LoginRequest
 import com.software.somding.data.model.auth.LoginResponse
 import com.software.somding.data.model.common.CommonResponse
@@ -12,4 +13,9 @@ interface LoginApi {
 	fun login(
 		@Body loginRequest: LoginRequest
 	): Call<CommonResponse<LoginResponse>>
+
+	@POST("api/auth/signup")
+	fun join(
+		@Body joinRequest: JoinRequest
+	): Call<CommonResponse<String>>
 }

@@ -49,7 +49,7 @@
             app:layout_constraintTop_toBottomOf="@+id/registered_project_title" />
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/etCurrentPw"
+            android:id="@+id/etUserEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"

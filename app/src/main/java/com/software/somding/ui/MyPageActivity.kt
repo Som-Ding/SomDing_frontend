@@ -20,15 +20,7 @@ class MyPageActivity : BaseActivity<ActivityMyPageBinding> (R.layout.activity_my
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 
-		val navController = supportFragmentManager.findFragmentById(R.id.nav_my)!!.findNavController()
-		appBarConfiguration = AppBarConfiguration(navController.graph)
-			setupActionBarWithNavController(navController, appBarConfiguration)
 
-//		binding.fab.setOnClickListener { view ->
-//			Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//				.setAction("Action", null)
-//				.setAnchorView(R.id.fab).show()
-//		}
 	}
 
 	override fun onSupportNavigateUp(): Boolean {

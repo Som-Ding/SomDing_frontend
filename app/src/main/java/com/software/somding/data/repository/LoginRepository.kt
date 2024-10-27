@@ -3,6 +3,7 @@ package com.software.somding.data.repository
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.software.somding.data.model.auth.JoinRequest
 import com.software.somding.data.model.auth.LoginRequest
 import com.software.somding.data.model.auth.LoginResponse
 import com.software.somding.data.model.common.CommonResponse
@@ -46,5 +47,32 @@ class LoginRepository @Inject constructor(
 		})
 
 		return loginResponseLiveData
+	}
+
+	fun join(joinRequest: JoinRequest): MutableLiveData<CommonResponse<String>?> {
+		val joinResponseLiveData = MutableLiveData<CommonResponse<String>?>()
+
+		// 회원가입 API 호출
+		loginApi.join(joinRequest).enqueue(object : Callback<CommonResponse<String>> {
+			override fun onResponse(
+				call: Call<CommonResponse<String>>,
+				response: Response<CommonResponse<String>>
+			) {
+				if (response.isSuccessful) {
+					joinResponseLiveData.value = response.body()
+					Log.d("join", "${response.body()}")
+				} else {
+					joinResponseLiveData.value = null
+					Log.d("join", "음")
+				}
+			}
+
+			override fun onFailure(call: Call<CommonResponse<String>>, t: Throwable) {
+				_error.postValue("네트워크 오류: ${t.message}")
+				Log.d("join", "${t.message}")
+			}
+		})
+
+		return joinResponseLiveData
 	}
 }

@@ -2,6 +2,7 @@ package com.software.somding.ui.login.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.software.somding.data.model.auth.JoinRequest
 import com.software.somding.data.model.auth.LoginRequest
 import com.software.somding.data.model.auth.LoginResponse
 import com.software.somding.data.model.common.CommonResponse
@@ -13,7 +14,6 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(
 	private val repository: LoginRepository
 ) : ViewModel() {
-
 	private val _loginResponse = MutableLiveData<CommonResponse<LoginResponse>?>()
 	val loginResponse: MutableLiveData<CommonResponse<LoginResponse>?> = _loginResponse
 

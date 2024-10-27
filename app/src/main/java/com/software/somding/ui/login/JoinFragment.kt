@@ -1,10 +1,13 @@
 package com.software.somding.ui.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.lifecycleScope
 import com.software.somding.R
 import com.software.somding.databinding.FragmentJoinBinding
+import com.software.somding.ui.LoginActivity
+import com.software.somding.ui.MainActivity
 import com.software.somding.ui.common.BaseFragment
 import com.software.somding.ui.common.NavigationUtil.navigate
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,11 +22,10 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
 
 		lifecycleScope.launch {
 			delay(1000)
+//			navigate(R.id.action_joinFragment_to_loginFragment)
 //			requireActivity().supportFragmentManager.popBackStack() // 생명주기 끊기!
-
-			navigate(R.id.action_joinFragment_to_loginFragment)
-//			val intent = Intent(requireContext(), MainActivity::class.java)
-//			startActivity(intent)
+			val intent = Intent(requireContext(), LoginActivity::class.java)
+			startActivity(intent)
 		}
 	}
 }
