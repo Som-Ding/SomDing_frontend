@@ -23,10 +23,10 @@ class MyPageDonatedProjectFragment : BaseFragment<FragmentMyPageDonatedProjectBi
     }
 
     private fun initProjectRecyclerView() {
-        val adapter = MyPageRegisteredProjectAdapter()
-
-        adapter.dataList = registeredProjectData
-        binding.recyclerView.adapter = adapter
+//        val adapter = MyPageRegisteredProjectAdapter()
+//
+//        adapter.dataList = registeredProjectData
+//        binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false) //레이아웃 매니저 연결
     }
