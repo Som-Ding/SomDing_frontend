@@ -8,10 +8,10 @@ import retrofit2.http.Headers
 import retrofit2.http.Query
 
 interface CategoryApi {
-	@GET("/api/projects")
+	@GET("api/projects")
 	@Headers("Content-Type: application/json")
 	fun getProjectsByCategory(
 		@Query("category") category: String,
 		@Query("sort") sort: String
-	): Call<CommonResponse<CategoryProjectResponse>>
+	): Call<CategoryProjectResponse>
 }

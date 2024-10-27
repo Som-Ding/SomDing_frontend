@@ -37,9 +37,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
 				sharedPreferences?.edit()?.putString("accessToken", response.result.accessToken)?.apply()
 
 				val intent = Intent(requireContext(), MainActivity::class.java)
+				intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK // 이전 액티비티 제거
 				startActivity(intent)
-
-				requireActivity().supportFragmentManager.popBackStack() // 생명주기 끊기!
 			} else {
 				Log.d("로그인", "실패 ㅜㅜ")
 			}

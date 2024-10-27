@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.software.somding.R
 import com.software.somding.data.model.enum.Category
 import com.software.somding.data.model.enum.Sort
+import com.software.somding.data.model.home.CategoryProjectData
 import com.software.somding.data.model.home.CategoryProjectResponse
 import com.software.somding.databinding.FragmentCategoryClothBinding
 import com.software.somding.ui.category.adapter.CategoryProjectListAdapter
@@ -18,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class CategoryClothFragment : BaseFragment<FragmentCategoryClothBinding>(R.layout.fragment_category_cloth) {
 	private val viewModel: CategoryViewModel by viewModels()
-    private val categoryProjectData = mutableListOf<CategoryProjectResponse>()
+    private val categoryProjectData = mutableListOf<CategoryProjectData>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -44,7 +45,7 @@ class CategoryClothFragment : BaseFragment<FragmentCategoryClothBinding>(R.layou
 	// RecyclerView 업데이트 함수
 	private fun updateRecyclerView(newData: CategoryProjectResponse) {
 		categoryProjectData.clear()
-		categoryProjectData.addAll(listOf(newData))
+		categoryProjectData.addAll(newData.result)
 		binding.rvCategoryProject.adapter?.notifyDataSetChanged()
 	}
 }

@@ -21,31 +21,36 @@ class CategoryRepository @Inject constructor(
 	val error: LiveData<String>
 		get() = _error
 
+	/***
+	 * 카테고리별 프로젝트 조회 api
+	 */
 	fun getProjectsByCategory(
 		category: String,
 		sort: String
-	): MutableLiveData<CommonResponse<CategoryProjectResponse>?> {
-		val responseLiveData = MutableLiveData<CommonResponse<CategoryProjectResponse>?>()
+	): MutableLiveData<CategoryProjectResponse?> {
+		val responseLiveData = MutableLiveData<CategoryProjectResponse?>()
 
 		categoryApi.getProjectsByCategory(category, sort)
-			.enqueue(object : Callback<CommonResponse<CategoryProjectResponse>> {
+			.enqueue(object : Callback<CategoryProjectResponse> {
 				override fun onResponse(
-					call: Call<CommonResponse<CategoryProjectResponse>>,
-					response: Response<CommonResponse<CategoryProjectResponse>>
+					call: Call<CategoryProjectResponse>,
+					response: Response<CategoryProjectResponse>
 				) {
 					if (response.isSuccessful) {
 						responseLiveData.postValue(response.body())
+						Log.d("category", "${response.body()}")
 					} else {
 						responseLiveData.value = null
+						Log.d("category", "null 값....")
 					}
 				}
 
 				override fun onFailure(
-					call: Call<CommonResponse<CategoryProjectResponse>>,
+					call: Call<CategoryProjectResponse>,
 					t: Throwable
 				) {
 					_error.postValue("네트워크 오류: ${t.message}")
-					Log.d("home", "${t.message}")
+					Log.d("categor", "${t.message}")
 				}
 			})
 
