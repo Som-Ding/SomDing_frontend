@@ -18,7 +18,6 @@ class ProjectFragment : BaseFragment<FragmentProjectBinding>(R.layout.fragment_p
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // 바인딩을 사용하여 UI 구성요소에 접근
         val tabLayout = binding.tablayout
 //        val textInputLayout = binding.inputLayout
 //        val autoCompleteTextView = binding.textItem

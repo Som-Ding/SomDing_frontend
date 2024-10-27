@@ -12,7 +12,6 @@ import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
 import javax.inject.Singleton
-
 @Singleton
 class CategoryRepository @Inject constructor(
 	private val categoryApi: CategoryApi
@@ -27,7 +26,7 @@ class CategoryRepository @Inject constructor(
 	fun getProjectsByCategory(
 		category: String,
 		sort: String
-	): MutableLiveData<CategoryProjectResponse?> {
+	): LiveData<CategoryProjectResponse?> {
 		val responseLiveData = MutableLiveData<CategoryProjectResponse?>()
 
 		categoryApi.getProjectsByCategory(category, sort)
@@ -38,10 +37,10 @@ class CategoryRepository @Inject constructor(
 				) {
 					if (response.isSuccessful) {
 						responseLiveData.postValue(response.body())
-						Log.d("category", "${response.body()}")
+						Log.d("CategoryRepository", "Received data: ${response.body()}")
 					} else {
 						responseLiveData.value = null
-						Log.d("category", "null 값....")
+						Log.d("CategoryRepository", "Response not successful: ${response.message()}")
 					}
 				}
 
@@ -50,7 +49,7 @@ class CategoryRepository @Inject constructor(
 					t: Throwable
 				) {
 					_error.postValue("네트워크 오류: ${t.message}")
-					Log.d("categor", "${t.message}")
+					Log.d("CategoryRepository", "Network error: ${t.message}")
 				}
 			})
 

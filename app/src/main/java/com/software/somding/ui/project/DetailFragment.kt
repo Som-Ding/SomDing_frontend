@@ -11,5 +11,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class DetailFragment: BaseFragment<FragmentProjectDetailBinding>(R.layout.fragment_project_detail) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
     }
 }

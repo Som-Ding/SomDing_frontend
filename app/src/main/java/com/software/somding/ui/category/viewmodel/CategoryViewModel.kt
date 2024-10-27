@@ -19,8 +19,8 @@ class CategoryViewModel @Inject constructor(
 	val categoryProjects: MutableLiveData<CategoryProjectResponse?> = _categoryProjects
 
 	fun getProjectsByCategory(category: String, sort: String) {
-		repository.getProjectsByCategory(category, sort).observeForever { response ->
-			_categoryProjects.postValue(response)
+		repository.getProjectsByCategory(category, sort).observeForever {
+			_categoryProjects.postValue(it)
 		}
 	}
 

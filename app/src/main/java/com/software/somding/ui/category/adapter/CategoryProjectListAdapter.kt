@@ -13,10 +13,7 @@ class CategoryProjectListAdapter : RecyclerView.Adapter<CategoryProjectListAdapt
 
 	inner class MyViewHolder(private val binding: ItemCategoryProjectBinding) : RecyclerView.ViewHolder(binding.root) {
 		fun bind(projectData: CategoryProjectData) {
-			if (projectData.img.isNullOrEmpty()) {
-				loadImage(binding.projectImg, projectData.img.toString())
-			}
-
+			loadImage(binding.projectImg, projectData.img.toString())
 	        binding.contentCategory.text = projectData.category
 	        binding.contentProjectTitle.text = projectData.title
 	        binding.contentAchievement.text = projectData.targetPrice.toString()
