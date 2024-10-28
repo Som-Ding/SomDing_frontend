@@ -7,7 +7,6 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.software.somding.R
-import com.software.somding.ui.common.ItemBinding.loadImage
 
 class ImageSliderAdapter(private val imageList: List<String>) : RecyclerView.Adapter<ImageSliderAdapter.ImageViewHolder>() {
 
@@ -24,8 +23,6 @@ class ImageSliderAdapter(private val imageList: List<String>) : RecyclerView.Ada
         Glide.with(holder.imageView.context)
             .load(imageList[position])
             .into(holder.imageView)
-
-//	    loadImage(binding.projectImg, projectData.img.toString())
     }
 
     override fun getItemCount(): Int {

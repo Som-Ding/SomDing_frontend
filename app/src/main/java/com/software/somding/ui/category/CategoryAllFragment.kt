@@ -23,7 +23,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class CategoryAllFragment :
 	BaseFragment<FragmentCategoryAllBinding>(R.layout.fragment_category_all) {
 	private val viewModel: CategoryViewModel by viewModels()
-	private val projectViewModel: ProjectViewModel by viewModels()
 	private val categoryProjectData = mutableListOf<CategoryProjectData>()
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

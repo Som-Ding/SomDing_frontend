@@ -3,32 +3,46 @@ package com.software.somding.ui.home.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.software.somding.data.model.home.ProjectData
-import com.software.somding.databinding.ItemMainProjectBinding
+import com.software.somding.data.model.home.CategoryProjectData
+import com.software.somding.databinding.ItemMainPopularProjectBinding
+import com.software.somding.ui.common.ItemBinding.loadImage
 
-class MainProjectListAdapter : RecyclerView.Adapter<MainProjectListAdapter.MyViewHolder>() {
+class MainProjectListAdapter(
+	private val onItemClick: (Int) -> Unit
+) :RecyclerView.Adapter<MainProjectListAdapter.MyViewHolder>() {
 
-    var dataList = mutableListOf<ProjectData>()
+    var dataList = mutableListOf<CategoryProjectData>()
 
-    inner class MyViewHolder(private val binding: ItemMainProjectBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(projectData: ProjectData){
-//            binding.projectImg = projectData.contentImg
-            binding.contentCategory.text = projectData.category
-            binding.contentProjectTitle.text = projectData.projectTitle
-            binding.contentAchievement.text = projectData.projectPercent.toString()
-        }
-    }
+	inner class MyViewHolder(private val binding: ItemMainPopularProjectBinding) :
+		RecyclerView.ViewHolder(binding.root) {
+		fun bind(projectData: CategoryProjectData, position: Int) {
+			loadImage(binding.projectImg, projectData.img.toString())
+			binding.contentCategory.text = projectData.category
+			binding.contentProjectTitle.text = projectData.title
+			binding.contentAchievement.text = projectData.targetPrice.toString()
+			binding.contentNumber.text = (position + 1).toString()
+//			binding.contentPrice.text = projectData.gatherPrice.toString()
+//			binding.executePendingBindings()
+
+			binding.root.setOnClickListener {
+				onItemClick(projectData.projectId)
+			}
+		}
+	}
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): MyViewHolder {
-        val binding = ItemMainProjectBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding = ItemMainPopularProjectBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return MyViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(dataList[position])
+        holder.bind(dataList[position], position)
+	    holder.itemView.setOnClickListener {
+		    onItemClick(dataList[position].projectId) // 클릭된 프로젝트 ID 전달
+	    }
     }
 
     override fun getItemCount(): Int {
