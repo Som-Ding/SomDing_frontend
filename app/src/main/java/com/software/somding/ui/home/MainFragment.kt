@@ -61,7 +61,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
 			val bundle = Bundle().apply {
 				putInt("projectId", projectId)
 			}
-			navigate(R.id.action_categoryFragment_to_projectFragment, bundle)
+			navigate(R.id.action_mainFragment_to_projectFragment, bundle)
 		}
 		adapter.dataList = popularProjectData
 		binding.rvPopularProject.adapter = adapter

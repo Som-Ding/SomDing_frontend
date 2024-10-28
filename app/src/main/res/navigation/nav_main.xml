@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_mainFragment_to_categoryEtcFragment"
             app:destination="@id/categoryEtcFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_projectFragment"
+            app:destination="@id/projectFragment" />
 
     </fragment>
 
