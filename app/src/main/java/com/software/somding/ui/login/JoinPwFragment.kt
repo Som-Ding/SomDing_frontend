@@ -24,21 +24,15 @@ class JoinPwFragment : BaseFragment<FragmentJoinPwBinding>(R.layout.fragment_joi
 
 		binding.etCurrentPw.addTextChangedListener(object : TextWatcher {
 			override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-				Log.d("mytag", "바뀌기 전")
 			}
 
 			override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-				Log.d("mytag", "바뀌었을 때")
 			}
 
 			override fun afterTextChanged(p0: Editable?) {
-				Log.d("mytag", "바뀌고 나서")
 				joinViewModel.setCurrentPw(p0.toString())
 			}
 		})
-
-		Log.d("join", "email: "+joinViewModel.email.value+" pw: "+joinViewModel.currentPw.value)
-
 		// 다음 버튼 클릭 리스너
 		binding.btnNext.setOnClickListener {
 //			if (isPasswordValid(joinViewModel.currentPw.value)) {

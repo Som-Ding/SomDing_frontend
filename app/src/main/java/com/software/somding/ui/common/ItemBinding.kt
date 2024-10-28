@@ -19,4 +19,8 @@ object ItemBinding {
 			.apply(RequestOptions().placeholder(R.drawable.bg_solid_gray_radius_10).error(R.drawable.bg_solid_gray_radius_10)) // 플레이스홀더와 에러 이미지 설정
 			.into(imageView)
 	}
+
+	fun Int.toStringFormat(): String {
+		return this.toString()
+	}
 }

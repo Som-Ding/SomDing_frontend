@@ -25,15 +25,12 @@ class JoinEmailFragment : BaseFragment<FragmentJoinEmailBinding>(R.layout.fragme
 //		}
 		binding.etUserEmail.addTextChangedListener(object : TextWatcher {
 			override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-				Log.d("mytag", "바뀌기 전")
 			}
 
 			override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-				Log.d("mytag", "바뀌었을 때")
 			}
 
 			override fun afterTextChanged(p0: Editable?) {
-				Log.d("mytag", "바뀌고 나서")
 				joinViewModel.setEmail(p0.toString())
 			}
 		})

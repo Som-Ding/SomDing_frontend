@@ -6,10 +6,12 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.fragment.app.viewModels
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.tabs.TabLayout
 import com.software.somding.R
 import com.software.somding.databinding.FragmentProjectBinding
+import com.software.somding.ui.category.adapter.ImageSliderAdapter
 import com.software.somding.ui.common.BaseFragment
 import com.software.somding.ui.project.viewmodel.ProjectViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,6 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class ProjectFragment : BaseFragment<FragmentProjectBinding>(R.layout.fragment_project) {
 	private var isBottomSheetExpanded = false
 	private val viewModel: ProjectViewModel by viewModels()
+	private lateinit var imageSliderAdapter: ImageSliderAdapter
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
@@ -35,8 +38,11 @@ class ProjectFragment : BaseFragment<FragmentProjectBinding>(R.layout.fragment_p
 				binding.title.text = projectDetail.title
 				binding.category.text = projectDetail.category
 				binding.totalPrice.text = projectDetail.targetDate
+
+				imageSliderAdapter = viewModel.projectDetail.value?.let { ImageSliderAdapter(it.imgList) }!!
+				binding.viewPager.adapter = imageSliderAdapter
 			} else {
-				Log.e("ProjectFragment", "ProjectDetail is null")
+				Log.e("ProjectFragment", "null")
 			}
 		}
 	}
