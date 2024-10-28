@@ -3,98 +3,109 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="data"
+            type="com.software.somding.data.model.project.ProjectDetail" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <TextView
             android:id="@+id/intro_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="28dp"
+            android:layout_marginTop="12dp"
             android:text="| 프로젝트 소개"
             android:textColor="#101010"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/intro"
             android:layout_width="320dp"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/intro_tv"
-            app:layout_constraintTop_toBottomOf="@id/intro_tv"
-            android:text="데이터 데어터 데이터 데어티 데이터 데어티 데이터 데어티 데이터 데어티 데이터 데어티 데이터 데어티"
+            android:layout_marginTop="7dp"
             android:textColor="#101010"
             android:textSize="12sp"
-            android:layout_marginTop="3dp"
-            />
+            app:layout_constraintStart_toStartOf="@id/intro_tv"
+            app:layout_constraintTop_toBottomOf="@id/intro_tv" />
+
         <TextView
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/intro"
+            android:layout_marginTop="12dp"
             android:background="#D9D9D9"
-            android:backgroundTint="#D9D9D9"/>
+            android:backgroundTint="#D9D9D9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/intro" />
 
         <TextView
             android:id="@+id/schedule_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/intro"
-            app:layout_constraintStart_toStartOf="@id/intro"
+            android:layout_marginTop="12dp"
             android:text="| 프로젝트 일정"
-            android:layout_marginTop="3dp"
             android:textColor="#101010"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@id/intro"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
         <TextView
             android:id="@+id/schedule"
             android:layout_width="320dp"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/intro_tv"
-            app:layout_constraintTop_toBottomOf="@id/schedule_tv"
-            android:text="데이터 데어터 데이터 데어티 데이터 데어티 데이터 데어티 데이터 데어티 데이터 데어티 데이터 데어티"
+            android:layout_marginTop="7dp"
             android:textColor="#101010"
             android:textSize="12sp"
-            android:layout_marginTop="3dp"
-            />
+            app:layout_constraintStart_toStartOf="@id/intro_tv"
+            app:layout_constraintTop_toBottomOf="@id/schedule_tv" />
+
         <TextView
+            android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/schedule"
+            android:layout_marginTop="12dp"
             android:background="#D9D9D9"
-            android:backgroundTint="#D9D9D9"/>
+            android:backgroundTint="#D9D9D9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/schedule" />
+
         <TextView
             android:id="@+id/policy_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/schedule"
-            app:layout_constraintStart_toStartOf="@id/intro"
+            android:layout_marginTop="12dp"
             android:text="| 프로젝트 정책"
-            android:layout_marginTop="3dp"
             android:textColor="#101010"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@id/intro"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
         <TextView
             android:id="@+id/policy"
             android:layout_width="320dp"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/intro_tv"
-            app:layout_constraintTop_toBottomOf="@id/policy_tv"
-            android:text="데이터 데어터 데이터 데어티 데이터 데어티 데이터 데어티 데이터 데어티 데이터 데어티 데이터 데어티"
+            android:layout_marginTop="7dp"
             android:textColor="#101010"
             android:textSize="12sp"
-            android:layout_marginTop="3dp"
-            />
+            app:layout_constraintStart_toStartOf="@id/intro_tv"
+            app:layout_constraintTop_toBottomOf="@id/policy_tv" />
+
         <TextView
+            android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/policy"
+            android:layout_marginTop="12dp"
             android:background="#D9D9D9"
-            android:backgroundTint="#D9D9D9"/>
+            android:backgroundTint="#D9D9D9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/policy" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

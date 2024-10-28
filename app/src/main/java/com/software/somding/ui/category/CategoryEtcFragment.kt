@@ -16,6 +16,7 @@ import com.software.somding.ui.category.adapter.CategoryProjectListAdapter
 import com.software.somding.ui.category.viewmodel.CategoryViewModel
 import com.software.somding.ui.common.BaseFragment
 import com.software.somding.ui.common.NavigationUtil.navigate
+import com.software.somding.ui.common.NavigationUtil.navigateWithBundle
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -37,8 +38,11 @@ class CategoryEtcFragment : BaseFragment<FragmentCategoryEtcBinding>(R.layout.fr
 	}
 
 	private fun initProjectRecyclerView() {
-		val adapter = CategoryProjectListAdapter {
-			navigate(R.id.action_categoryFragment_to_projectFragment)
+		val adapter = CategoryProjectListAdapter { projectId ->
+			val bundle = Bundle().apply {
+				putInt("projectId", projectId)
+			}
+			navigateWithBundle(R.id.action_categoryFragment_to_projectFragment, bundle)
 		}
 		adapter.dataList = categoryProjectData
 		binding.rvCategoryProject.adapter = adapter

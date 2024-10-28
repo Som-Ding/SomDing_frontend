@@ -14,6 +14,7 @@ import com.software.somding.databinding.FragmentMyPageRegisteredProjectBinding
 import com.software.somding.ui.category.adapter.CategoryProjectListAdapter
 import com.software.somding.ui.common.BaseFragment
 import com.software.somding.ui.common.NavigationUtil.navigate
+import com.software.somding.ui.common.NavigationUtil.navigateWithBundle
 import com.software.somding.ui.mypage.adapter.MyPageRegisteredProjectAdapter
 import com.software.somding.ui.mypage.viewmodel.MyPageViewModel
 import com.software.somding.ui.project.viewmodel.ProjectViewModel
@@ -54,7 +55,7 @@ class MyPageRegisteredProjectFragment :
 			val bundle = Bundle().apply {
 				putInt("projectId", projectId)
 			}
-			navigate(R.id.action_categoryFragment_to_projectFragment, bundle)
+			navigateWithBundle(R.id.action_categoryFragment_to_projectFragment, bundle)
 //			parentFragmentManager.beginTransaction()
 //				.replace(R.id.fcv_main, ProjectFragment())
 //				.addToBackStack(null) // 뒤로가기 스택에 추가

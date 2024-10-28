@@ -39,7 +39,8 @@ class ProjectFragment : BaseFragment<FragmentProjectBinding>(R.layout.fragment_p
 				binding.category.text = projectDetail.category
 				binding.totalPrice.text = projectDetail.targetDate
 
-				imageSliderAdapter = viewModel.projectDetail.value?.let { ImageSliderAdapter(it.imgList) }!!
+				imageSliderAdapter =
+					viewModel.projectDetail.value?.let { ImageSliderAdapter(it.imgList) }!!
 				binding.viewPager.adapter = imageSliderAdapter
 			} else {
 				Log.e("ProjectFragment", "null")
@@ -49,30 +50,36 @@ class ProjectFragment : BaseFragment<FragmentProjectBinding>(R.layout.fragment_p
 
 	private fun setupTabLayout() {
 		val tabLayout = binding.tablayout
-		val detailFragment = DetailFragment()
 		val reviewFragment = ReviewFragment()
 		val qnaFragment = QnAFragment()
 
-		// 기본 프래그먼트 설정
-		requireActivity().supportFragmentManager.beginTransaction()
-			.replace(R.id.main_view, detailFragment).commit()
+		viewModel.projectDetail.observe(viewLifecycleOwner) { projectDetail ->
+			if (projectDetail != null) {
+				val detailFragment =
+					DetailFragment.newInstance(projectDetail.introduce, projectDetail.policy, projectDetail.schedule)
 
-		// 탭 리스너 설정
-		tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-			override fun onTabSelected(tab: TabLayout.Tab?) {
-				val selectedFragment = when (tab?.position) {
-					0 -> detailFragment
-					1 -> reviewFragment
-					2 -> qnaFragment
-					else -> detailFragment
-				}
+				// 기본 프래그먼트 설정
 				requireActivity().supportFragmentManager.beginTransaction()
-					.replace(R.id.main_view, selectedFragment).commit()
-			}
+					.replace(R.id.main_view, detailFragment).commit()
 
-			override fun onTabUnselected(tab: TabLayout.Tab?) {}
-			override fun onTabReselected(tab: TabLayout.Tab?) {}
-		})
+				// 탭 리스너 설정
+				tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+					override fun onTabSelected(tab: TabLayout.Tab?) {
+						val selectedFragment = when (tab?.position) {
+							0 -> detailFragment
+							1 -> reviewFragment
+							2 -> qnaFragment
+							else -> detailFragment
+						}
+						requireActivity().supportFragmentManager.beginTransaction()
+							.replace(R.id.main_view, selectedFragment).commit()
+					}
+
+					override fun onTabUnselected(tab: TabLayout.Tab?) {}
+					override fun onTabReselected(tab: TabLayout.Tab?) {}
+				})
+			}
+		}
 	}
 
 	private fun setupBottomSheet() {
@@ -95,7 +102,12 @@ class ProjectFragment : BaseFragment<FragmentProjectBinding>(R.layout.fragment_p
 		spinner.adapter = adapter
 
 		spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-			override fun onItemSelected(parentView: AdapterView<*>?, selectedItemView: View?, position: Int, id: Long) {
+			override fun onItemSelected(
+				parentView: AdapterView<*>?,
+				selectedItemView: View?,
+				position: Int,
+				id: Long
+			) {
 				val selectedOption = items[position]
 				// 선택된 옵션에 대한 동작을 여기에 추가
 			}

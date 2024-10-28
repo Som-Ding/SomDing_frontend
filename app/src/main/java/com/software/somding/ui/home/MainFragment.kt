@@ -19,6 +19,7 @@ import com.software.somding.ui.category.adapter.CategoryProjectListAdapter
 import com.software.somding.ui.category.viewmodel.CategoryViewModel
 import com.software.somding.ui.common.BaseFragment
 import com.software.somding.ui.common.NavigationUtil.navigate
+import com.software.somding.ui.common.NavigationUtil.navigateWithBundle
 import com.software.somding.ui.home.adapter.MainPopularProjectListAdapter
 import com.software.somding.ui.home.adapter.MainProjectListAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -61,7 +62,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
 			val bundle = Bundle().apply {
 				putInt("projectId", projectId)
 			}
-			navigate(R.id.action_mainFragment_to_projectFragment, bundle)
+			navigateWithBundle(R.id.action_mainFragment_to_projectFragment, bundle)
 		}
 		adapter.dataList = popularProjectData
 		binding.rvPopularProject.adapter = adapter

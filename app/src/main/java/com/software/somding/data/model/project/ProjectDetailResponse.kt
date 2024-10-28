@@ -18,31 +18,14 @@ data class ProjectDetail(
 	val sponsorNum: Int,
 	val price: Int,
 	val scrapNum: Int,
+	val introduce: String,
+	val policy: String,
+	val schedule: String,
 	val imgList: List<String>,
 	val colorList: List<Option>,
 	val sizeList: List<Option>,
 	val otherList: List<Option>
-) {
-	fun getSponsorNumAsString(context: Context): String {
-		return sponsorNum.toString()
-	}
-
-	fun getPriceAsString(context: Context): String {
-		return price.toString()
-	}
-
-	fun getScrapNumAsString(context: Context): String {
-		return scrapNum.toString()
-	}
-
-	fun getGatherPriceAsString(context: Context): String {
-		return gatherPrice.toString()
-	}
-
-	fun getTargetPriceAsString(context: Context): String {
-		return targetPrice.toString()
-	}
-}
+)
 
 data class Option(
 	val optionId: Int,
