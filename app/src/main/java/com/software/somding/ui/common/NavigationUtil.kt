@@ -26,7 +26,7 @@ object NavigationUtil {
     }
 
 	fun Fragment.navigate(action: Int, bundle: Bundle) {
-		this.findNavController().navigate(action)
+		this.findNavController().navigate(action, bundle)
 	}
 
     fun Fragment.navigateWithArgs(navDirections: NavDirections) {

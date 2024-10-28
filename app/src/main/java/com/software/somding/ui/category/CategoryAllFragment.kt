@@ -16,7 +16,6 @@ import com.software.somding.ui.common.BaseFragment
 import com.software.somding.ui.category.adapter.CategoryProjectListAdapter
 import com.software.somding.ui.category.viewmodel.CategoryViewModel
 import com.software.somding.ui.common.NavigationUtil.navigate
-import com.software.somding.ui.project.ProjectFragment
 import com.software.somding.ui.project.viewmodel.ProjectViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -46,10 +45,6 @@ class CategoryAllFragment :
                 putInt("projectId", projectId)
             }
             navigate(R.id.action_categoryFragment_to_projectFragment, bundle)
-//			parentFragmentManager.beginTransaction()
-//				.replace(R.id.fcv_main, ProjectFragment())
-//				.addToBackStack(null) // 뒤로가기 스택에 추가
-//				.commit()
 		}
 		adapter.dataList = categoryProjectData
 		binding.rvCategoryProject.adapter = adapter

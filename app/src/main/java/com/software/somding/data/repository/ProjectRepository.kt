@@ -21,8 +21,6 @@ class ProjectRepository @Inject constructor(
 
 	fun getProjectDetail(projectId: Int): LiveData<ProjectDetailResponse?> {
 		val responseLiveData = MutableLiveData<ProjectDetailResponse?>()
-
-		try {
 			projectApi.getProjectDetail(projectId)
 				.enqueue(object : Callback<ProjectDetailResponse> {
 					override fun onResponse(
@@ -46,11 +44,6 @@ class ProjectRepository @Inject constructor(
 						Log.d("ProjectRepository", "Network error: ${t.message}")
 					}
 				})
-		} catch (e: Exception) {
-			_error.postValue("예외 발생: ${e.message}")
-			Log.e("ProjectRepository", "Exception: ${e.message}")
-		}
-
 		return responseLiveData
 	}
 

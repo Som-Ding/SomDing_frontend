@@ -12,6 +12,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
 import javax.inject.Singleton
+
 @Singleton
 class CategoryRepository @Inject constructor(
 	private val categoryApi: CategoryApi
@@ -37,7 +38,7 @@ class CategoryRepository @Inject constructor(
 				) {
 					if (response.isSuccessful) {
 						responseLiveData.postValue(response.body())
-						Log.d("CategoryRepository", "Received data: ${response.body()}")
+						Log.d("CategoryRepository", "여기 맞나?: ${response.body()}")
 					} else {
 						responseLiveData.value = null
 						Log.d("CategoryRepository", "Response not successful: ${response.message()}")
