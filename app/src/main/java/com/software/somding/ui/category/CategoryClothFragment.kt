@@ -33,6 +33,7 @@ class CategoryClothFragment : BaseFragment<FragmentCategoryClothBinding>(R.layou
 		    projects?.let {
 			    updateRecyclerView(it)
 		    }
+		    binding.tvClothSub.text = (projects?.result?.size.toString() + "개의 프로젝트가 있습니다.") ?: "0"
 	    })
     }
 

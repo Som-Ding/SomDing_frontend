@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
-            android:text="1,000개의 프로젝트가 있습니다"
+            android:text="1,000개의 프로젝트가 있습니다."
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="@+id/tv_all_title"
             app:layout_constraintTop_toBottomOf="@+id/tv_all_title" />

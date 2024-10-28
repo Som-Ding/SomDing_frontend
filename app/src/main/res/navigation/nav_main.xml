@@ -69,7 +69,11 @@
         android:id="@+id/registerFragment"
         android:name="com.software.somding.ui.project.RegisterFragment"
         android:label="fragment_category"
-        tools:layout="@layout/fragment_register" />
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment" />
+    </fragment>
 
     <!-- 옷 카테고리 -->
     <fragment

@@ -17,10 +17,12 @@ class CategoryProjectListAdapter(
 		RecyclerView.ViewHolder(binding.root) {
 		fun bind(projectData: CategoryProjectData) {
 			loadImage(binding.projectImg, projectData.img.toString())
+
 			binding.contentCategory.text = projectData.category
 			binding.contentProjectTitle.text = projectData.title
 			binding.contentAchievement.text = projectData.targetPrice.toString()
 			binding.contentPrice.text = projectData.gatherPrice.toString()
+
 			binding.executePendingBindings()
 
 			binding.root.setOnClickListener {

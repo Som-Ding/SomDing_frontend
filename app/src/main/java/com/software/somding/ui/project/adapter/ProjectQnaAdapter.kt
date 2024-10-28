@@ -3,17 +3,20 @@ package com.software.somding.ui.project.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.software.somding.data.model.home.CategoryProjectData
+import com.software.somding.data.model.project.Question
 import com.software.somding.data.project.QnaData
 import com.software.somding.databinding.ItemProjectQnaBinding
 
-class ProjectQnaAdapter(val  dataList: MutableList<QnaData>): RecyclerView.Adapter<ProjectQnaAdapter.MyViewHolder> (){
+class ProjectQnaAdapter(
+): RecyclerView.Adapter<ProjectQnaAdapter.MyViewHolder> (){
+	var dataList = mutableListOf<Question>()
 
     inner class MyViewHolder(private val binding: ItemProjectQnaBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(qnaData: QnaData) {
-            binding.content.text = qnaData.content
-            binding.date.text = qnaData.date
+        fun bind(qnaData: Question) {
+            binding.content.text = qnaData.question
+            binding.date.text = qnaData.createdAt
         }
-
 
     }
 

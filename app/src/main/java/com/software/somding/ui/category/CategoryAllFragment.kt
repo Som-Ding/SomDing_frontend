@@ -36,6 +36,7 @@ class CategoryAllFragment :
 			projects?.let {
 				updateRecyclerView(it)
 			}
+			binding.tvAllSub.text = (projects?.result?.size.toString() + "개의 프로젝트가 있습니다.") ?: "0"
 		})
 	}
 

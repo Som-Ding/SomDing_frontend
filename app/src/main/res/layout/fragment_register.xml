@@ -6,106 +6,319 @@
     <data>
 
     </data>
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_title"
-            style="@style/RegularFontKr.16"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="35dp"
-            android:text="카테고리를 선택해 주세요."
-            android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/tv_title"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title">
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image_view"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                app:layout_constraintEnd_toEndOf="@+id/et_project_title"
+                app:layout_constraintStart_toStartOf="@+id/tv_title"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/appCompatButton"
+                android:id="@+id/btn_select_image"
+                style="@style/RegularFontKr.12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_line_gray_radius_10"
+                android:text="사진 선택"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/image_view"
+                app:layout_constraintEnd_toEndOf="@+id/image_view" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_title"
                 style="@style/RegularFontKr.16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:text="의류"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
+                android:text="카테고리를 선택해 주세요."
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/image_view" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/appCompatButton2"
-                style="@style/RegularFontKr.16"
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="인형"
-                app:layout_constraintEnd_toStartOf="@+id/appCompatButton3"
-                app:layout_constraintStart_toEndOf="@+id/appCompatButton"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/appCompatButton3"
-                style="@style/RegularFontKr.16"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="32dp"
-                android:text="잡화"
+                android:layout_marginTop="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toStartOf="@+id/tv_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_cloth"
+                    style="@style/RegularFontKr.16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:text="의류"
+                    android:background="@drawable/btn_background"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_doll"
+                    style="@style/RegularFontKr.16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_background"
+                    android:text="인형"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_etc"
+                    app:layout_constraintStart_toEndOf="@+id/btn_cloth"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_etc"
+                    style="@style/RegularFontKr.16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32dp"
+                    android:background="@drawable/btn_background"
+                    android:text="잡화"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_project_title"
+                style="@style/RegularFontKr.16"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="28dp"
+                android:text="프로젝트의 제목은 무엇인가요?"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_project_title"
+                style="@style/RegularFontKr.12"
+                android:layout_width="0dp"
+                android:padding="8dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/bg_line_gray_radius_10"
+                android:hint="25자 이내로 입력해주세요."
+                android:lines="2"
+                android:paddingStart="12dp"
+                android:singleLine="true"
+                android:paddingEnd="12dp"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tv_project_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_project_title" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_target_price"
+                style="@style/RegularFontKr.16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="목표 금액을 설정해주세요"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@+id/et_project_title"
+                app:layout_constraintTop_toBottomOf="@+id/et_project_title" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_target_price"
+                style="@style/RegularFontKr.12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_line_gray_radius_10"
+                android:hint="000,000,000원"
+                android:inputType="number"
+                android:lines="2"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="@+id/et_project_title"
+                app:layout_constraintStart_toStartOf="@+id/tv_target_price"
+                app:layout_constraintTop_toBottomOf="@+id/tv_target_price" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_price"
+                style="@style/RegularFontKr.16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="상품의 구매 가격을 입력해 주세요."
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@+id/et_target_price"
+                app:layout_constraintTop_toBottomOf="@+id/et_target_price" />
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_price"
+                style="@style/RegularFontKr.12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_line_gray_radius_10"
+                android:hint="0원"
+                android:lines="2"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="@+id/et_target_price"
+                app:layout_constraintStart_toStartOf="@+id/tv_price"
+                app:layout_constraintTop_toBottomOf="@+id/tv_price" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_target_date"
+                style="@style/RegularFontKr.16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="프로젝트 기한을 적어주세요."
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@+id/et_price"
+                app:layout_constraintTop_toBottomOf="@+id/et_price" />
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_target_date"
+                style="@style/RegularFontKr.12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_line_gray_radius_10"
+                android:hint="YYYY-MM-DD"
+                android:lines="2"
+                android:paddingStart="12dp"
+                android:inputType="date"
+                android:paddingEnd="12dp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="@+id/et_target_price"
+                app:layout_constraintStart_toStartOf="@+id/tv_target_date"
+                app:layout_constraintTop_toBottomOf="@+id/tv_target_date" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_introduce"
+                style="@style/RegularFontKr.16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="프로젝트를 소개해 주세요."
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@+id/et_target_date"
+                app:layout_constraintTop_toBottomOf="@+id/et_target_date" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_introduce"
+                style="@style/RegularFontKr.12"
+                android:layout_width="0dp"
+                android:padding="8dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_line_gray_radius_10"
+                android:hint="저희 프로젝트는 ... "
+                android:lines="2"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="@+id/et_price"
+                app:layout_constraintStart_toStartOf="@+id/tv_introduce"
+                app:layout_constraintTop_toBottomOf="@+id/tv_introduce" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_schedule"
+                style="@style/RegularFontKr.16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="프로젝트 일정을 적어주세요."
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@+id/et_introduce"
+                app:layout_constraintTop_toBottomOf="@+id/et_introduce" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_schedule"
+                style="@style/RegularFontKr.12"
+                android:padding="8dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_line_gray_radius_10"
+                android:hint="0월 00일: 펀딩 시작 ..."
+                android:lines="2"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="@+id/et_price"
+                app:layout_constraintStart_toStartOf="@+id/tv_schedule"
+                app:layout_constraintTop_toBottomOf="@+id/tv_schedule" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_policy"
+                style="@style/RegularFontKr.16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="프로젝트 정책을 적어주세요."
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@+id/et_schedule"
+                app:layout_constraintTop_toBottomOf="@+id/et_schedule" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_policy"
+                style="@style/RegularFontKr.12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_line_gray_radius_10"
+                android:hint="상세히 기술"
+                android:lines="2"
+                android:paddingStart="12dp"
+                android:singleLine="true"
+                android:paddingEnd="12dp"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="@+id/et_price"
+                app:layout_constraintStart_toStartOf="@+id/tv_policy"
+                app:layout_constraintTop_toBottomOf="@+id/tv_policy" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_register"
+                style="@style/RegularFontKr.16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="65dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="65dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bg_solid_magenta_radius_10"
+                android:text="완료"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_policy" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_project_title"
-            style="@style/RegularFontKr.16"
-            android:textColor="@color/black"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="28dp"
-            android:text="프로젝트의 제목은 무엇인가요?"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            style="@style/RegularFontKr.12"
-            android:textColor="@color/black"
-            android:id="@+id/et_project_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginTop="14dp"
-            android:lines="2"
-            android:hint="25자 이내로 입력해주세요."
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
-            android:background="@drawable/bg_line_gray_radius_10"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_project_title" />
-
-
-        <androidx.appcompat.widget.AppCompatButton
-            style="@style/RegularFontKr.16"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_solid_magenta_radius_10"
-            android:text="로그인"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </layout>
 

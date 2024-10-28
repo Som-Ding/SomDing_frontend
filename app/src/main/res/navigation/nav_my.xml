@@ -73,7 +73,11 @@
         android:id="@+id/myPageProfileFragment"
         android:name="com.software.somding.ui.mypage.MyPageProfileFragment"
         android:label="fragment_my_page_profile"
-        tools:layout="@layout/fragment_my_page_profile"/>
+        tools:layout="@layout/fragment_my_page_profile">
+        <action
+            android:id="@+id/action_myPageProfileFragment_to_myPageFragment"
+            app:destination="@id/myPageFragment" />
+    </fragment>
 
 
 </navigation>

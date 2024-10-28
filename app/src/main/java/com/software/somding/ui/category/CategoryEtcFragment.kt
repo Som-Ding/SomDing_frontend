@@ -34,6 +34,7 @@ class CategoryEtcFragment : BaseFragment<FragmentCategoryEtcBinding>(R.layout.fr
 			projects?.let {
 				updateRecyclerView(it)
 			}
+			binding.tvEtcSub.text = (projects?.result?.size.toString() + "개의 프로젝트가 있습니다.") ?: "0"
 		})
 	}
 

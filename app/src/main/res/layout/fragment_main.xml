@@ -17,7 +17,7 @@
             android:layout_height="match_parent">
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/MediumFontKr.18"
+                style="@style/SemiBoldFontKr.18"
                 android:textColor="@color/black"
                 android:id="@+id/title_category"
                 android:layout_width="wrap_content"
@@ -30,8 +30,8 @@
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/btn_to_category_cloth"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="87dp"
+                android:layout_height="0dp"
                 android:layout_marginTop="11dp"
                 android:alpha="0.5"
                 android:background="@drawable/bg_solid_gray_radius_10"
@@ -40,6 +40,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/title_category" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="의류"
@@ -54,13 +55,14 @@
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/btn_to_category_doll"
                 android:layout_width="87dp"
-                android:layout_height="87dp"
+                android:layout_height="0dp"
                 android:alpha="0.5"
-                android:src="@drawable/ic_teddy_bear"
                 android:background="@drawable/bg_solid_gray_radius_10"
+                android:src="@drawable/ic_teddy_bear"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_to_category_cloth"
                 app:layout_constraintEnd_toStartOf="@+id/btn_to_category_etc"
                 app:layout_constraintStart_toEndOf="@+id/btn_to_category_cloth"
-                app:layout_constraintTop_toBottomOf="@+id/title_category" />
+                app:layout_constraintTop_toTopOf="@+id/btn_to_category_cloth" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
@@ -77,14 +79,14 @@
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/btn_to_category_etc"
                 android:layout_width="87dp"
-                android:layout_height="87dp"
+                android:layout_height="0dp"
                 android:layout_marginEnd="32dp"
                 android:alpha="0.5"
                 android:background="@drawable/bg_solid_gray_radius_10"
                 android:src="@drawable/ic_main_etc"
                 app:layout_constraintBottom_toBottomOf="@+id/btn_to_category_doll"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title_category" />
+                app:layout_constraintTop_toTopOf="@+id/btn_to_category_doll" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
@@ -98,43 +100,43 @@
                 app:layout_constraintStart_toStartOf="@+id/btn_to_category_etc"
                 app:layout_constraintTop_toTopOf="@+id/btn_to_category_etc" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/MediumFontKr.18"
-                android:textColor="@color/black"
-                android:id="@+id/title_recent_project"
-                android:layout_width="wrap_content"
-                android:layout_marginTop="11dp"
-                android:layout_height="wrap_content"
-                android:text="최근에 본 프로젝트"
-                app:layout_constraintStart_toStartOf="@+id/btn_to_category_cloth"
-                app:layout_constraintTop_toBottomOf="@+id/btn_to_category_cloth" />
+<!--            <androidx.appcompat.widget.AppCompatTextView-->
+<!--                style="@style/MediumFontKr.18"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:id="@+id/title_recent_project"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_marginTop="11dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="최근에 본 프로젝트"-->
+<!--                app:layout_constraintStart_toStartOf="@+id/btn_to_category_cloth"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/btn_to_category_cloth" />-->
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_recent_project"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="11dp"
-                app:layout_constraintEnd_toEndOf="@+id/btn_to_category_etc"
-                app:layout_constraintStart_toStartOf="@+id/title_recent_project"
-                app:layout_constraintTop_toBottomOf="@+id/title_recent_project" />
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/rv_recent_project"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:layout_marginTop="11dp"-->
+<!--                app:layout_constraintEnd_toEndOf="@+id/btn_to_category_etc"-->
+<!--                app:layout_constraintStart_toStartOf="@+id/title_recent_project"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/title_recent_project" />-->
 
             <androidx.appcompat.widget.AppCompatTextView
+                style="@style/SemiBoldFontKr.18"
                 android:id="@+id/title_popular_project"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="11dp"
+                android:layout_marginTop="20dp"
                 android:text="인기 프로젝트"
-                android:textAppearance="@style/RegularFontKr.18"
-                app:layout_constraintStart_toStartOf="@+id/rv_recent_project"
-                app:layout_constraintTop_toBottomOf="@+id/rv_recent_project" />
+                app:layout_constraintStart_toStartOf="@+id/btn_to_category_cloth"
+                app:layout_constraintTop_toBottomOf="@+id/btn_to_category_cloth" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/title_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="2023.08.11 12:00 기준"
+                android:text="현재 기준"
                 app:layout_constraintStart_toStartOf="@+id/title_popular_project"
                 app:layout_constraintTop_toBottomOf="@+id/title_popular_project" />
 

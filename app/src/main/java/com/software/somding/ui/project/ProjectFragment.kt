@@ -10,6 +10,8 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.tabs.TabLayout
 import com.software.somding.R
+import com.software.somding.data.model.project.ProjectOption
+import com.software.somding.data.model.project.ProjectRequest
 import com.software.somding.databinding.FragmentProjectBinding
 import com.software.somding.ui.category.adapter.ImageSliderAdapter
 import com.software.somding.ui.common.BaseFragment
@@ -21,6 +23,7 @@ class ProjectFragment : BaseFragment<FragmentProjectBinding>(R.layout.fragment_p
 	private var isBottomSheetExpanded = false
 	private val viewModel: ProjectViewModel by viewModels()
 	private lateinit var imageSliderAdapter: ImageSliderAdapter
+	private var projectId: Int? = null
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
@@ -32,7 +35,6 @@ class ProjectFragment : BaseFragment<FragmentProjectBinding>(R.layout.fragment_p
 		Log.d("projectId!", projectId.toString())
 
 		viewModel.getProjectsDetail(projectId)
-
 		viewModel.projectDetail.observe(viewLifecycleOwner) { projectDetail ->
 			if (projectDetail != null) {
 				binding.title.text = projectDetail.title
@@ -46,17 +48,30 @@ class ProjectFragment : BaseFragment<FragmentProjectBinding>(R.layout.fragment_p
 				Log.e("ProjectFragment", "null")
 			}
 		}
+//		setupSpinner(
+//			viewModel.projectDetail.value!!.colorList,
+//			viewModel.projectDetail.value!!.sizeList,
+//			viewModel.projectDetail.value!!.otherList
+//		)
 	}
 
 	private fun setupTabLayout() {
 		val tabLayout = binding.tablayout
 		val reviewFragment = ReviewFragment()
-		val qnaFragment = QnAFragment()
 
 		viewModel.projectDetail.observe(viewLifecycleOwner) { projectDetail ->
 			if (projectDetail != null) {
 				val detailFragment =
-					DetailFragment.newInstance(projectDetail.introduce, projectDetail.policy, projectDetail.schedule)
+					DetailFragment.newInstance(
+						projectDetail.introduce,
+						projectDetail.policy,
+						projectDetail.schedule
+					)
+
+				val qnaFragment =
+					QnAFragment.newInstance(
+						arguments?.getInt("projectId").toString()
+					)
 
 				// 기본 프래그먼트 설정
 				requireActivity().supportFragmentManager.beginTransaction()
@@ -110,6 +125,34 @@ class ProjectFragment : BaseFragment<FragmentProjectBinding>(R.layout.fragment_p
 			) {
 				val selectedOption = items[position]
 				// 선택된 옵션에 대한 동작을 여기에 추가
+			}
+
+			override fun onNothingSelected(parentView: AdapterView<*>?) {}
+		}
+	}
+
+	private fun setupSpinner(
+		colorList: List<ProjectOption>,
+		sizeList: List<ProjectOption>,
+		otherList: List<ProjectOption>
+	) {
+		val spinner = binding.spinnerItem
+
+		val allItems = colorList + sizeList + otherList
+		val options = allItems.map { it.option } // 옵션 텍스트만 추출
+
+		val adapter = ArrayAdapter(requireContext(), R.layout.item_option_list, options)
+		spinner.adapter = adapter
+
+		spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+			override fun onItemSelected(
+				parentView: AdapterView<*>?,
+				selectedItemView: View?,
+				position: Int,
+				id: Long
+			) {
+				val selectedOption = allItems[position]
+				Log.d("Spinner", "Selected option: ${selectedOption.option}")
 			}
 
 			override fun onNothingSelected(parentView: AdapterView<*>?) {}

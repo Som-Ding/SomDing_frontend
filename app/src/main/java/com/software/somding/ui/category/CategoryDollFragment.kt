@@ -33,6 +33,7 @@ class CategoryDollFragment : BaseFragment<FragmentCategoryDollBinding>(R.layout.
 			projects?.let {
 				updateRecyclerView(it)
 			}
+			binding.tvDollSub.text = (projects?.result?.size.toString() + "개의 프로젝트가 있습니다.") ?: "0"
 		})
 	}
 

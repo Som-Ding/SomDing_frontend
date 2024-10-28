@@ -1,10 +1,16 @@
 package com.software.somding.ui.common
 
+import android.content.Context
+import android.net.Uri
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.software.somding.R
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import java.io.File
 
 
 object ItemBinding {
@@ -20,7 +26,14 @@ object ItemBinding {
 			.into(imageView)
 	}
 
-	fun Int.toStringFormat(): String {
-		return this.toString()
+	fun getFileFromUri(context: Context, uri: Uri): File? {
+		val filePath = uri.path ?: return null
+		return File(filePath)
 	}
+
+	fun prepareFilePart(file: File): MultipartBody.Part {
+		val requestFile = RequestBody.create("image/*".toMediaTypeOrNull(), file)
+		return MultipartBody.Part.createFormData("image", file.name, requestFile)
+	}
+
 }

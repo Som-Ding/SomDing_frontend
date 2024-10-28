@@ -1,7 +1,5 @@
 package com.software.somding.data.model.project
 
-import android.content.Context
-
 data class ProjectDetailResponse(
 	val code: String,
 	val message: String,
@@ -22,9 +20,9 @@ data class ProjectDetail(
 	val policy: String,
 	val schedule: String,
 	val imgList: List<String>,
-	val colorList: List<Option>,
-	val sizeList: List<Option>,
-	val otherList: List<Option>
+	val colorList: List<ProjectOption>,
+	val sizeList: List<ProjectOption>,
+	val otherList: List<ProjectOption>
 )
 
 data class Option(
