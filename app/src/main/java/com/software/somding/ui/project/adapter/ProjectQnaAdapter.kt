@@ -1,6 +1,7 @@
 package com.software.somding.ui.project.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.software.somding.data.model.home.CategoryProjectData
@@ -14,9 +15,18 @@ class ProjectQnaAdapter(
 
     inner class MyViewHolder(private val binding: ItemProjectQnaBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(qnaData: Question) {
-            binding.content.text = qnaData.question
+            binding.title.text = qnaData.title
             binding.date.text = qnaData.createdAt
+
+
+	        binding.content.text = qnaData.question
+	        binding.showMore.setOnClickListener {
+		        binding.content.maxLines = Int.MAX_VALUE
+		        binding.content.text = qnaData.question
+		        binding.showMore.visibility = View.GONE
+	        }
         }
+
 
     }
 
