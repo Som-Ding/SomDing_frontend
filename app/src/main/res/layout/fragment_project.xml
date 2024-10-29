@@ -108,7 +108,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="@{String.valueOf(data.gatherPrice)+`원`}"
                     android:textColor="#101010"
                     app:layout_constraintStart_toStartOf="@+id/title"
                     app:layout_constraintTop_toBottomOf="@id/total_price" />
@@ -119,7 +118,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="@{String.valueOf(data.gatherPrice)+`%`}"
                     android:textColor="#BB2649"
                     app:layout_constraintBottom_toBottomOf="@+id/tot_price"
                     app:layout_constraintStart_toEndOf="@id/tot_price"

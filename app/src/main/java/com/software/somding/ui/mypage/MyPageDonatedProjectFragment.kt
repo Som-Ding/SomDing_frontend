@@ -6,6 +6,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.software.somding.R
+import com.software.somding.data.model.home.CategoryProjectData
 import com.software.somding.data.model.home.CategoryProjectResponse
 import com.software.somding.data.model.mypage.MyProjectOrderData
 import com.software.somding.data.model.mypage.MyProjectOrderResponse
@@ -13,7 +14,6 @@ import com.software.somding.data.model.mypage.RegisteredProjectData
 import com.software.somding.databinding.FragmentMyPageDonatedProjectBinding
 import com.software.somding.ui.common.BaseFragment
 import com.software.somding.ui.common.NavigationUtil.navigateWithBundle
-import com.software.somding.ui.mypage.adapter.MyPageDonatedProjectAdapter
 import com.software.somding.ui.mypage.adapter.MyPageRegisteredProjectAdapter
 import com.software.somding.ui.mypage.viewmodel.MyPageViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,7 +21,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MyPageDonatedProjectFragment : BaseFragment<FragmentMyPageDonatedProjectBinding>(R.layout.fragment_my_page_donated_project) {
 	private val viewModel: MyPageViewModel by viewModels()
-    private val registeredProjectData = mutableListOf<MyProjectOrderData>()
+    private val registeredProjectData = mutableListOf<CategoryProjectData>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -37,7 +37,7 @@ class MyPageDonatedProjectFragment : BaseFragment<FragmentMyPageDonatedProjectBi
     }
 
 	private fun initProjectRecyclerView() {
-		val adapter = MyPageDonatedProjectAdapter { projectId ->
+		val adapter = MyPageRegisteredProjectAdapter { projectId ->
 			val bundle = Bundle().apply {
 				putInt("projectId", projectId)
 			}
@@ -49,7 +49,7 @@ class MyPageDonatedProjectFragment : BaseFragment<FragmentMyPageDonatedProjectBi
 			LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 	}
 
-	private fun updateRecyclerView(newData: MyProjectOrderResponse) {
+	private fun updateRecyclerView(newData: CategoryProjectResponse) {
 		registeredProjectData.clear() // 기존 데이터 클리어
 		registeredProjectData.addAll(newData.result) // 새로운 데이터 추가
 		binding.recyclerView.adapter?.notifyDataSetChanged()

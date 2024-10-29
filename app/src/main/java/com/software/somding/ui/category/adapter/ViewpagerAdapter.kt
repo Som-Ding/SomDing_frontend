@@ -25,4 +25,12 @@ class ViewpagerAdapter(fragment: Fragment): FragmentStateAdapter(fragment) {
         fragmentList.removeLast()
         notifyItemRemoved(fragmentList.size)
     }
+
+	fun getFragment(position: Int): Fragment? {
+		return if (position >= 0 && position < fragmentList.size) {
+			fragmentList[position]
+		} else {
+			null
+		}
+	}
 }

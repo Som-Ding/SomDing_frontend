@@ -30,8 +30,8 @@ class MyPageViewModel @Inject constructor(
 	private val _nickname = MutableLiveData<String>()
 	val nickname: LiveData<String> get() = _nickname
 
-	private val _myOrderProject = MutableLiveData<MyProjectOrderResponse?>()
-	val myOrderProject: LiveData<MyProjectOrderResponse?> get() = _myOrderProject
+	private val _myOrderProject = MutableLiveData<CategoryProjectResponse?>()
+	val myOrderProject: LiveData<CategoryProjectResponse?> get() = _myOrderProject
 
 	private val _scrapResponse = MutableLiveData<CategoryProjectResponse?>()
 	val scrapResponse: LiveData<CategoryProjectResponse?> get() =  _scrapResponse

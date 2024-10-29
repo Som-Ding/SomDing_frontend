@@ -17,13 +17,13 @@ import com.software.somding.ui.category.adapter.CategoryProjectListAdapter
 import com.software.somding.ui.category.viewmodel.CategoryViewModel
 import com.software.somding.ui.common.NavigationUtil.navigateWithBundle
 import dagger.hilt.android.AndroidEntryPoint
-
 @AndroidEntryPoint
 class CategoryAllFragment :
 	BaseFragment<FragmentCategoryAllBinding>(R.layout.fragment_category_all) {
 
 	private val viewModel: CategoryViewModel by viewModels()
 	private val categoryProjectData = mutableListOf<CategoryProjectData>()
+	private lateinit var adapter: CategoryProjectListAdapter
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
@@ -33,9 +33,9 @@ class CategoryAllFragment :
 		// 초기 데이터 로드
 		loadProjects(Sort.LATEST)
 
-		// 데이터 옵저버 설정
 		viewModel.categoryProjects.observe(viewLifecycleOwner, Observer { projects ->
 			projects?.let {
+				loadProjects(Sort.LATEST)
 				updateRecyclerView(it)
 			}
 			binding.tvAllSub.text = (projects?.result?.size.toString() + "개의 프로젝트가 있습니다.") ?: "0"
@@ -65,13 +65,12 @@ class CategoryAllFragment :
 	}
 
 	private fun initProjectRecyclerView() {
-		val adapter = CategoryProjectListAdapter { projectId ->
+		adapter = CategoryProjectListAdapter { projectId ->
 			val bundle = Bundle().apply {
 				putInt("projectId", projectId)
 			}
 			navigateWithBundle(R.id.action_categoryFragment_to_projectFragment, bundle)
 		}
-		adapter.dataList = categoryProjectData
 		binding.rvCategoryProject.adapter = adapter
 		binding.rvCategoryProject.layoutManager =
 			LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)

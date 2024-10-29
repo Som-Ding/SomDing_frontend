@@ -1,5 +1,6 @@
 package com.software.somding.ui.project
 
+import android.icu.text.DecimalFormat
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -42,8 +43,18 @@ class ProjectFragment : BaseFragment<FragmentProjectBinding>(R.layout.fragment_p
 			if (projectDetail != null) {
 				binding.title.text = projectDetail.title
 				binding.category.text = projectDetail.category
-				binding.totalPrice.text = projectDetail.targetDate
 				binding.likeBtn.text = projectDetail.scrapNum.toString()
+
+				val totalPriceFormatted = DecimalFormat("#,###").format(projectDetail.gatherPrice)
+				binding.totPrice.text = totalPriceFormatted
+//				binding.totPrice.text = projectDetail.gatherPrice.toString()
+
+				val achievementRate = if (projectDetail.targetPrice != 0) {
+					(projectDetail.gatherPrice.toDouble() / projectDetail.targetPrice * 100).toInt()
+				} else {
+					0
+				}
+				binding.pricePer.text = "$achievementRate%"
 
 				imageSliderAdapter =
 					viewModel.projectDetail.value?.let { ImageSliderAdapter(it.imgList) }!!

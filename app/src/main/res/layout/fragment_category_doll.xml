@@ -37,7 +37,7 @@
             android:layout_marginEnd="28dp"
             android:layout_marginTop="11dp"
             android:drawableStart="@drawable/ic_under_arrow"
-            android:text="최신순"
+            android:text="\t\t최신순"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

@@ -32,11 +32,10 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
 		}
 
 		val tabTitle = arrayOf("전체", "의류", "인형", "잡화")
+		val adapter = ViewpagerAdapter(this)
 
 		viewPager = binding.viewPager // viewPager 연결
 		tabLayout = binding.tabLayout // tabLayout 연결
-
-		val adapter = ViewpagerAdapter(this)
 
 		adapter.addFragment(CategoryAllFragment())
 		adapter.addFragment(CategoryClothFragment())
@@ -50,7 +49,6 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
 			tab.text = tabTitle[position]
 		}.attach()
 
-		// 선택된 카테고리에 따라 뷰페이저 초기화
 		val selectedCategory = arguments?.getString("selectedCategory")
 		val initialPage = when (selectedCategory) {
 			Category.CLOTHING.toString() -> 1
@@ -60,4 +58,5 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
 		}
 		viewPager.setCurrentItem(initialPage, false)
 	}
+
 }

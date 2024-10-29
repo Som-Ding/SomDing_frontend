@@ -33,6 +33,7 @@ class CategoryDollFragment : BaseFragment<FragmentCategoryDollBinding>(R.layout.
 		viewModel.categoryProjects.observe(viewLifecycleOwner, Observer { projects ->
 			projects?.let {
 				updateRecyclerView(it)
+				loadProjects(Sort.LATEST)
 			}
 			binding.tvDollSub.text = (projects?.result?.size.toString() + "개의 프로젝트가 있습니다.") ?: "0"
 		})
@@ -70,6 +71,7 @@ class CategoryDollFragment : BaseFragment<FragmentCategoryDollBinding>(R.layout.
 		adapter.dataList = categoryProjectData
 		binding.rvCategoryProject.adapter = adapter
 		binding.rvCategoryProject.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false) //레이아웃 매니저 연결
+
 	}
 
 	private fun updateRecyclerView(newData: CategoryProjectResponse) {
@@ -77,7 +79,7 @@ class CategoryDollFragment : BaseFragment<FragmentCategoryDollBinding>(R.layout.
 		categoryProjectData.addAll(newData.result)
 		binding.rvCategoryProject.adapter?.notifyDataSetChanged()
 	}
-	private fun loadProjects(sort: Sort) {
+	fun loadProjects(sort: Sort) {
 		viewModel.getProjectsByCategory(Category.DOLL.toString(), sort.toString())
 	}
 }

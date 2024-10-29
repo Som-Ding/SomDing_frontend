@@ -101,15 +101,15 @@ class MyPageRepository @Inject constructor(
 	/***
 	 * 내 후원 프로젝트 api
 	 */
-	fun orderMyProject(): MutableLiveData<MyProjectOrderResponse?> {
-		val responseLiveData = MutableLiveData<MyProjectOrderResponse?>()
+	fun orderMyProject(): MutableLiveData<CategoryProjectResponse?> {
+		val responseLiveData = MutableLiveData<CategoryProjectResponse?>()
 
 		try {
 			myPageApi.orderMyProject()
-				.enqueue(object : Callback<MyProjectOrderResponse> {
+				.enqueue(object : Callback<CategoryProjectResponse> {
 					override fun onResponse(
-						call: Call<MyProjectOrderResponse>,
-						response: Response<MyProjectOrderResponse>
+						call: Call<CategoryProjectResponse>,
+						response: Response<CategoryProjectResponse>
 					) {
 						if (response.isSuccessful) {
 							responseLiveData.postValue(response.body())
@@ -124,7 +124,7 @@ class MyPageRepository @Inject constructor(
 					}
 
 					override fun onFailure(
-						call: Call<MyProjectOrderResponse>,
+						call: Call<CategoryProjectResponse>,
 						t: Throwable
 					) {
 						_error.postValue("네트워크 오류: ${t.message}")

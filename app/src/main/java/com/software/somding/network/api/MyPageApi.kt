@@ -24,7 +24,7 @@ interface MyPageApi {
 	): Call<CommonResponse<String>>
 
 	@GET("api/orders/my")
-	fun orderMyProject(): Call<MyProjectOrderResponse>
+	fun orderMyProject(): Call<CategoryProjectResponse>
 
 	@GET("api/projects/scrap/my")
 	fun getScrap(): Call<CategoryProjectResponse>

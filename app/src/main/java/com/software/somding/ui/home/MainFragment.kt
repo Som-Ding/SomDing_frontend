@@ -58,11 +58,11 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
 	    }
 
 	    viewModel.getProjectsByCategory(Category.ALL.toString(), Sort.POPULARITY.toString())
-	    viewModel.categoryProjects.observe(viewLifecycleOwner, Observer { projects ->
+	    viewModel.categoryProjects.observe(viewLifecycleOwner) { projects ->
 		    projects?.let {
 			    updateRecyclerView(it)
 		    }
-	    })
+	    }
     }
 
 	private fun initProjectRecyclerView() {

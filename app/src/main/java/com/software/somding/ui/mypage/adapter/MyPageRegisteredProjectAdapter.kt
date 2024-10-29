@@ -1,5 +1,6 @@
 package com.software.somding.ui.mypage.adapter
 
+import android.icu.text.DecimalFormat
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -28,11 +29,11 @@ class MyPageRegisteredProjectAdapter(
 				0
 			}
 			binding.contentAchievement.text = "$achievementRate%"
-			binding.contentPrice.text = projectData.gatherPrice.toString()
-
+			val totalPriceFormatted = DecimalFormat("#,###").format(projectData.gatherPrice)
+			binding.contentPrice.text = totalPriceFormatted
 
 			binding.root.setOnClickListener {
-//		        onItemClick(projectData.projectId)
+		        onItemClick(projectData.projectId)
 			}
 		}
 	}

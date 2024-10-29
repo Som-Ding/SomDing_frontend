@@ -28,6 +28,8 @@ class CategoryProjectListAdapter(
 				0
 			}
 			binding.contentAchievement.text = "$achievementRate% 달성"
+			binding.linearProgressIndicator.progress =
+				((projectData.gatherPrice * 100) / projectData.targetPrice) ?: 0
 			binding.executePendingBindings()
 
 			binding.root.setOnClickListener {
