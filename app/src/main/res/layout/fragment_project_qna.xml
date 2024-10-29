@@ -9,10 +9,10 @@
         android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.AppCompatButton
-            style="@style/SemiBoldFontKr.16"
+            style="@style/MediumFontKr.16"
             android:id="@+id/qna_btn"
-            android:background="@color/magenta"
-            android:textColor="@color/white"
+            android:background="@drawable/bg_line_gray_radius_10"
+            android:textColor="@color/black"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginStart="50dp"
@@ -32,13 +32,15 @@
             app:layout_constraintTop_toBottomOf="@id/qna_btn"
             android:background="#D9D9D9"
             android:backgroundTint="#D9D9D9"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_review"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="20dp"
-            app:layout_constraintTop_toBottomOf="@id/qna_btn"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/qna_btn" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

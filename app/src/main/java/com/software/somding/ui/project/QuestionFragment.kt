@@ -43,6 +43,7 @@ class QuestionFragment : BaseFragment<FragmentQuestionBinding>(R.layout.fragment
 					title = binding.etProjectTitle.text.toString(),
 					question = binding.etContent.text.toString()
 				)
+				viewModel.getAllQuestion(projectId)
 			}
 		}
 

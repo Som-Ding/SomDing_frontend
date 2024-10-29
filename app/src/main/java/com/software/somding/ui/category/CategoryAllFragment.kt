@@ -1,8 +1,8 @@
 package com.software.somding.ui.category
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import android.widget.PopupMenu
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,14 +15,13 @@ import com.software.somding.databinding.FragmentCategoryAllBinding
 import com.software.somding.ui.common.BaseFragment
 import com.software.somding.ui.category.adapter.CategoryProjectListAdapter
 import com.software.somding.ui.category.viewmodel.CategoryViewModel
-import com.software.somding.ui.common.NavigationUtil.navigate
 import com.software.somding.ui.common.NavigationUtil.navigateWithBundle
-import com.software.somding.ui.project.viewmodel.ProjectViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class CategoryAllFragment :
 	BaseFragment<FragmentCategoryAllBinding>(R.layout.fragment_category_all) {
+
 	private val viewModel: CategoryViewModel by viewModels()
 	private val categoryProjectData = mutableListOf<CategoryProjectData>()
 
@@ -31,20 +30,45 @@ class CategoryAllFragment :
 
 		initProjectRecyclerView()
 
-		viewModel.getProjectsByCategory(Category.ALL.toString(), Sort.LATEST.toString())
+		// 초기 데이터 로드
+		loadProjects(Sort.LATEST)
+
+		// 데이터 옵저버 설정
 		viewModel.categoryProjects.observe(viewLifecycleOwner, Observer { projects ->
 			projects?.let {
 				updateRecyclerView(it)
 			}
 			binding.tvAllSub.text = (projects?.result?.size.toString() + "개의 프로젝트가 있습니다.") ?: "0"
 		})
+
+		// PopupMenu 설정
+		binding.filtering.setOnClickListener { view ->
+			val popupMenu = PopupMenu(requireContext(), view)
+			popupMenu.menuInflater.inflate(R.menu.filtering_menu, popupMenu.menu)
+
+			popupMenu.setOnMenuItemClickListener { menuItem ->
+				val selectedSort = when (menuItem.itemId) {
+					R.id.latest -> Sort.LATEST
+					R.id.popularity -> Sort.POPULARITY
+					R.id.most_sponsored -> Sort.MOST_SPONSORED
+					R.id.least_sponsored -> Sort.HIGHEST_AMOUNT
+					R.id.closing_soon -> Sort.CLOSING_SOON
+					else -> Sort.LATEST
+				}
+
+				binding.filtering.text = menuItem.title
+				loadProjects(selectedSort)
+				true
+			}
+			popupMenu.show()
+		}
 	}
 
 	private fun initProjectRecyclerView() {
 		val adapter = CategoryProjectListAdapter { projectId ->
 			val bundle = Bundle().apply {
-                putInt("projectId", projectId)
-            }
+				putInt("projectId", projectId)
+			}
 			navigateWithBundle(R.id.action_categoryFragment_to_projectFragment, bundle)
 		}
 		adapter.dataList = categoryProjectData
@@ -53,10 +77,13 @@ class CategoryAllFragment :
 			LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 	}
 
+	private fun loadProjects(sort: Sort) {
+		viewModel.getProjectsByCategory(Category.ALL.toString(), sort.toString())
+	}
+
 	private fun updateRecyclerView(newData: CategoryProjectResponse) {
-		categoryProjectData.clear() // 기존 데이터 클리어
-		categoryProjectData.addAll(newData.result) // 새로운 데이터 추가
-//		binding.rvCategoryProject.adapter = adapter
+		categoryProjectData.clear()
+		categoryProjectData.addAll(newData.result)
 		binding.rvCategoryProject.adapter?.notifyDataSetChanged()
 	}
 }

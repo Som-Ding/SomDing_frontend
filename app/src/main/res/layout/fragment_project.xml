@@ -17,7 +17,11 @@
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -27,11 +31,13 @@
                     android:id="@+id/view_pager"
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    style="@style/RegularFontKr.14"
                     android:id="@+id/category"
+                    style="@style/RegularFontKr.14"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="28dp"
@@ -40,7 +46,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/view_pager" />
 
-<!--
+                <!--
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -54,8 +60,8 @@
 -->
 
                 <TextView
-                    style="@style/SemiBoldFontKr.16"
                     android:id="@+id/title"
+                    style="@style/SemiBoldFontKr.16"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -64,8 +70,8 @@
                     app:layout_constraintTop_toBottomOf="@+id/category" />
 
                 <TextView
-                    style="@style/RegularFontKr.14"
                     android:id="@+id/total_price"
+                    style="@style/RegularFontKr.14"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -75,8 +81,8 @@
                     app:layout_constraintTop_toBottomOf="@id/title" />
 
                 <TextView
-                    style="@style/RegularFontKr.14"
                     android:id="@+id/remain"
+                    style="@style/RegularFontKr.14"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="30dp"
@@ -86,8 +92,8 @@
                     app:layout_constraintTop_toTopOf="@+id/total_price" />
 
                 <TextView
-                    style="@style/RegularFontKr.14"
                     android:id="@+id/sponsor"
+                    style="@style/RegularFontKr.14"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="30dp"
@@ -97,8 +103,8 @@
                     app:layout_constraintTop_toTopOf="@+id/total_price" />
 
                 <TextView
-                    style="@style/SemiBoldFontKr.16"
                     android:id="@+id/tot_price"
+                    style="@style/SemiBoldFontKr.16"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -108,8 +114,8 @@
                     app:layout_constraintTop_toBottomOf="@id/total_price" />
 
                 <TextView
-                    style="@style/RegularFontKr.12"
                     android:id="@+id/price_per"
+                    style="@style/RegularFontKr.12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
@@ -172,16 +178,15 @@
                 <FrameLayout
                     android:id="@+id/main_view"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_height="match_parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tablayout" />
-
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/coordinatorLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"

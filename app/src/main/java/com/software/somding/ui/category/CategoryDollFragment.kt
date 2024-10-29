@@ -2,6 +2,7 @@ package com.software.somding.ui.category
 
 import android.os.Bundle
 import android.view.View
+import android.widget.PopupMenu
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,14 +28,36 @@ class CategoryDollFragment : BaseFragment<FragmentCategoryDollBinding>(R.layout.
 		super.onViewCreated(view, savedInstanceState)
 
 		initProjectRecyclerView()
+		loadProjects(Sort.LATEST)
 
-		viewModel.getProjectsByCategory(Category.DOLL.toString(), Sort.LATEST.toString())
 		viewModel.categoryProjects.observe(viewLifecycleOwner, Observer { projects ->
 			projects?.let {
 				updateRecyclerView(it)
 			}
 			binding.tvDollSub.text = (projects?.result?.size.toString() + "개의 프로젝트가 있습니다.") ?: "0"
 		})
+
+		// PopupMenu 설정
+		binding.filtering.setOnClickListener { view ->
+			val popupMenu = PopupMenu(requireContext(), view)
+			popupMenu.menuInflater.inflate(R.menu.filtering_menu, popupMenu.menu)
+
+			popupMenu.setOnMenuItemClickListener { menuItem ->
+				val selectedSort = when (menuItem.itemId) {
+					R.id.latest -> Sort.LATEST
+					R.id.popularity -> Sort.POPULARITY
+					R.id.most_sponsored -> Sort.MOST_SPONSORED
+					R.id.least_sponsored -> Sort.HIGHEST_AMOUNT
+					R.id.closing_soon -> Sort.CLOSING_SOON
+					else -> Sort.LATEST
+				}
+
+				binding.filtering.text = menuItem.title
+				loadProjects(selectedSort)
+				true
+			}
+			popupMenu.show()
+		}
 	}
 
 	private fun initProjectRecyclerView() {
@@ -53,5 +76,8 @@ class CategoryDollFragment : BaseFragment<FragmentCategoryDollBinding>(R.layout.
 		categoryProjectData.clear()
 		categoryProjectData.addAll(newData.result)
 		binding.rvCategoryProject.adapter?.notifyDataSetChanged()
+	}
+	private fun loadProjects(sort: Sort) {
+		viewModel.getProjectsByCategory(Category.ALL.toString(), sort.toString())
 	}
 }
