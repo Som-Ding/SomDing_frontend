@@ -214,4 +214,42 @@ class ProjectRepository @Inject constructor(
 			})
 		return responseLiveData
 	}
+
+
+	/***
+	 * 프로젝트 scrap api
+	 */
+	fun getScrap(projectId: Int): MutableLiveData<CommonResponse<String>?> {
+		val responseLiveData = MutableLiveData<CommonResponse<String>?>()
+
+		projectApi.getScrap(projectId)
+			.enqueue(object : Callback<CommonResponse<String>> {
+				override fun onResponse(
+					call: Call<CommonResponse<String>>,
+					response: Response<CommonResponse<String>>
+				) {
+					if (response.isSuccessful) {
+						responseLiveData.postValue(response.body())
+						Log.d("scrap", "Received data: ${response.body()}")
+					} else {
+						responseLiveData.value = null
+						val errorMsg = response.errorBody()?.string() ?: "Unknown error"
+						Log.d(
+							"scrap",
+							"Response not successful: ${response.code()} - $errorMsg"
+						)
+					}
+				}
+
+				override fun onFailure(
+					call: Call<CommonResponse<String>>,
+					t: Throwable
+				) {
+					_error.postValue("네트워크 오류: ${t.message}")
+					Log.d("QnA", "Network error: ${t.message}")
+				}
+			})
+		return responseLiveData
+	}
 }
+

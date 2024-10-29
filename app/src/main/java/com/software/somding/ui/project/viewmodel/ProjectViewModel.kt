@@ -36,6 +36,9 @@ class ProjectViewModel @Inject constructor(
 	private val _qna = MutableLiveData<CommonResponse<String>>()
 	val qna: LiveData<CommonResponse<String>> get() = _qna
 
+	private val _scrap = MutableLiveData<CommonResponse<String>?>()
+	val scrap: MutableLiveData<CommonResponse<String>?> get() = _scrap
+
 	fun getProjectsDetail(projectId: Int) {
 		repository.getProjectDetail(projectId).observeForever { response ->
 			_projectDetail.postValue(response?.result)
@@ -67,6 +70,12 @@ class ProjectViewModel @Inject constructor(
 	fun createQuestion(projectId: Int, title: String, question: String) {
 		repository.createQuestion(projectId, title, question).observeForever {
 			_qna.postValue(it)
+		}
+	}
+
+	fun getScrap(projectId: Int) {
+		repository.getScrap(projectId).observeForever { response ->
+			_scrap.postValue(response)
 		}
 	}
 }

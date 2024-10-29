@@ -31,8 +31,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/project_img"
             app:layout_constraintStart_toEndOf="@+id/project_img"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="@+id/project_img">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/content_number"

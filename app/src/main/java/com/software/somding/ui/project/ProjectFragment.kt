@@ -5,6 +5,8 @@ import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
+import android.widget.Toast.LENGTH_SHORT
 import androidx.fragment.app.viewModels
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.tabs.TabLayout
@@ -32,16 +34,23 @@ class ProjectFragment : BaseFragment<FragmentProjectBinding>(R.layout.fragment_p
 		val projectId = arguments?.getInt("projectId") ?: return
 		Log.d("projectId!", projectId.toString())
 
+		/***
+		 * 프로젝트 상세페이지 조회
+		 */
 		viewModel.getProjectsDetail(projectId)
 		viewModel.projectDetail.observe(viewLifecycleOwner) { projectDetail ->
 			if (projectDetail != null) {
 				binding.title.text = projectDetail.title
 				binding.category.text = projectDetail.category
 				binding.totalPrice.text = projectDetail.targetDate
+				binding.likeBtn.text = projectDetail.scrapNum.toString()
 
 				imageSliderAdapter =
 					viewModel.projectDetail.value?.let { ImageSliderAdapter(it.imgList) }!!
 				binding.viewPager.adapter = imageSliderAdapter
+
+				val remainingDays = projectDetail.getRemainingDays()
+				binding.remainDate.text = "$remainingDays 일"
 			} else {
 				Log.e("ProjectFragment", "null")
 			}
@@ -51,6 +60,30 @@ class ProjectFragment : BaseFragment<FragmentProjectBinding>(R.layout.fragment_p
 //			viewModel.projectDetail.value!!.sizeList,
 //			viewModel.projectDetail.value!!.otherList
 //		)
+
+		/***
+		 * 프로젝트 스크랩
+		 */
+		var isLiked = false
+
+		binding.likeBtn.setOnClickListener {
+			viewModel.getScrap(projectId)
+
+			isLiked = !isLiked // 상태 토글
+
+			if (isLiked) {
+				binding.likeBtn.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_heart_filled, 0, 0)
+			} else {
+				binding.likeBtn.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_heart, 0, 0)
+			}
+		}
+		viewModel.scrap.observe(viewLifecycleOwner) {
+			if (isLiked) {
+				Toast.makeText(requireContext(), "스크랩 되었습니다.", LENGTH_SHORT).show()
+			} else {
+				Toast.makeText(requireContext(), "스크랩이 취소되었습니다.", LENGTH_SHORT).show()
+			}
+		}
 	}
 
 	private fun setupTabLayout() {

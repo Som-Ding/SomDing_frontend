@@ -44,4 +44,9 @@ interface ProjectApi {
 	fun createQuestion(
 		@Body request: CreateQuestionRequestDTO
 	): Call<CommonResponse<String>>
+
+	@GET("api/projects/scrap/{projectId}")
+	fun getScrap(
+		@Path("projectId") projectId: Int
+	): Call<CommonResponse<String>>
 }

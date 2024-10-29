@@ -1,7 +1,9 @@
 package com.software.somding.network.api
 
 import com.software.somding.data.model.common.CommonResponse
+import com.software.somding.data.model.home.CategoryProjectResponse
 import com.software.somding.data.model.mypage.MyPageResponse
+import com.software.somding.data.model.mypage.MyProjectOrderResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -20,4 +22,10 @@ interface MyPageApi {
 		@Part("updateProfileDTO") updateProfileDTO: RequestBody,
 		@Part image: MultipartBody.Part?
 	): Call<CommonResponse<String>>
+
+	@GET("api/orders/my")
+	fun orderMyProject(): Call<MyProjectOrderResponse>
+
+	@GET("api/projects/scrap/my")
+	fun getScrap(): Call<CategoryProjectResponse>
 }

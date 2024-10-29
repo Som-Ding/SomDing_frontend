@@ -78,7 +78,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:progress="@{data.gatherPrice}"
+            android:progress="@{data.targetPrice != 0 ? (int) ((data.gatherPrice * 100) / data.targetPrice) : 0}"
             app:indicatorColor="@color/magenta"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/project_img"
@@ -92,7 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="@{String.valueOf(data.price)}"
+            android:text="@{String.valueOf(data.gatherPrice)}"
             android:textSize="10sp"
             app:layout_constraintStart_toStartOf="@+id/content_category"
             app:layout_constraintTop_toBottomOf="@+id/linearProgressIndicator" />
