@@ -1,38 +1,34 @@
 package com.software.somding.ui.project
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.software.somding.R
-import com.software.somding.data.model.home.CategoryProjectData
-import com.software.somding.data.model.home.CategoryProjectResponse
 import com.software.somding.data.model.project.Question
 import com.software.somding.data.model.project.QuestionResponse
-import com.software.somding.data.project.QnaData
 import com.software.somding.databinding.FragmentProjectQnaBinding
-import com.software.somding.ui.category.adapter.CategoryProjectListAdapter
 import com.software.somding.ui.common.BaseFragment
-import com.software.somding.ui.common.NavigationUtil.navigateWithBundle
+import com.software.somding.ui.common.NavigationUtil.navigate
 import com.software.somding.ui.project.adapter.ProjectQnaAdapter
 import com.software.somding.ui.project.viewmodel.ProjectViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class QnAFragment: BaseFragment<FragmentProjectQnaBinding>(R.layout.fragment_project_qna) {
+class ProjectQnAFragment: BaseFragment<FragmentProjectQnaBinding>(R.layout.fragment_project_qna) {
     private val qnaData = mutableListOf<QuestionResponse>()
 	private val viewModel: ProjectViewModel by viewModels()
 	private val question = mutableListOf<Question>()
 
 	companion object {
-		private const val ARG_PROJECT_ID = "arg_project_id"
+		const val ARG_PROJECT_ID = "arg_project_id"
 
-		fun newInstance(projectId: String): QnAFragment {
-			val fragment = QnAFragment()
+		fun newInstance(projectId: Int): ProjectQnAFragment {
+			val fragment = ProjectQnAFragment()
 			val args = Bundle().apply {
-				putString(ARG_PROJECT_ID, projectId)
+				putInt(ARG_PROJECT_ID, projectId)
 			}
 			fragment.arguments = args
 			return fragment
@@ -41,20 +37,31 @@ class QnAFragment: BaseFragment<FragmentProjectQnaBinding>(R.layout.fragment_pro
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
+		val questionFragment = QuestionFragment()
+		initProjectRecyclerView()
 
-		val projectId = arguments?.getString(ARG_PROJECT_ID)?.toInt()
-
-        initProjectRecyclerView();
-
+		val projectId = arguments?.getInt(ARG_PROJECT_ID)
 		if (projectId != null) {
 			viewModel.getAllQuestion(projectId)
 		}
+
 	    viewModel.question.observe(viewLifecycleOwner, Observer { projects ->
 		    projects?.let {
 			    updateRecyclerView(it)
 		    }
 	    })
-    }
+
+		binding.qnaBtn.setOnClickListener {
+			val questionFragment = projectId?.let { it1 -> QuestionFragment.newInstance(it1) }
+			val transaction = parentFragmentManager.beginTransaction()
+			if (questionFragment != null) {
+				transaction.replace(R.id.main_view, questionFragment)
+			}
+			transaction.addToBackStack(null)
+			transaction.commit()
+		}
+
+	}
 	private fun initProjectRecyclerView() {
 		val adapter = ProjectQnaAdapter()
 		adapter.dataList = question

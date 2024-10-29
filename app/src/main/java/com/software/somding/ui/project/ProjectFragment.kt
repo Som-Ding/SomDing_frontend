@@ -6,12 +6,10 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.fragment.app.viewModels
-import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.tabs.TabLayout
 import com.software.somding.R
 import com.software.somding.data.model.project.ProjectOption
-import com.software.somding.data.model.project.ProjectRequest
 import com.software.somding.databinding.FragmentProjectBinding
 import com.software.somding.ui.category.adapter.ImageSliderAdapter
 import com.software.somding.ui.common.BaseFragment
@@ -58,6 +56,8 @@ class ProjectFragment : BaseFragment<FragmentProjectBinding>(R.layout.fragment_p
 	private fun setupTabLayout() {
 		val tabLayout = binding.tablayout
 		val reviewFragment = ReviewFragment()
+		var qnaFragmentProject = ProjectQnAFragment()
+		var questionProject = QuestionFragment()
 
 		viewModel.projectDetail.observe(viewLifecycleOwner) { projectDetail ->
 			if (projectDetail != null) {
@@ -68,10 +68,19 @@ class ProjectFragment : BaseFragment<FragmentProjectBinding>(R.layout.fragment_p
 						projectDetail.schedule
 					)
 
-				val qnaFragment =
-					QnAFragment.newInstance(
-						arguments?.getInt("projectId").toString()
-					)
+				qnaFragmentProject =
+					arguments?.getInt("projectId")?.let {
+						ProjectQnAFragment.newInstance(
+							it
+						)
+					}!!
+
+				questionProject =
+					arguments?.getInt("projectId")?.let {
+						QuestionFragment.newInstance(
+							it
+						)
+					}!!
 
 				// 기본 프래그먼트 설정
 				requireActivity().supportFragmentManager.beginTransaction()
@@ -83,11 +92,13 @@ class ProjectFragment : BaseFragment<FragmentProjectBinding>(R.layout.fragment_p
 						val selectedFragment = when (tab?.position) {
 							0 -> detailFragment
 							1 -> reviewFragment
-							2 -> qnaFragment
+							2 -> qnaFragmentProject
 							else -> detailFragment
 						}
-						requireActivity().supportFragmentManager.beginTransaction()
-							.replace(R.id.main_view, selectedFragment).commit()
+						if (selectedFragment != null) {
+							requireActivity().supportFragmentManager.beginTransaction()
+								.replace(R.id.main_view, selectedFragment).commit()
+						}
 					}
 
 					override fun onTabUnselected(tab: TabLayout.Tab?) {}

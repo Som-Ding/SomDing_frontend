@@ -5,11 +5,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.software.somding.data.model.common.CommonResponse
 import com.software.somding.data.model.home.CategoryProjectResponse
+import com.software.somding.data.model.project.CreateQuestionRequestDTO
 import com.software.somding.data.model.project.ProjectDetailResponse
 import com.software.somding.data.model.project.QuestionResponse
 import com.software.somding.network.api.ProjectApi
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -88,9 +90,11 @@ class ProjectRepository @Inject constructor(
 						Log.d("register", "성공 오우예 ${response.body()}")
 					} else {
 						responseLiveData.postValue(null)
-						Log.e(
+
+						val errorMsg = response.errorBody()?.string() ?: "Unknown error"
+						Log.d(
 							"RegisterFragment",
-							"Error: ${response.code()} - ${response.message()}"
+							"Error: ${response.code()} - $errorMsg"
 						)
 					}
 				}
@@ -176,4 +180,47 @@ class ProjectRepository @Inject constructor(
 		return responseLiveData
 	}
 
+
+	fun createQuestion(
+		projectId: Int,
+		title: String,
+		question: String
+	): MutableLiveData<CommonResponse<String>?> {
+		val responseLiveData = MutableLiveData<CommonResponse<String>?>()
+
+		projectApi.createQuestion(
+			request = CreateQuestionRequestDTO(
+				question = question,
+				title = title,
+				projectId = projectId
+			)
+		)
+			.enqueue(object : Callback<CommonResponse<String>> {
+				override fun onResponse(
+					call: Call<CommonResponse<String>>,
+					response: Response<CommonResponse<String>>
+				) {
+					if (response.isSuccessful) {
+						responseLiveData.postValue(response.body())
+						Log.d("QnA: create", "Received data: ${response.body()}")
+					} else {
+						responseLiveData.value = null
+						val errorMsg = response.errorBody()?.string() ?: "Unknown error"
+						Log.d(
+							"QnA: create",
+							"Response not successful: ${response.code()} - $errorMsg"
+						)
+					}
+				}
+
+				override fun onFailure(
+					call: Call<CommonResponse<String>>,
+					t: Throwable
+				) {
+					_error.postValue("네트워크 오류: ${t.message}")
+					Log.d("QnA", "Network error: ${t.message}")
+				}
+			})
+		return responseLiveData
+	}
 }

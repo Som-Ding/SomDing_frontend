@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_title"
+                style="@style/BoldFontKr.20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
+                android:text="QnA 작성하기"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_project_title"
+                style="@style/RegularFontKr.16"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="28dp"
+                android:text="질문의 제목을 작성하세요."
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_project_title"
+                style="@style/RegularFontKr.12"
+                android:layout_width="0dp"
+                android:padding="8dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/bg_line_gray_radius_10"
+                android:hint="제목을 입력하세요."
+                android:lines="2"
+                android:paddingStart="12dp"
+                android:singleLine="true"
+                android:paddingEnd="12dp"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tv_project_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_project_title" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_policy"
+                style="@style/RegularFontKr.16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="질문의 내용을 작성하세요."
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@+id/et_project_title"
+                app:layout_constraintTop_toBottomOf="@+id/et_project_title" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_content"
+                style="@style/RegularFontKr.12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_line_gray_radius_10"
+                android:hint="내용을 입력하세요."
+                android:lines="10"
+                android:minLines="5"
+                android:paddingStart="12dp"
+                android:singleLine="true"
+                android:paddingEnd="12dp"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="@+id/et_project_title"
+                app:layout_constraintStart_toStartOf="@+id/tv_policy"
+                app:layout_constraintTop_toBottomOf="@+id/tv_policy" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_register"
+                style="@style/RegularFontKr.16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="65dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="65dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bg_solid_magenta_radius_10"
+                android:text="완료"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_content" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>
+
