@@ -44,7 +44,7 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>(R.layout.fragment_my_
         }
 
         binding.btnMyInterestedProject.setOnClickListener {
-
+	        navigate(R.id.action_myPageFragment_to_interestedProjectFragment)
         }
 
 	    binding.btnMyQna.setOnClickListener {

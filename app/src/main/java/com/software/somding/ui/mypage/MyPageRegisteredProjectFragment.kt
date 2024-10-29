@@ -36,19 +36,9 @@ class MyPageRegisteredProjectFragment :
 			projects?.let {
 				updateRecyclerView(it)
 			}
+			binding.projectContent.text = (projects?.result?.size.toString() + "개의 프로젝트가 있습니다.")
 		})
-
 	}
-
-
-	/*    private fun initProjectRecyclerView() {
-			val adapter = MyPageRegisteredProjectAdapter()
-
-			adapter.dataList = registeredProjectData
-			binding.recyclerView.adapter = adapter
-			binding.recyclerView.layoutManager =
-				LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false) //레이아웃 매니저 연결
-		}*/
 
 	private fun initProjectRecyclerView() {
 		val adapter = MyPageRegisteredProjectAdapter { projectId ->
@@ -56,10 +46,6 @@ class MyPageRegisteredProjectFragment :
 				putInt("projectId", projectId)
 			}
 			navigateWithBundle(R.id.action_categoryFragment_to_projectFragment, bundle)
-//			parentFragmentManager.beginTransaction()
-//				.replace(R.id.fcv_main, ProjectFragment())
-//				.addToBackStack(null) // 뒤로가기 스택에 추가
-//				.commit()
 		}
 		adapter.dataList = registeredProjectData
 		binding.recyclerView.adapter = adapter
@@ -70,7 +56,6 @@ class MyPageRegisteredProjectFragment :
 	private fun updateRecyclerView(newData: CategoryProjectResponse) {
 		registeredProjectData.clear() // 기존 데이터 클리어
 		registeredProjectData.addAll(newData.result) // 새로운 데이터 추가
-//		binding.rvCategoryProject.adapter = adapter
 		binding.recyclerView.adapter?.notifyDataSetChanged()
 	}
 }

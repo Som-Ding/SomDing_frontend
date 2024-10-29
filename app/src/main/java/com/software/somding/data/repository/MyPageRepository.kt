@@ -5,7 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import com.software.somding.data.model.common.CommonResponse
+import com.software.somding.data.model.home.CategoryProjectResponse
 import com.software.somding.data.model.mypage.MyPageResponse
+import com.software.somding.data.model.mypage.MyProjectOrderResponse
 import com.software.somding.data.model.mypage.UpdateProfileDTO
 import com.software.somding.network.api.MyPageApi
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -53,6 +55,7 @@ class MyPageRepository @Inject constructor(
 
 		return myPageResponse
 	}
+
 	fun updateProfile(updateProfileDTO: UpdateProfileDTO, imagePath: String?): MutableLiveData<CommonResponse<String>?> {
 		val profileResponse = MutableLiveData<CommonResponse<String>?>()
 
@@ -95,4 +98,82 @@ class MyPageRepository @Inject constructor(
 		return profileResponse
 	}
 
+	/***
+	 * 내 후원 프로젝트 api
+	 */
+	fun orderMyProject(): MutableLiveData<MyProjectOrderResponse?> {
+		val responseLiveData = MutableLiveData<MyProjectOrderResponse?>()
+
+		try {
+			myPageApi.orderMyProject()
+				.enqueue(object : Callback<MyProjectOrderResponse> {
+					override fun onResponse(
+						call: Call<MyProjectOrderResponse>,
+						response: Response<MyProjectOrderResponse>
+					) {
+						if (response.isSuccessful) {
+							responseLiveData.postValue(response.body())
+							Log.d("ProjectRepository", "Received data: ${response.body()}")
+						} else {
+							responseLiveData.value = null
+							Log.d(
+								"ProjectRepository",
+								"Response not successful: ${response.message()}"
+							)
+						}
+					}
+
+					override fun onFailure(
+						call: Call<MyProjectOrderResponse>,
+						t: Throwable
+					) {
+						_error.postValue("네트워크 오류: ${t.message}")
+						Log.d("ProjectRepository", "Network error: ${t.message}")
+					}
+				})
+		} catch (e: Exception) {
+			_error.postValue("예외 발생: ${e.message}")
+			Log.e("ProjectRepository", "Exception: ${e.message}")
+		}
+
+		return responseLiveData
+	}
+
+	fun getScrap(): LiveData<CategoryProjectResponse?> {
+		val responseLiveData = MutableLiveData<CategoryProjectResponse?>()
+
+		try {
+			myPageApi.getScrap()
+				.enqueue(object : Callback<CategoryProjectResponse> {
+					override fun onResponse(
+						call: Call<CategoryProjectResponse>,
+						response: Response<CategoryProjectResponse>
+					) {
+						if (response.isSuccessful) {
+							responseLiveData.postValue(response.body())
+							Log.d("ProjectRepository", "Received data: ${response.body()}")
+						} else {
+							responseLiveData.value = null
+							Log.d(
+								"ProjectRepository",
+								"Response not successful: ${response.message()}"
+							)
+						}
+					}
+
+					override fun onFailure(
+						call: Call<CategoryProjectResponse>,
+						t: Throwable
+					) {
+						_error.postValue("네트워크 오류: ${t.message}")
+						Log.d("ProjectRepository", "Network error: ${t.message}")
+					}
+				})
+		} catch (e: Exception) {
+			_error.postValue("예외 발생: ${e.message}")
+			Log.e("ProjectRepository", "Exception: ${e.message}")
+		}
+
+		return responseLiveData
+	}
 }

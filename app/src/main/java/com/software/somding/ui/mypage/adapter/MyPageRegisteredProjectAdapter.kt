@@ -21,7 +21,13 @@ class MyPageRegisteredProjectAdapter(
 			loadImage(binding.projectImg, projectData.img.toString())
 			binding.contentCategory.text = projectData.category
 			binding.contentProjectTitle.text = projectData.title
-//            binding.contentAchievement.text = projectData.projectPercent.toString()
+
+			val achievementRate = if (projectData.targetPrice != 0) {
+				(projectData.gatherPrice.toDouble() / projectData.targetPrice * 100).toInt()
+			} else {
+				0
+			}
+			binding.contentAchievement.text = "$achievementRate%"
 			binding.contentPrice.text = projectData.gatherPrice.toString()
 
 
