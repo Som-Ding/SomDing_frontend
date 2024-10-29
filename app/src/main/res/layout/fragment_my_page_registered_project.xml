@@ -43,6 +43,7 @@
             android:id="@+id/project_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/RegularFontKr.14"
             android:text="1,000개의 프로젝트가 있습니다."
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -8,7 +8,11 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/viewPager_constraint"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -62,5 +66,5 @@
             tools:listitem="@layout/item_category_project" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
+    </androidx.core.widget.NestedScrollView>
 </layout>

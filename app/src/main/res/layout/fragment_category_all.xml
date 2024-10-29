@@ -9,58 +9,62 @@
             type="com.software.somding.ui.category.viewmodel.CategoryViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/viewPager_constraint"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/viewPager_constraint"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_all_title"
-            style="@style/RegularFontKr.16"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="11dp"
-            android:text="전체 All"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_all_title"
+                style="@style/RegularFontKr.16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="11dp"
+                android:text="전체 All"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/filtering"
-            style="@style/RegularFontKr.16"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="28dp"
-            android:layout_marginTop="11dp"
-            android:drawableStart="@drawable/ic_under_arrow"
-            android:text="\t\t최신순"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/filtering"
+                style="@style/RegularFontKr.16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="28dp"
+                android:layout_marginTop="11dp"
+                android:drawableStart="@drawable/ic_under_arrow"
+                android:text="\t\t최신순"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_all_sub"
-            style="@style/RegularFontKr.14"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="@+id/tv_all_title"
-            app:layout_constraintTop_toBottomOf="@+id/tv_all_title" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_all_sub"
+                style="@style/RegularFontKr.14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@+id/tv_all_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_all_title" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_category_project"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="11dp"
-            android:orientation="horizontal"
-            android:layout_marginEnd="28dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/tv_all_sub"
-            app:layout_constraintTop_toBottomOf="@+id/tv_all_sub"
-            tools:listitem="@layout/item_category_project" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_category_project"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:orientation="horizontal"
+                android:layout_marginEnd="28dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tv_all_sub"
+                app:layout_constraintTop_toBottomOf="@+id/tv_all_sub"
+                tools:listitem="@layout/item_category_project" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </layout>

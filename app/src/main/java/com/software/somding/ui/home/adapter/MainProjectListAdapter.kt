@@ -19,7 +19,12 @@ class MainProjectListAdapter(
 			loadImage(binding.projectImg, projectData.img.toString())
 			binding.contentCategory.text = projectData.category
 			binding.contentProjectTitle.text = projectData.title
-			binding.contentAchievement.text = projectData.targetPrice.toString()
+			val achievementRate = if (projectData.targetPrice != 0) {
+				(projectData.gatherPrice.toDouble() / projectData.targetPrice * 100).toInt()
+			} else {
+				0
+			}
+			binding.contentAchievement.text = "$achievementRate% 달성"
 			binding.contentNumber.text = (position + 1).toString()
 //			binding.contentPrice.text = projectData.gatherPrice.toString()
 //			binding.executePendingBindings()
