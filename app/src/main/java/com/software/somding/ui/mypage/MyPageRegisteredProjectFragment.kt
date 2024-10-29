@@ -34,6 +34,7 @@ class MyPageRegisteredProjectFragment :
 		viewModel.getMyProject()
 		viewModel.myProject.observe(viewLifecycleOwner, Observer { projects ->
 			projects?.let {
+				viewModel.getMyProject()
 				updateRecyclerView(it)
 			}
 			binding.projectContent.text = (projects?.result?.size.toString() + "개의 프로젝트가 있습니다.")

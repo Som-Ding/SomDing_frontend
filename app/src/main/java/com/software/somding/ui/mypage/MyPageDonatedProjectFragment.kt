@@ -30,6 +30,7 @@ class MyPageDonatedProjectFragment : BaseFragment<FragmentMyPageDonatedProjectBi
 	    viewModel.orderMyProject()
 	    viewModel.myOrderProject.observe(viewLifecycleOwner, Observer { projects ->
 		    projects?.let {
+			    viewModel.orderMyProject()
 			    updateRecyclerView(it)
 		    }
 		    binding.projectContent.text = (projects?.result?.size.toString() + "개의 프로젝트가 있습니다.")

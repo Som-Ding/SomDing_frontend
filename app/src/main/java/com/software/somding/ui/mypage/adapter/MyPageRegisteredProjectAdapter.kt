@@ -50,7 +50,7 @@ class MyPageRegisteredProjectAdapter(
 	override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 		holder.bind(dataList[position])
 		holder.itemView.setOnClickListener {
-//			onItemClick(dataList[position].projectId) // 클릭된 프로젝트 ID 전달
+			onItemClick(dataList[position].projectId) // 클릭된 프로젝트 ID 전달
 		}
 	}
 
