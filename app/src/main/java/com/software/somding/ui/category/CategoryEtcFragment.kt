@@ -79,6 +79,6 @@ class CategoryEtcFragment : BaseFragment<FragmentCategoryEtcBinding>(R.layout.fr
 		binding.rvCategoryProject.adapter?.notifyDataSetChanged()
 	}
 	private fun loadProjects(sort: Sort) {
-		viewModel.getProjectsByCategory(Category.ALL.toString(), sort.toString())
+		viewModel.getProjectsByCategory(Category.VARIOUS.toString(), sort.toString())
 	}
 }

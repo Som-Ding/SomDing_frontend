@@ -20,34 +20,44 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment_category) {
-	private val viewModel: CategoryViewModel by viewModels()
 
-    private lateinit var viewPager : ViewPager2
-    private lateinit var tabLayout : TabLayout
+	private lateinit var viewPager: ViewPager2
+	private lateinit var tabLayout: TabLayout
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+		super.onViewCreated(view, savedInstanceState)
 
-        binding.btnToCategory.setOnClickListener {
+		binding.btnToCategory.setOnClickListener {
 			navigate(R.id.action_categoryFragment_to_registerFragment)
-        }
+		}
 
-        val tabTitle = arrayOf("전체", "의류", "인형", "잡화")
+		val tabTitle = arrayOf("전체", "의류", "인형", "잡화")
 
-        viewPager = binding.viewPager // viewPager 연결
-        tabLayout = binding.tabLayout // tabLayout 연결
+		viewPager = binding.viewPager // viewPager 연결
+		tabLayout = binding.tabLayout // tabLayout 연결
 
-        val adapter = ViewpagerAdapter(this)
+		val adapter = ViewpagerAdapter(this)
 
-        adapter.addFragment(CategoryAllFragment())
-        adapter.addFragment(CategoryClothFragment())
-        adapter.addFragment(CategoryDollFragment())
-        adapter.addFragment(CategoryEtcFragment())
+		adapter.addFragment(CategoryAllFragment())
+		adapter.addFragment(CategoryClothFragment())
+		adapter.addFragment(CategoryDollFragment())
+		adapter.addFragment(CategoryEtcFragment())
 
-        viewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
-        viewPager.adapter = adapter
+		viewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+		viewPager.adapter = adapter
 
-        TabLayoutMediator(tabLayout, viewPager
-        ) { tab, position -> tab.text = tabTitle[position] }.attach()
-    }
+		TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+			tab.text = tabTitle[position]
+		}.attach()
+
+		// 선택된 카테고리에 따라 뷰페이저 초기화
+		val selectedCategory = arguments?.getString("selectedCategory")
+		val initialPage = when (selectedCategory) {
+			Category.CLOTHING.toString() -> 1
+			Category.DOLL.toString() -> 2
+			Category.VARIOUS.toString() -> 3
+			else -> 0
+		}
+		viewPager.setCurrentItem(initialPage, false)
+	}
 }

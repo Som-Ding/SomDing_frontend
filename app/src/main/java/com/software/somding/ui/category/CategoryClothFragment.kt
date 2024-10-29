@@ -85,6 +85,6 @@ class CategoryClothFragment :
 	}
 
 	private fun loadProjects(sort: Sort) {
-		viewModel.getProjectsByCategory(Category.ALL.toString(), sort.toString())
+		viewModel.getProjectsByCategory(Category.CLOTHING.toString(), sort.toString())
 	}
 }

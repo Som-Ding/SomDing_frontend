@@ -78,6 +78,6 @@ class CategoryDollFragment : BaseFragment<FragmentCategoryDollBinding>(R.layout.
 		binding.rvCategoryProject.adapter?.notifyDataSetChanged()
 	}
 	private fun loadProjects(sort: Sort) {
-		viewModel.getProjectsByCategory(Category.ALL.toString(), sort.toString())
+		viewModel.getProjectsByCategory(Category.DOLL.toString(), sort.toString())
 	}
 }

@@ -34,19 +34,27 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-	    initializeList()
 	    initProjectRecyclerView()
 
 	    binding.btnToCategoryCloth.setOnClickListener {
-            navigate(R.id.action_mainFragment_to_categoryFragment)
+			val bundle = Bundle().apply {
+		    putString("selectedCategory", Category.CLOTHING.toString())
+	    }
+		    navigateWithBundle(R.id.action_mainFragment_to_categoryFragment, bundle)
         }
 
 	    binding.btnToCategoryDoll.setOnClickListener {
-		    navigate(R.id.action_mainFragment_to_categoryFragment)
+		    val bundle = Bundle().apply {
+			    putString("selectedCategory", Category.DOLL.toString())
+		    }
+		    navigateWithBundle(R.id.action_mainFragment_to_categoryFragment, bundle)
 	    }
 
 	    binding.btnToCategoryEtc.setOnClickListener {
-		    navigate(R.id.action_mainFragment_to_categoryFragment)
+		    val bundle = Bundle().apply {
+			    putString("selectedCategory", Category.VARIOUS.toString())
+		    }
+		    navigateWithBundle(R.id.action_mainFragment_to_categoryFragment, bundle)
 	    }
 
 	    viewModel.getProjectsByCategory(Category.ALL.toString(), Sort.POPULARITY.toString())
@@ -73,30 +81,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
 	private fun updateRecyclerView(newData: CategoryProjectResponse) {
 		popularProjectData.clear() // 기존 데이터 클리어
 		popularProjectData.addAll(newData.result) // 새로운 데이터 추가
-//		binding.rvCategoryProject.adapter = adapter
 		binding.rvPopularProject.adapter?.notifyDataSetChanged()
 	}
-//    private fun initProjectRecyclerView() {
-//        val adapter = MainProjectListAdapter()
-//        adapter.dataList = recentProjectData
-//        binding.rvRecentProject.adapter = adapter
-//        binding.rvRecentProject.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false) //레이아웃 매니저 연결
-//
-//        val adapter2 = MainPopularProjectListAdapter()
-//        adapter2.dataList = popularProjectData
-//        binding.rvPopularProject.adapter = adapter2
-//        binding.rvPopularProject.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false) //레이아웃 매니저 연결
-//    }
-
-    private fun initializeList() { // 더미 데이터
-        with(recentProjectData) {
-            add(ProjectData("의류", "컴과 과잠", 70))
-            add(ProjectData("의류", "동덕 사과 학잠!!", 20))
-            add(ProjectData("의류", "동덕 은실 학잠", 30))
-            add(ProjectData("인형", "판다 솜솜이", 90))
-            add(ProjectData("잡화", "솜솜이 물통", 20))
-            add(ProjectData("인형", "토끼 솜솜이", 99))
-        }
-    }
 
 }
