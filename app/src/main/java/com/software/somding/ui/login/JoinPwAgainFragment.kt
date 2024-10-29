@@ -5,6 +5,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -30,16 +31,25 @@ class JoinPwAgainFragment : BaseFragment<FragmentJoinPwAgainBinding>(R.layout.fr
 			}
 
 			override fun afterTextChanged(p0: Editable?) {
-				if (joinViewModel.currentPw.equals(p0.toString())) {
-					joinViewModel.setAgainPw(p0.toString())
-				} else {
-					binding.etAgainPw.error = "비밀번호가 일치하지 않습니다."
-				}
+				joinViewModel.setAgainPw(binding.etAgainPw.text.toString())
 			}
 		})
 
 		binding.btnNext.setOnClickListener {
-			navigate(R.id.action_joinPwAgainFragment_to_joinNicknameFragment)
+			if (binding.etAgainPw.text.isNullOrEmpty()) {
+				Toast.makeText(requireContext(), "필수 입력 값입니다.", Toast.LENGTH_SHORT).show()
+				return@setOnClickListener // 넘어가지 않도록 반환
+			}
+
+			if (binding.etAgainPw.text.toString() == joinViewModel.currentPw.value.toString()) {
+				joinViewModel.setAgainPw(binding.etAgainPw.text.toString())
+				navigate(R.id.action_joinPwAgainFragment_to_joinNicknameFragment)
+			} else {
+				Log.d(" 엥2", joinViewModel.currentPw.value.toString())
+				Log.d(" 엥3", joinViewModel.againPw.value.toString())
+				Toast.makeText(requireContext(), "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
+				return@setOnClickListener
+			}
 		}
 	}
 }

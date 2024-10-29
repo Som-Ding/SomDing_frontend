@@ -41,8 +41,8 @@ class CategoryRepository @Inject constructor(
 						Log.d("CategoryRepository", "여기 맞나?: ${response.body()}")
 					} else {
 						responseLiveData.value = null
-						Log.d("CategoryRepository", "Response not successful: ${response.message()}")
-					}
+						val errorMsg = response.errorBody()?.string() ?: "Unknown error"
+						Log.d("CategoryRepository", "Error: ${response.code()} - $errorMsg")					}
 				}
 
 				override fun onFailure(

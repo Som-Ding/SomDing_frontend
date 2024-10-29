@@ -33,6 +33,7 @@ class JoinNicknameFragment : BaseFragment<FragmentJoinNicknameBinding>(R.layout.
 				nickname = joinViewModel.nickname.value ?: "",
 				password = joinViewModel.againPw.value ?: ""
 			)
+
 			joinViewModel.join(joinRequest)
 		}
 

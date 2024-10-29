@@ -5,6 +5,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import com.software.somding.R
 import com.software.somding.databinding.FragmentJoinEmailBinding
@@ -36,7 +37,17 @@ class JoinEmailFragment : BaseFragment<FragmentJoinEmailBinding>(R.layout.fragme
 		})
 
 		binding.btnNext.setOnClickListener {
-			navigate(R.id.action_joinEmailFragment_to_joinPwFragment)
+			if (binding.etUserEmail.text.isNullOrEmpty()) {
+				Toast.makeText(requireContext(), "필수 입력 값입니다.", Toast.LENGTH_SHORT).show()
+				return@setOnClickListener // 넘어가지 않도록 반환
+			}
+
+			if (joinViewModel.error.value == null) {
+				navigate(R.id.action_joinEmailFragment_to_joinPwFragment)
+			} else {
+				Toast.makeText(requireContext(), "이메일을 형식에 맞춰 입력해 주세요.", Toast.LENGTH_SHORT).show()
+				return@setOnClickListener // 넘어가지 않도록 반환
+			}
 		}
 	}
 }

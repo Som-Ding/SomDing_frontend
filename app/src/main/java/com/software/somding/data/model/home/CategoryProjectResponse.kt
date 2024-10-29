@@ -13,5 +13,6 @@ data class CategoryProjectData(
 	val category: String,
 	val targetPrice: Int,
 	val gatherPrice: Int,
-	val price: Int
+	val price: Int,
+	val targetDate: String
 )

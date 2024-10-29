@@ -5,6 +5,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -30,16 +31,25 @@ class JoinPwFragment : BaseFragment<FragmentJoinPwBinding>(R.layout.fragment_joi
 			}
 
 			override fun afterTextChanged(p0: Editable?) {
-				joinViewModel.setCurrentPw(p0.toString())
+				joinViewModel.setCurrentPw(binding.etCurrentPw.text.toString())
 			}
 		})
+
 		// 다음 버튼 클릭 리스너
 		binding.btnNext.setOnClickListener {
-//			if (isPasswordValid(joinViewModel.currentPw.value)) {
+			if (binding.etCurrentPw.text.isNullOrEmpty()) {
+				Toast.makeText(requireContext(), "필수 입력 값입니다.", Toast.LENGTH_SHORT).show()
+				return@setOnClickListener // 넘어가지 않도록 반환
+			}
+
+			if (isPasswordValid(joinViewModel.currentPw.value)) {
+				joinViewModel.setCurrentPw(binding.etCurrentPw.text.toString())
+				Log.d(" 엥1", joinViewModel.currentPw.value.toString())
 				navigate(R.id.action_joinPwFragment_to_joinPwAgainFragment)
-//			} else {
-//				binding.currentPw.error = "비밀번호는 6자 이상이어야 합니다."
-//			}
+			} else {
+				Toast.makeText(requireContext(), "비밀번호는 6자 이상이어야 합니다.", Toast.LENGTH_SHORT).show()
+				return@setOnClickListener // 넘어가지 않도록 반환
+			}
 		}
 	}
 

@@ -7,6 +7,7 @@ import com.software.somding.data.model.auth.JoinRequest
 import com.software.somding.data.model.auth.LoginRequest
 import com.software.somding.data.model.auth.LoginResponse
 import com.software.somding.data.model.common.CommonResponse
+import com.software.somding.data.model.common.JoinResponse
 import com.software.somding.network.api.LoginApi
 import retrofit2.Call
 import retrofit2.Callback
@@ -36,7 +37,8 @@ class LoginRepository @Inject constructor(
 					Log.d("login", "${response.body()}")
 				} else {
 					loginResponseLiveData.value = null
-					Log.d("login", "음")
+					val errorMsg = response.errorBody()?.string() ?: "Unknown error"
+					Log.d("login", "Error: ${response.code()} - $errorMsg")
 				}
 			}
 
@@ -49,25 +51,26 @@ class LoginRepository @Inject constructor(
 		return loginResponseLiveData
 	}
 
-	fun join(joinRequest: JoinRequest): MutableLiveData<CommonResponse<String>?> {
-		val joinResponseLiveData = MutableLiveData<CommonResponse<String>?>()
+	fun join(joinRequest: JoinRequest): MutableLiveData<JoinResponse?> {
+		val joinResponseLiveData = MutableLiveData<JoinResponse?>()
 
 		// 회원가입 API 호출
-		loginApi.join(joinRequest).enqueue(object : Callback<CommonResponse<String>> {
+		loginApi.join(joinRequest).enqueue(object : Callback<JoinResponse> {
 			override fun onResponse(
-				call: Call<CommonResponse<String>>,
-				response: Response<CommonResponse<String>>
+				call: Call<JoinResponse>,
+				response: Response<JoinResponse>
 			) {
 				if (response.isSuccessful) {
 					joinResponseLiveData.value = response.body()
 					Log.d("join", "${response.body()}")
 				} else {
 					joinResponseLiveData.value = null
-					Log.d("join", "음")
+					val errorMsg = response.errorBody()?.string() ?: "Unknown error"
+					Log.d("join", "Error: ${response.code()} - $errorMsg")
 				}
 			}
 
-			override fun onFailure(call: Call<CommonResponse<String>>, t: Throwable) {
+			override fun onFailure(call: Call<JoinResponse>, t: Throwable) {
 				_error.postValue("네트워크 오류: ${t.message}")
 				Log.d("join", "${t.message}")
 			}

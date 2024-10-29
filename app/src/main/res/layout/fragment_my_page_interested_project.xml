@@ -19,12 +19,13 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/registered_project_title"
+            style="@style/MediumFontKr.16"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="내 관심 프로젝트"
-            android:textSize="16sp"
-            android:textColor="@color/black"
             android:gravity="center"
+            android:padding="10dp"
+            android:text="내 관심 프로젝트"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -40,9 +41,11 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/project_content"
+            style="@style/MediumFontKr.14"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="1,000개의 프로젝트가 있습니다."
+            android:padding="5dp"
+            android:text="0개의 프로젝트가 있습니다."
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/registered_project_title" />
@@ -51,6 +54,7 @@
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/project_content"
