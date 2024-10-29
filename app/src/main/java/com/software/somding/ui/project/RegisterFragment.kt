@@ -3,8 +3,11 @@ package com.software.somding.ui.project
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -26,7 +29,11 @@ import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONArray
+import org.json.JSONObject
 import java.io.File
+import java.io.FileOutputStream
 
 @AndroidEntryPoint
 class RegisterFragment : BaseFragment<FragmentRegisterBinding>(R.layout.fragment_register) {
@@ -35,47 +42,49 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(R.layout.fragment
 	private var selectedImageUri: Uri? = null  // 선택된 이미지 URI
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-	    binding.btnCloth.setOnClickListener {
-		    selectedCategory = "CLOTHING"
-		    Log.d("RegisterFragment", "Selected Category: $selectedCategory")
-	    }
+		super.onViewCreated(view, savedInstanceState)
+		binding.btnCloth.setOnClickListener {
+			selectedCategory = "CLOTHING"
+			Log.d("RegisterFragment", "Selected Category: $selectedCategory")
+		}
 
-	    binding.btnDoll.setOnClickListener {
-		    selectedCategory = "DOLL"
-		    Log.d("RegisterFragment", "Selected Category: $selectedCategory")
-	    }
+		binding.btnDoll.setOnClickListener {
+			selectedCategory = "DOLL"
+			Log.d("RegisterFragment", "Selected Category: $selectedCategory")
+		}
 
-	    binding.btnEtc.setOnClickListener {
-		    selectedCategory = "ETC"
-		    Log.d("RegisterFragment", "Selected Category: $selectedCategory")
-	    }
-	    binding.btnSelectImage.setOnClickListener {
-		    if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE)
-			    != PackageManager.PERMISSION_GRANTED) {
-			    ActivityCompat.requestPermissions(requireActivity(),
-				    arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
-				    1)
-		    } else {
-			    openGallery()
-		    }
-	    }
+		binding.btnEtc.setOnClickListener {
+			selectedCategory = "ETC"
+			Log.d("RegisterFragment", "Selected Category: $selectedCategory")
+		}
 
-	    // 프로젝트 등록 버튼 클릭 이벤트
-	    binding.btnRegister.setOnClickListener {
-		    registerProject()
-	    }
+		binding.btnSelectImage.setOnClickListener {
+			if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE)
+				!= PackageManager.PERMISSION_GRANTED) {
+				ActivityCompat.requestPermissions(requireActivity(),
+					arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+					1)
+			} else {
+				openGallery()
+			}
+		}
 
-	    viewModel.createProjectResponse.observe(viewLifecycleOwner) { response ->
-		    if (response != null) {
-			    Log.d("RegisterFragment", "Project created: $response")
-			    navigate(R.id.action_registerFragment_to_categoryFragment)
-		    } else {
-			    Log.e("RegisterFragment", "Failed to create project")
-		    }
-	    }
-	    setDateFormatWatcher(binding.etTargetDate)
-    }
+		// 프로젝트 등록 버튼 클릭 이벤트
+		binding.btnRegister.setOnClickListener {
+			registerProject()
+		}
+
+		viewModel.createProjectResponse.observe(viewLifecycleOwner) { response ->
+			if (response != null) {
+				Log.d("RegisterFragment", "Project created: $response")
+				navigate(R.id.action_registerFragment_to_categoryFragment)
+			} else {
+				Log.e("RegisterFragment", "Failed to create project")
+			}
+		}
+		setDateFormatWatcher(binding.etTargetDate)
+	}
+
 	private fun openGallery() {
 		val intent = Intent(Intent.ACTION_PICK).apply {
 			type = "image/*"
@@ -92,53 +101,68 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(R.layout.fragment
 				}
 			}
 		}
+
 	private fun registerProject() {
-		val projectReq = ProjectRequest(
-			title = binding.etProjectTitle.text.toString(),
-			introduce = binding.etIntroduce.text.toString(),
-			policy = binding.etPolicy.text.toString(),
-			schedule = binding.etSchedule.text.toString(),
-			category = selectedCategory ?: "ETC",
-			targetPrice = binding.etTargetPrice.text.toString(),
-			price = binding.etPrice.text.toString(),
-			targetDate = binding.etTargetDate.text.toString(),
-			colorList = listOf("Red", "Blue"),
-			sizeList = listOf("M", "L"),
-			otherList = listOf("Additional Info"),
-		)
-
-		val titlePart = RequestBody.create("text/plain".toMediaTypeOrNull(), projectReq.title)
-		val introducePart = RequestBody.create("text/plain".toMediaTypeOrNull(), projectReq.introduce)
-		val policyPart = RequestBody.create("text/plain".toMediaTypeOrNull(), projectReq.policy)
-		val schedulePart = RequestBody.create("text/plain".toMediaTypeOrNull(), projectReq.schedule)
-		val categoryPart = RequestBody.create("text/plain".toMediaTypeOrNull(), projectReq.category)
-		val targetPricePart = RequestBody.create("text/plain".toMediaTypeOrNull(), projectReq.targetPrice)
-		val pricePart = RequestBody.create("text/plain".toMediaTypeOrNull(), projectReq.price)
-		val targetDatePart = RequestBody.create("text/plain".toMediaTypeOrNull(), projectReq.targetDate)
-		val colorListPart = RequestBody.create("application/json".toMediaTypeOrNull(), Gson().toJson(projectReq.colorList))
-		val sizeListPart = RequestBody.create("application/json".toMediaTypeOrNull(), Gson().toJson(projectReq.sizeList))
-		val otherListPart = RequestBody.create("application/json".toMediaTypeOrNull(), Gson().toJson(projectReq.otherList))
-
-
-		val gson = Gson()
-		val projectJson = gson.toJson(projectReq)
-		val requestBody = RequestBody.create("application/json".toMediaTypeOrNull(), projectJson)
-
 		val imageParts = mutableListOf<MultipartBody.Part>()
+
 		selectedImageUri?.let { uri ->
-			val file = File(uri.path!!)
-			val requestFile = RequestBody.create("image/*".toMediaTypeOrNull(), file)
-			val imagePart = MultipartBody.Part.createFormData("images", file.name, requestFile)
-			imageParts.add(imagePart)
+			// 선택된 이미지 처리
+			val filePath = getRealPathFromURI(uri)
+			if (filePath != null) {
+				val file = File(filePath)
+				if (file.exists()) {
+					val requestFile = RequestBody.create("image/*".toMediaTypeOrNull(), file)
+					val imagePart = MultipartBody.Part.createFormData("images", file.name, requestFile)
+					imageParts.add(imagePart)
+				} else {
+					Log.e("RegisterFragment", "File does not exist: $filePath")
+				}
+			}
+		} ?: run {
+			// 기본 이미지 사용
+			val drawable = requireContext().getDrawable(R.drawable.ic_somding_logo)
+			if (drawable is BitmapDrawable) {
+				val bitmap = drawable.bitmap
+				val defaultImageFile = File(requireContext().cacheDir, "default_image.png")
+				FileOutputStream(defaultImageFile).use {
+					bitmap.compress(Bitmap.CompressFormat.PNG, 100, it)
+				}
+
+				val requestFile = RequestBody.create("image/*".toMediaTypeOrNull(), defaultImageFile)
+				val imagePart = MultipartBody.Part.createFormData("images", defaultImageFile.name, requestFile)
+				imageParts.add(imagePart)
+			}
 		}
 
-//		viewModel.createProject(projectReq, imageParts)
-		viewModel.createProject(
-			titlePart, introducePart, policyPart, schedulePart,
-			categoryPart, targetPricePart, pricePart, targetDatePart,
-			colorListPart, sizeListPart, otherListPart, imageParts
-		)
+		val jsonObject = JSONObject().apply {
+			put("title", binding.etProjectTitle.text.toString())
+			put("introduce", binding.etIntroduce.text.toString())
+			put("policy", binding.etPolicy.text.toString())
+			put("schedule", binding.etSchedule.text.toString())
+			put("category", selectedCategory ?: "ETC")
+			put("targetPrice", binding.etTargetPrice.text.toString())
+			put("price", binding.etPrice.text.toString())
+			put("targetDate", binding.etTargetDate.text.toString())
+			put("colorList", JSONArray(listOf("Red", "Blue")))
+			put("sizeList", JSONArray(listOf("Small", "Medium", "Large")))
+			put("otherList", JSONArray(listOf("Option1", "Option2")))
+		}
+		val projectReqBody = jsonObject.toString().toRequestBody("application/json".toMediaTypeOrNull())
+
+		viewModel.createProject(projectReqBody, imageParts)
+		Log.d("RegisterFragment", "Request Body: $projectReqBody")
+		Log.d("RegisterFragment", "Image Parts: $imageParts")
 		Log.d("RegisterFragment", "넘어감")
+	}
+
+	private fun getRealPathFromURI(uri: Uri): String? {
+		val cursor = requireContext().contentResolver.query(uri, null, null, null, null)
+		return cursor?.use {
+			if (it.moveToFirst()) {
+				val index = it.getColumnIndex(MediaStore.Images.Media.DATA)
+				it.getString(index)
+			} else null
+		}
 	}
 
 	private fun setDateFormatWatcher(editText: AppCompatEditText) {

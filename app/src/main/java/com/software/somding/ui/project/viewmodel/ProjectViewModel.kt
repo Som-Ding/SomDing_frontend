@@ -27,8 +27,8 @@ class ProjectViewModel @Inject constructor(
 	private val _myProject = MutableLiveData<CategoryProjectResponse?>()
 	val myProject: LiveData<CategoryProjectResponse?> get() = _myProject
 
-	private val _createProjectResponse = MutableLiveData<String?>()
-	val createProjectResponse: LiveData<String?> get() = _createProjectResponse
+	private val _createProjectResponse = MutableLiveData<CommonResponse<String>?>()
+	val createProjectResponse: MutableLiveData<CommonResponse<String>?> get() = _createProjectResponse
 
 	private val _question = MutableLiveData<QuestionResponse?>()
 	val question: LiveData<QuestionResponse?> get() = _question
@@ -43,24 +43,12 @@ class ProjectViewModel @Inject constructor(
 	}
 
 	fun createProject(
-		titlePart: RequestBody,
-		introducePart: RequestBody,
-		policyPart: RequestBody,
-		schedulePart: RequestBody,
-		categoryPart: RequestBody,
-		targetPricePart: RequestBody,
-		pricePart: RequestBody,
-		targetDatePart: RequestBody,
-		colorListPart: RequestBody,
-		sizeListPart: RequestBody,
-		otherListPart: RequestBody,
+		projectReq: RequestBody,
 		imageParts: MutableList<MultipartBody.Part>
 	) {
-		repository.createProject(
-			titlePart, introducePart, policyPart, schedulePart,
-			categoryPart, targetPricePart, pricePart, targetDatePart,
-			colorListPart, sizeListPart, otherListPart, imageParts).observeForever { response ->
-			_createProjectResponse.postValue(response.toString())
+		repository.createProject(projectReq, imageParts).observeForever { response ->
+			_createProjectResponse.postValue(response)
+			Log.d("projectViewModel", response?.result.toString())
 		}
 	}
 

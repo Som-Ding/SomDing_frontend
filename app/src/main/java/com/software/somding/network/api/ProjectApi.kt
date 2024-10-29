@@ -25,27 +25,10 @@ interface ProjectApi {
 		@Path("projectId") projectId: Int
 	): Call<ProjectDetailResponse>
 
-	/*@Multipart
-	@POST("/api/projects")
-	fun createProject(
-		@Body projectReq: ProjectRequest, @Part images: List<MultipartBody.Part>
-	): Call<CommonResponse<String>>*/
-
 	@Multipart
 	@POST("api/projects")
-	@Headers("Content-Type: application/json")
 	fun createProject(
-		@Part("title") title: RequestBody,
-		@Part("introduce") introduce: RequestBody,
-		@Part("policy") policy: RequestBody,
-		@Part("schedule") schedule: RequestBody,
-		@Part("category") category: RequestBody,
-		@Part("targetPrice") targetPrice: RequestBody,
-		@Part("price") price: RequestBody,
-		@Part("targetDate") targetDate: RequestBody,
-		@Part("colorList") colorList: RequestBody,
-		@Part("sizeList") sizeList: RequestBody,
-		@Part("otherList") otherList: RequestBody,
+		@Part("projectReq") projectReq: RequestBody,
 		@Part images: List<MultipartBody.Part>
 	): Call<CommonResponse<String>>
 

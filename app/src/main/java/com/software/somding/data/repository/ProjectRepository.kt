@@ -11,7 +11,9 @@ import com.software.somding.data.model.project.QuestionResponse
 import com.software.somding.network.api.ProjectApi
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.ResponseBody
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -60,47 +62,36 @@ class ProjectRepository @Inject constructor(
 	 * 프로젝트 생성 api
 	 */
 	fun createProject(
-		titlePart: RequestBody,
-		introducePart: RequestBody,
-		policyPart: RequestBody,
-		schedulePart: RequestBody,
-		categoryPart: RequestBody,
-		targetPricePart: RequestBody,
-		pricePart: RequestBody,
-		targetDatePart: RequestBody,
-		colorListPart: RequestBody,
-		sizeListPart: RequestBody,
-		otherListPart: RequestBody,
+		projectReq: RequestBody,
 		imageParts: MutableList<MultipartBody.Part>
 	): LiveData<CommonResponse<String>?> {
 		val responseLiveData = MutableLiveData<CommonResponse<String>?>()
 
-		projectApi.createProject(
-			titlePart, introducePart, policyPart, schedulePart,
-			categoryPart, targetPricePart, pricePart, targetDatePart,
-			colorListPart, sizeListPart, otherListPart, imageParts
-		)
+		projectApi.createProject(projectReq, imageParts)
 			.enqueue(object : Callback<CommonResponse<String>> {
 				override fun onResponse(
 					call: Call<CommonResponse<String>>,
 					response: Response<CommonResponse<String>>
 				) {
 					if (response.isSuccessful) {
-						responseLiveData.postValue(response.body())
-						Log.d("register", "성공 오우예 ${response.body()}")
+						val body = response.body()
+						if (body != null) {
+							responseLiveData.postValue(body)
+							Log.d("ProjectRepository", "Project created: ${body.result}")
+						} else {
+							responseLiveData.postValue(null)
+							Log.d("ProjectRepository", "Response body is null")
+						}
 					} else {
 						responseLiveData.postValue(null)
-
 						val errorMsg = response.errorBody()?.string() ?: "Unknown error"
-						Log.d(
-							"RegisterFragment",
-							"Error: ${response.code()} - $errorMsg"
-						)
+						Log.d("ProjectRepository", "Error: ${response.code()} - $errorMsg")
 					}
 				}
 
 				override fun onFailure(call: Call<CommonResponse<String>>, t: Throwable) {
-					responseLiveData.postValue(null)
+					responseLiveData.postValue(null) // 실패 시 null 설정
+					Log.d("ProjectRepository", "Network error: ${t.message}")
 				}
 			})
 
