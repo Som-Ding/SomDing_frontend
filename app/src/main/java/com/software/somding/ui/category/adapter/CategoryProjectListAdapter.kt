@@ -21,7 +21,6 @@ class CategoryProjectListAdapter(
 
 			binding.contentCategory.text = projectData.category // 카테고리
 			binding.contentProjectTitle.text = projectData.title // 제목
-
 			val totalPriceFormatted = DecimalFormat("#,###").format(projectData.gatherPrice)
 			binding.contentPrice.text = totalPriceFormatted+"원"
 

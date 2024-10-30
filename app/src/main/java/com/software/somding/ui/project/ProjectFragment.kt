@@ -44,10 +44,9 @@ class ProjectFragment : BaseFragment<FragmentProjectBinding>(R.layout.fragment_p
 				binding.title.text = projectDetail.title
 				binding.category.text = projectDetail.category
 				binding.likeBtn.text = projectDetail.scrapNum.toString()
-
+				binding.sponsorNum.text = projectDetail.sponsorNum.toString()+"명"
 				val totalPriceFormatted = DecimalFormat("#,###").format(projectDetail.gatherPrice)
 				binding.totPrice.text = totalPriceFormatted
-//				binding.totPrice.text = projectDetail.gatherPrice.toString()
 
 				val achievementRate = if (projectDetail.targetPrice != 0) {
 					(projectDetail.gatherPrice.toDouble() / projectDetail.targetPrice * 100).toInt()

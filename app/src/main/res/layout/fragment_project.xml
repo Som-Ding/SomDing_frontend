@@ -139,7 +139,6 @@
                     style="@style/SemiBoldFontKr.16"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(data.sponsorNum)+`명`}"
                     android:textColor="#101010"
                     app:layout_constraintEnd_toEndOf="@+id/sponsor"
                     app:layout_constraintStart_toStartOf="@id/sponsor"
