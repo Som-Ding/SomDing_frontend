@@ -23,6 +23,10 @@ import com.software.somding.ui.common.NavigationUtil.navigateWithBundle
 import com.software.somding.ui.home.adapter.MainPopularProjectListAdapter
 import com.software.somding.ui.home.adapter.MainProjectListAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
 
 @AndroidEntryPoint
 class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
@@ -76,6 +80,8 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
 		binding.rvPopularProject.adapter = adapter
 		binding.rvPopularProject.layoutManager =
 			LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+
+		binding.titleDate.text = "현재 "+ LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd' 'HH:mm:ss"))+" 기준"
 	}
 
 	private fun updateRecyclerView(newData: CategoryProjectResponse) {
