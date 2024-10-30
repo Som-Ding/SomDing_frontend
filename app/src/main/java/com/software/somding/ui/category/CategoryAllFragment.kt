@@ -29,17 +29,15 @@ class CategoryAllFragment :
 		super.onViewCreated(view, savedInstanceState)
 
 		initProjectRecyclerView()
-
-		// 초기 데이터 로드
 		loadProjects(Sort.LATEST)
 
 		viewModel.categoryProjects.observe(viewLifecycleOwner, Observer { projects ->
 			projects?.let {
-				loadProjects(Sort.LATEST)
 				updateRecyclerView(it)
 			}
 			binding.tvAllSub.text = (projects?.result?.size.toString() + "개의 프로젝트가 있습니다.") ?: "0"
 		})
+		loadProjects(Sort.LATEST)
 
 		// PopupMenu 설정
 		binding.filtering.setOnClickListener { view ->
@@ -71,6 +69,7 @@ class CategoryAllFragment :
 			}
 			navigateWithBundle(R.id.action_categoryFragment_to_projectFragment, bundle)
 		}
+		adapter.dataList = categoryProjectData
 		binding.rvCategoryProject.adapter = adapter
 		binding.rvCategoryProject.layoutManager =
 			LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)

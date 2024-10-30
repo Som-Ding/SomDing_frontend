@@ -42,7 +42,7 @@ class MyPageDonatedProjectFragment : BaseFragment<FragmentMyPageDonatedProjectBi
 			val bundle = Bundle().apply {
 				putInt("projectId", projectId)
 			}
-			navigateWithBundle(R.id.action_categoryFragment_to_projectFragment, bundle)
+			navigateWithBundle(R.id.action_myPageDonatedProjectFragment_to_projectFragment, bundle)
 		}
 		adapter.dataList = registeredProjectData
 		binding.recyclerView.adapter = adapter

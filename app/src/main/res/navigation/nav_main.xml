@@ -10,7 +10,7 @@
         android:id="@+id/mainFragment"
         android:name="com.software.somding.ui.home.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
+        tools:layout="@layout/fragment_main">
 
         <action
             android:id="@+id/action_mainFragment_to_categoryFragment"
@@ -45,7 +45,7 @@
         android:id="@+id/categoryAllFragment"
         android:name="com.software.somding.ui.category.CategoryAllFragment"
         android:label="fragment_category_all"
-        tools:layout="@layout/fragment_category_all" >
+        tools:layout="@layout/fragment_category_all">
 
         <action
             android:id="@+id/action_categoryAllFragment_to_projectFragment"
@@ -57,7 +57,7 @@
         android:id="@+id/categoryFragment"
         android:name="com.software.somding.ui.category.CategoryFragment"
         android:label="fragment_category"
-        tools:layout="@layout/fragment_category" >
+        tools:layout="@layout/fragment_category">
 
         <action
             android:id="@+id/action_categoryFragment_to_projectFragment"
@@ -74,7 +74,7 @@
         android:id="@+id/projectQnAFragment"
         android:name="com.software.somding.ui.project.ProjectQnAFragment"
         android:label="fragment_project_qna"
-        tools:layout="@layout/fragment_project_qna" >
+        tools:layout="@layout/fragment_project_qna">
         <action
             android:id="@+id/action_projectQnAFragment_to_questionFragment"
             app:destination="@id/questionFragment" />
@@ -84,7 +84,7 @@
         android:id="@+id/registerFragment"
         android:name="com.software.somding.ui.project.RegisterFragment"
         android:label="fragment_category"
-        tools:layout="@layout/fragment_register" >
+        tools:layout="@layout/fragment_register">
         <action
             android:id="@+id/action_registerFragment_to_categoryFragment"
             app:destination="@id/categoryFragment" />
@@ -95,7 +95,7 @@
         android:id="@+id/categoryClothFragment"
         android:name="com.software.somding.ui.category.CategoryClothFragment"
         android:label="fragment_category_cloth"
-        tools:layout="@layout/fragment_category_cloth" >
+        tools:layout="@layout/fragment_category_cloth">
         <action
             android:id="@+id/action_categoryClothFragment_to_projectFragment"
             app:destination="@id/projectFragment" />
@@ -106,7 +106,7 @@
         android:id="@+id/categoryDollFragment"
         android:name="com.software.somding.ui.category.CategoryDollFragment"
         android:label="fragment_category_doll"
-        tools:layout="@layout/fragment_category_doll" >
+        tools:layout="@layout/fragment_category_doll">
         <action
             android:id="@+id/action_categoryDollFragment_to_projectFragment"
             app:destination="@id/projectFragment" />
@@ -117,7 +117,7 @@
         android:id="@+id/categoryEtcFragment"
         android:name="com.software.somding.ui.category.CategoryEtcFragment"
         android:label="fragment_category_etc"
-        tools:layout="@layout/fragment_category_etc" >
+        tools:layout="@layout/fragment_category_etc">
         <action
             android:id="@+id/action_categoryEtcFragment_to_projectFragment"
             app:destination="@id/projectFragment" />
@@ -128,8 +128,7 @@
         android:id="@+id/projectFragment"
         android:name="com.software.somding.ui.project.ProjectFragment"
         android:label="fragment_project"
-        tools:layout="@layout/fragment_project" >
-    </fragment>
+        tools:layout="@layout/fragment_project"></fragment>
 
 
     <fragment
@@ -143,5 +142,6 @@
         <action
             android:id="@+id/action_questionFragment_to_categoryFragment"
             app:destination="@id/categoryFragment" />
+
     </fragment>
 </navigation>

@@ -37,19 +37,31 @@
         android:id="@+id/myPageRegisteredProjectFragment"
         android:name="com.software.somding.ui.mypage.MyPageRegisteredProjectFragment"
         android:label="fragment_my_page_registered_project"
-        tools:layout="@layout/fragment_my_page_registered_project" />
+        tools:layout="@layout/fragment_my_page_registered_project" >
+        <action
+            android:id="@+id/action_myPageRegisteredProjectFragment_to_projectFragment"
+            app:destination="@id/projectFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/myPageDonatedProjectFragment"
         android:name="com.software.somding.ui.mypage.MyPageDonatedProjectFragment"
         android:label="fragment_my_page_donated_project"
-        tools:layout="@layout/fragment_my_page_donated_project" />
+        tools:layout="@layout/fragment_my_page_donated_project" >
+        <action
+            android:id="@+id/action_myPageDonatedProjectFragment_to_projectFragment"
+            app:destination="@id/projectFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/myPageInterestedProjectFragment"
         android:name="com.software.somding.ui.mypage.MyPageInterestedProjectFragment"
         android:label="fragment_my_page_interested_project"
-        tools:layout="@layout/fragment_my_page_interested_project" />
+        tools:layout="@layout/fragment_my_page_interested_project" >
+        <action
+            android:id="@+id/action_myPageInterestedProjectFragment_to_projectFragment"
+            app:destination="@id/projectFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/myPageUpdateCurrentPwFragment"
@@ -78,6 +90,12 @@
             android:id="@+id/action_myPageProfileFragment_to_myPageFragment"
             app:destination="@id/myPageFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/projectFragment"
+        android:name="com.software.somding.ui.project.ProjectFragment"
+        android:label="fragment_project"
+        tools:layout="@layout/fragment_project"/>
 
 
 </navigation>

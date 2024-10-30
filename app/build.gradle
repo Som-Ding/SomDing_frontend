@@ -73,6 +73,7 @@ dependencies {
     implementation 'androidx.databinding:databinding-runtime:8.6.0'
     implementation 'com.google.android.datatransport:transport-runtime:4.0.0'
     implementation 'com.google.firebase:firebase-functions-ktx:21.0.0'
+    implementation 'androidx.activity:activity:1.9.3'
 
     // Testing
     testImplementation 'junit:junit:4.13.2'

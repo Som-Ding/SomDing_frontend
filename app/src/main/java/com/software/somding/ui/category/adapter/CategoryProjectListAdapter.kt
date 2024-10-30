@@ -1,5 +1,6 @@
 package com.software.somding.ui.category.adapter
 
+import android.icu.text.DecimalFormat
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -20,7 +21,9 @@ class CategoryProjectListAdapter(
 
 			binding.contentCategory.text = projectData.category // 카테고리
 			binding.contentProjectTitle.text = projectData.title // 제목
-			binding.contentPrice.text = projectData.gatherPrice.toString()+"원"
+
+			val totalPriceFormatted = DecimalFormat("#,###").format(projectData.gatherPrice)
+			binding.contentPrice.text = totalPriceFormatted+"원"
 
 			val achievementRate = if (projectData.targetPrice != 0) {
 				(projectData.gatherPrice.toDouble() / projectData.targetPrice * 100).toInt()

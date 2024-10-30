@@ -8,7 +8,7 @@
     <string name="main_content_price">%s%s</string>
     <string name="percent">%</string>
     <string name="main_content_date">%d일 남음</string>
-    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_login">Som-ding</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>

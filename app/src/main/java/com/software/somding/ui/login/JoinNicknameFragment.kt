@@ -1,6 +1,8 @@
 package com.software.somding.ui.login
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import androidx.core.widget.addTextChangedListener
@@ -22,10 +24,17 @@ class JoinNicknameFragment : BaseFragment<FragmentJoinNicknameBinding>(R.layout.
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
+		binding.etCurrentNickname.addTextChangedListener(object : TextWatcher {
+			override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+			}
 
-		binding.etCurrentNickname.addTextChangedListener { text ->
-			joinViewModel.nickname.value = text.toString()
-		}
+			override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+			}
+
+			override fun afterTextChanged(p0: Editable?) {
+				joinViewModel.nickname.value = p0.toString()
+			}
+		})
 
 		binding.btnNext.setOnClickListener {
 			val joinRequest = JoinRequest(

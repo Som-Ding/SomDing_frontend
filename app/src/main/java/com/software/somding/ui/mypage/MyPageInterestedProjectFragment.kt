@@ -29,7 +29,7 @@ class MyPageInterestedProjectFragment : BaseFragment<FragmentMyPageInterestedPro
 	    viewModel.getScrap()
 	    viewModel.scrapResponse.observe(viewLifecycleOwner, Observer { projects ->
 		    projects?.let {
-			    viewModel.getScrap()
+//			    viewModel.getScrap()
 			    updateRecyclerView(it)
 		    }
 		    binding.projectContent.text = (projects?.result?.size.toString() + "개의 프로젝트가 있습니다.")
@@ -41,7 +41,7 @@ class MyPageInterestedProjectFragment : BaseFragment<FragmentMyPageInterestedPro
 	        val bundle = Bundle().apply {
 		        putInt("projectId", projectId)
 	        }
-	        navigateWithBundle(R.id.action_categoryFragment_to_projectFragment, bundle)
+	        navigateWithBundle(R.id.action_myPageInterestedProjectFragment_to_projectFragment, bundle)
         }
         adapter.dataList = registeredProjectData
         binding.recyclerView.adapter = adapter

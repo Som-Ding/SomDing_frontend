@@ -34,10 +34,10 @@ class CategoryEtcFragment : BaseFragment<FragmentCategoryEtcBinding>(R.layout.fr
 		viewModel.categoryProjects.observe(viewLifecycleOwner, Observer { projects ->
 			projects?.let {
 				updateRecyclerView(it)
-				loadProjects(Sort.LATEST)
 			}
 			binding.tvEtcSub.text = (projects?.result?.size.toString() + "개의 프로젝트가 있습니다.") ?: "0"
 		})
+		loadProjects(Sort.LATEST)
 
 		// PopupMenu 설정
 		binding.filtering.setOnClickListener { view ->
@@ -80,7 +80,7 @@ class CategoryEtcFragment : BaseFragment<FragmentCategoryEtcBinding>(R.layout.fr
 		categoryProjectData.addAll(newData.result)
 		binding.rvCategoryProject.adapter?.notifyDataSetChanged()
 	}
-	fun loadProjects(sort: Sort) {
+	private fun loadProjects(sort: Sort) {
 		viewModel.getProjectsByCategory(Category.VARIOUS.toString(), sort.toString())
 	}
 }

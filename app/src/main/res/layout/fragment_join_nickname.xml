@@ -36,17 +36,39 @@
             app:layout_constraintTop_toTopOf="@+id/appCompatTextView3" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/somding"
+            style="@style/juaFontKr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="솜딩"
+            android:textColor="@color/magenta"
+            android:textSize="26sp"
+            app:layout_constraintStart_toStartOf="@+id/appCompatTextView3"
+            app:layout_constraintTop_toTopOf="@+id/currentPw" />
+
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/currentPw"
             style="@style/SemiBoldFontKr.24"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="66dp"
-            android:text="에서 사용할\n닉네임을 입력해주세요."
+            android:text="에서 사용할"
             android:textColor="@color/black"
             android:textSize="24sp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/somding"
             app:layout_constraintTop_toBottomOf="@+id/registered_project_title" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/currentPw2"
+            style="@style/SemiBoldFontKr.24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="닉네임을 입력해주세요."
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@+id/somding"
+            app:layout_constraintTop_toBottomOf="@+id/currentPw" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/etCurrentNickname"
@@ -56,13 +78,13 @@
             android:layout_marginTop="30dp"
             android:layout_marginEnd="30dp"
             android:hint="닉네임"
-            android:singleLine="true"
             android:lines="1"
+            android:singleLine="true"
             android:textColorHint="@color/gray"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/currentPw" />
+            app:layout_constraintTop_toBottomOf="@+id/currentPw2" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_next"

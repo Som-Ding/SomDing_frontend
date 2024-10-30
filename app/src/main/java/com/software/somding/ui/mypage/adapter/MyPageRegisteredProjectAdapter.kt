@@ -20,8 +20,10 @@ class MyPageRegisteredProjectAdapter(
 		RecyclerView.ViewHolder(binding.root) {
 		fun bind(projectData: CategoryProjectData) {
 			loadImage(binding.projectImg, projectData.img.toString())
-			binding.contentCategory.text = projectData.category
-			binding.contentProjectTitle.text = projectData.title
+
+			binding.contentCategory.text = projectData.category // 카테고리
+			binding.contentProjectTitle.text = projectData.title // 제목
+			binding.contentPrice.text = projectData.gatherPrice.toString()+"원"
 
 			val achievementRate = if (projectData.targetPrice != 0) {
 				(projectData.gatherPrice.toDouble() / projectData.targetPrice * 100).toInt()
@@ -29,11 +31,14 @@ class MyPageRegisteredProjectAdapter(
 				0
 			}
 			binding.contentAchievement.text = "$achievementRate%"
+
 			val totalPriceFormatted = DecimalFormat("#,###").format(projectData.gatherPrice)
 			binding.contentPrice.text = totalPriceFormatted
 
+			binding.linearProgressIndicator.progress =
+				((projectData.gatherPrice * 100) / projectData.targetPrice) ?: 0
 			binding.root.setOnClickListener {
-		        onItemClick(projectData.projectId)
+				onItemClick(projectData.projectId)
 			}
 		}
 	}

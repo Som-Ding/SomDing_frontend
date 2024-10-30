@@ -33,10 +33,10 @@ class CategoryDollFragment : BaseFragment<FragmentCategoryDollBinding>(R.layout.
 		viewModel.categoryProjects.observe(viewLifecycleOwner, Observer { projects ->
 			projects?.let {
 				updateRecyclerView(it)
-				loadProjects(Sort.LATEST)
 			}
 			binding.tvDollSub.text = (projects?.result?.size.toString() + "개의 프로젝트가 있습니다.") ?: "0"
 		})
+		loadProjects(Sort.LATEST)
 
 		// PopupMenu 설정
 		binding.filtering.setOnClickListener { view ->

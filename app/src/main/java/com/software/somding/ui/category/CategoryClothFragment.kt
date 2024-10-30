@@ -30,10 +30,11 @@ class CategoryClothFragment :
 		super.onViewCreated(view, savedInstanceState)
 
 		initProjectRecyclerView()
+		loadProjects(Sort.LATEST)
 
 		viewModel.categoryProjects.observe(viewLifecycleOwner, Observer { projects ->
 			projects?.let {
-				loadProjects(Sort.LATEST)
+//				loadProjects(Sort.LATEST)
 				updateRecyclerView(it)
 			}
 			binding.tvClothSub.text = (projects?.result?.size.toString() + "개의 프로젝트가 있습니다.") ?: "0"
@@ -85,7 +86,7 @@ class CategoryClothFragment :
 		binding.rvCategoryProject.adapter?.notifyDataSetChanged()
 	}
 
-	fun loadProjects(sort: Sort) {
+	private fun loadProjects(sort: Sort) {
 		viewModel.getProjectsByCategory(Category.CLOTHING.toString(), sort.toString())
 	}
 }
