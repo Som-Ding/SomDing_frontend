@@ -40,10 +40,11 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(R.layout.fragment
 	private val viewModel: ProjectViewModel by viewModels()
 	private var selectedCategory: String? = null
 	private var selectedImageUri: Uri? = null  // 선택된 이미지 URI
+	private var selectedButton: View? = null  // 현재 선택된 버튼
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
-		binding.btnCloth.setOnClickListener {
+/*		binding.btnCloth.setOnClickListener {
 			selectedCategory = "CLOTHING"
 			Log.d("RegisterFragment", "Selected Category: $selectedCategory")
 		}
@@ -54,10 +55,20 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(R.layout.fragment
 		}
 
 		binding.btnEtc.setOnClickListener {
-			selectedCategory = "ETC"
+			selectedCategory = "VARIOUS"
 			Log.d("RegisterFragment", "Selected Category: $selectedCategory")
+		}*/
+		binding.btnCloth.setOnClickListener {
+			updateSelectedCategory("CLOTHING", binding.btnCloth)
 		}
 
+		binding.btnDoll.setOnClickListener {
+			updateSelectedCategory("DOLL", binding.btnDoll)
+		}
+
+		binding.btnEtc.setOnClickListener {
+			updateSelectedCategory("ETC", binding.btnEtc)
+		}
 		binding.btnSelectImage.setOnClickListener {
 			if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE)
 				!= PackageManager.PERMISSION_GRANTED) {
@@ -91,7 +102,19 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(R.layout.fragment
 		}
 		imagePickerLauncher.launch(intent)
 	}
+	private fun updateSelectedCategory(category: String, selectedBtn: View) {
+		// 선택된 카테고리 및 버튼 업데이트
+		selectedCategory = category
 
+		// 기존에 선택된 버튼의 배경을 원래 상태로 되돌림
+		selectedButton?.setBackgroundResource(R.drawable.bg_line_gray_radius_10)
+
+		// 새로 선택된 버튼에 배경색 적용
+		selectedBtn.setBackgroundResource(R.drawable.bg_shared_magenta_10)
+
+		// 선택된 버튼을 현재 버튼으로 갱신
+		selectedButton = selectedBtn
+	}
 	private val imagePickerLauncher =
 		registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
 			if (result.resultCode == AppCompatActivity.RESULT_OK) {
