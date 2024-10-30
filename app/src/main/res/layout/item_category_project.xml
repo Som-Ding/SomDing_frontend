@@ -46,7 +46,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="@{data.category}"
             android:textAppearance="@style/RegularFontKr.12"
             android:textSize="10sp"
             app:layout_constraintStart_toEndOf="@+id/project_img"
@@ -56,7 +55,6 @@
             android:id="@+id/content_project_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{data.title}"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="@+id/content_category"
             app:layout_constraintTop_toBottomOf="@+id/content_category" />
@@ -66,7 +64,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="@{String.valueOf(data.targetPrice)}"
             android:textSize="10sp"
             app:layout_constraintStart_toStartOf="@+id/content_category"
             app:layout_constraintTop_toBottomOf="@+id/content_project_title" />
@@ -91,7 +88,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="@{String.valueOf(data.gatherPrice)}"
             android:textSize="10sp"
             app:layout_constraintStart_toStartOf="@+id/content_category"
             app:layout_constraintTop_toBottomOf="@+id/linearProgressIndicator" />

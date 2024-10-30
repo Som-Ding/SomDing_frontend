@@ -28,10 +28,7 @@ class MyPageInterestedProjectFragment : BaseFragment<FragmentMyPageInterestedPro
 
 	    viewModel.getScrap()
 	    viewModel.scrapResponse.observe(viewLifecycleOwner, Observer { projects ->
-		    projects?.let {
-//			    viewModel.getScrap()
-			    updateRecyclerView(it)
-		    }
+		    updateRecyclerView(projects!!)
 		    binding.projectContent.text = (projects?.result?.size.toString() + "개의 프로젝트가 있습니다.")
 	    })
     }

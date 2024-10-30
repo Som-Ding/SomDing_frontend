@@ -67,7 +67,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(R.layout.fragment
 		}
 
 		binding.btnEtc.setOnClickListener {
-			updateSelectedCategory("ETC", binding.btnEtc)
+			updateSelectedCategory("VARIOUS", binding.btnEtc)
 		}
 		binding.btnSelectImage.setOnClickListener {
 			if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -143,7 +143,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(R.layout.fragment
 			}
 		} ?: run {
 			// 기본 이미지 사용
-			val drawable = requireContext().getDrawable(R.drawable.ic_somding_logo)
+			val drawable = requireContext().getDrawable(R.drawable.ic_join_logo)
 			if (drawable is BitmapDrawable) {
 				val bitmap = drawable.bitmap
 				val defaultImageFile = File(requireContext().cacheDir, "default_image.png")
